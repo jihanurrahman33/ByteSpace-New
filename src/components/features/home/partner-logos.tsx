@@ -10,25 +10,22 @@ export function PartnerLogos() {
   ];
 
   return (
-    <section className="w-full bg-[#F5F5F6] py-16 md:py-20 border-b border-neutral-100 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px]">
-        {/* Partner Logos (Figma Frame 2 1:1794, 167x41px white boxes) */}
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-[40px]">
-          {logos.map((logo, index) => (
-            <div
-              key={index}
-              className="w-[167px] h-[41px] bg-white rounded-[8px] flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity shadow-xs border border-neutral-200/40"
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={logo.width}
-                height={logo.height}
-                className="h-6 md:h-7 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </div>
+    <section className="w-full bg-[#F5F5F6] h-[160px] md:h-[202px] flex items-center justify-center overflow-hidden">
+      <div className="w-full max-w-[1440px] px-6 md:px-12 lg:px-[154px] flex items-center justify-between gap-6 sm:gap-10 lg:gap-[72px] flex-wrap sm:flex-nowrap">
+        {logos.map((logo, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-center shrink-0 transition-opacity hover:opacity-80"
+          >
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              width={logo.width}
+              height={logo.height}
+              className="w-auto h-7 sm:h-9 lg:h-[41px] object-contain"
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

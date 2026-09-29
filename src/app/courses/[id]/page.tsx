@@ -2,14 +2,10 @@
 
 import { use, useMemo } from "react";
 import { notFound } from "next/navigation";
-import { Check, Star } from "lucide-react";
+import { Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { CourseDetailsHero } from "@/components/features/courses/course-details-hero";
-import { CourseSidebarCard } from "@/components/features/courses/course-sidebar-card";
-import { CourseSyllabus } from "@/components/features/courses/course-syllabus";
-import { CourseReviewsList } from "@/components/features/courses/course-reviews-list";
-import { CourseCard } from "@/components/features/courses/course-card";
 import { Footer } from "@/components/layout/footer";
 import { ALL_COURSES } from "@/lib/constants/courses-data";
 
@@ -27,86 +23,89 @@ export default function CourseDetailsPage({
     notFound();
   }
 
-  const relatedCourses = useMemo(() => {
-    return ALL_COURSES.filter((c) => c.id !== course.id).slice(0, 3);
-  }, [course.id]);
-
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* 1. Hero Banner with Course Title, Meta, and Navigation Tabs (Figma 55:4160) */}
-      <CourseDetailsHero course={course} activeTab="about" />
+      {/* 1. Hero Banner with Course Title, Meta, Video, and Floating Sidebar (Figma 55:4066) */}
+      <CourseDetailsHero course={course} />
 
-      {/* 2. Main Content + Right Sticky Sidebar Layout */}
-      <main className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-10 md:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-          {/* Left 2-Columns: Course Description, Sneak Peak, Key Points, Syllabus & Instructor */}
-          <div className="lg:col-span-2 space-y-10">
+      {/* 2. Main Content (Left Column 725px) */}
+      <main className="relative w-full bg-white flex-1">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-12 md:pt-16 pb-24">
+          <div className="w-full lg:w-[725px] flex flex-col">
             {/* Pill Tabs (Figma 55:4118 - About / Lessons / Reviews) */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 mb-10">
               <Link
                 href={`/courses/${course.id}`}
-                className="h-9 px-5 rounded-full bg-secondary-400 text-neutral-950 font-sans font-medium text-sm flex items-center justify-center shadow-xs"
+                className="h-[43px] px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 About
               </Link>
               <Link
                 href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
-                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 Lessons
               </Link>
               <Link
                 href={`/courses/${course.id}/reviews`}
-                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 Reviews
               </Link>
             </div>
 
-            {/* Description (Figma Description 55:4125) */}
-            <div>
-              <h2 className="font-heading font-semibold text-2xl text-neutral-950 mb-3">
+            {/* Description (Figma 55:4126) */}
+            <div className="mb-10">
+              <h2 className="font-heading font-semibold text-[20px] text-[#242528] mb-3">
                 Description
               </h2>
-              <p className="font-sans text-neutral-700 text-sm md:text-base leading-relaxed whitespace-pre-line">
-                {course.longDescription}
-              </p>
+              <div className="space-y-4 font-sans text-base text-[#4B4C53] leading-relaxed">
+                <p>
+                  Embark on an enlightening exploration into the world of digital creation with our comprehensive course, &quot;Build Digital Assets: A Comprehensive Guide.&quot; This transformative learning experience invites you to delve deep into the intricacies of crafting impactful digital content. From laying the groundwork with foundational concepts to mastering advanced techniques, this guide is meticulously curated to empower you with the skills essential for navigating the dynamic landscape of digital asset creation.
+                </p>
+                <p>
+                  In the initial modules, you&apos;ll establish a solid foundation by immersing yourself in the foundational concepts that form the backbone of digital asset creation. Understand the fundamental elements that constitute compelling digital content and gain proficiency in leveraging these elements to communicate effectively in the digital realm.
+                </p>
+                <p>
+                  As you progress through the course, you&apos;ll ascend to higher levels of expertise, delving into the nuances of design principles that drive impactful creations. Uncover the secrets behind effective visual communication, exploring color theory, typography, and layout strategies that elevate your digital assets to new heights. Engage in hands-on exercises that reinforce your understanding, allowing you to apply these principles in practical scenarios.
+                </p>
+              </div>
             </div>
 
-            {/* Sneak Peak (Figma 55:4130 - 55:4133) */}
-            <div>
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 mb-4">
+            {/* Sneak Peak (Figma 55:4128) */}
+            <div className="mb-10">
+              <h3 className="font-heading font-semibold text-[20px] text-[#242528] mb-4">
                 Sneak Peak
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {[
-                  { src: "/assets/courses/sneak-peak-1.png", alt: "Sketching wireframe" },
-                  { src: "/assets/courses/sneak-peak-2.png", alt: "Design palettes on laptop" },
-                  { src: "/assets/courses/sneak-peak-3.png", alt: "Website UI on desktop" },
-                  { src: "/assets/courses/sneak-peak-4.png", alt: "Mobile app interfaces" },
+                  { src: "/assets/courses/sneak-peak-1.png", alt: "Wireframing" },
+                  { src: "/assets/courses/sneak-peak-2.png", alt: "Design System" },
+                  { src: "/assets/courses/sneak-peak-3.png", alt: "Desktop UI" },
+                  { src: "/assets/courses/sneak-peak-4.png", alt: "Mobile UI" },
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-100 shadow-sm"
+                    className="relative w-full h-[125px] rounded-[16px] overflow-hidden"
                   >
                     <Image
                       src={item.src}
                       alt={item.alt}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 640px) 50vw, 200px"
+                      sizes="167px"
                     />
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Key Points (Figma Key Points 55:4125) */}
+            {/* Key Points (Figma 55:4134) */}
             <div>
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 mb-4">
+              <h3 className="font-heading font-semibold text-[20px] text-[#242528] mb-4">
                 Key Points
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div className="space-y-3">
                 {[
                   "Foundational Concepts",
                   "Design Principles Mastery",
@@ -117,106 +116,22 @@ export default function CourseDetailsPage({
                   "Monetization Strategies",
                   "Capstone Project: Building Your Portfolio",
                 ].map((point, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-brand-blue text-white flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3 stroke-[3]" />
+                  <div key={idx} className="flex items-center gap-2">
+                    <div className="w-[18px] h-[18px] rounded-full bg-[#003BE2] flex items-center justify-center shrink-0">
+                      <Check className="w-2.5 h-2.5 text-white stroke-[3]" />
                     </div>
-                    <span className="font-sans text-sm font-medium text-neutral-800">
+                    <span className="font-sans text-base text-[#242528]">
                       {point}
                     </span>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Curriculum Preview (Syllabus) */}
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-heading font-semibold text-xl text-neutral-950">
-                  Course Content
-                </h3>
-                <span className="font-sans text-xs text-neutral-500">
-                  {course.lessons} • {course.duration} total length
-                </span>
-              </div>
-              <CourseSyllabus courseId={course.id} modules={course.modules} />
-            </div>
-
-            {/* Instructor Card */}
-            <div className="border border-neutral-100 rounded-3xl p-8 bg-neutral-50/70">
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 mb-6">
-                Instructor
-              </h3>
-              <div className="flex flex-col sm:flex-row items-start gap-6">
-                <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-white shadow-sm">
-                  <Image
-                    src={course.instructor.avatar}
-                    alt={course.instructor.name}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
-                  />
-                </div>
-                <div className="flex-1">
-                  <Link
-                    href={`/creators/${course.instructor.id}`}
-                    className="font-heading font-semibold text-lg text-neutral-950 hover:text-brand-blue transition-colors"
-                  >
-                    {course.instructor.name}
-                  </Link>
-                  <p className="font-sans text-xs text-neutral-500 mb-3">
-                    {course.instructor.title}
-                  </p>
-                  <p className="font-sans text-sm text-neutral-700 leading-relaxed mb-4">
-                    {course.instructor.bio}
-                  </p>
-                  <div className="flex items-center gap-6 text-xs text-neutral-600 font-sans">
-                    <div className="flex items-center gap-1.5">
-                      <Star className="w-3.5 h-3.5 fill-secondary-400 text-secondary-400" />
-                      <span>{course.instructor.rating} Rating</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-neutral-900">{course.instructor.studentsCount.toLocaleString()}</span> Students
-                    </div>
-                    <div>
-                      <span className="font-semibold text-neutral-900">{course.instructor.coursesCount}</span> Courses
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Reviews Section */}
-            <div>
-              <CourseReviewsList rating={course.rating} reviews={course.reviews} />
-            </div>
-          </div>
-
-          {/* Right Column: Sticky Video Preview & Enrollment Card */}
-          <div className="lg:col-span-1">
-            <CourseSidebarCard course={course} />
-          </div>
-        </div>
-
-        {/* 3. Related Courses Section */}
-        <div className="mt-20 pt-16 border-t border-neutral-100">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="font-heading font-semibold text-2xl sm:text-3xl text-neutral-950">
-              Related Courses
-            </h2>
-            <Link href="/courses" className="text-sm font-semibold text-brand-blue hover:underline">
-              View All Courses
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {relatedCourses.map((rc) => (
-              <CourseCard key={rc.id} course={rc} />
-            ))}
           </div>
         </div>
       </main>
 
-      {/* 4. Footer */}
+      {/* 3. Footer */}
       <Footer />
     </div>
   );

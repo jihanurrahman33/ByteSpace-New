@@ -45,7 +45,7 @@ export function TestimonialsSection() {
             Discover What Our Community Is Saying
           </h2>
           <p className="font-sans text-[18px] text-[#4F4F4F] leading-[1.6] max-w-[560px]">
-            At ByteSpace, our vibrant community of learners and creators is at the heart of what we do. Hear directly from those who have experienced the transformative journey of learning and creating on our platform.
+            At ByteSpace, our vibrant community of learners and creators is at the heart of what we do. Hear directly from those who have experienced the transformative journey of learning and creating on our platform. Explore testimonials that reflect the diverse perspectives of enthusiastic learners and accomplished creators.
           </p>
         </div>
 

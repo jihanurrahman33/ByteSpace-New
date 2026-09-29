@@ -5,7 +5,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Video } from "lucide-react";
 import { CourseDetailsHero } from "@/components/features/courses/course-details-hero";
-import { CourseSidebarCard } from "@/components/features/courses/course-sidebar-card";
 import { Footer } from "@/components/layout/footer";
 import { ALL_COURSES } from "@/lib/constants/courses-data";
 
@@ -52,65 +51,61 @@ export default function CourseLessonsPage({
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* 1. Royal Blue Hero Banner (matching Figma 60:102) */}
-      <CourseDetailsHero course={course} activeTab="lessons" />
+      {/* 1. Hero Banner with Course Title, Meta, Video, and Floating Sidebar (Figma 60:102) */}
+      <CourseDetailsHero course={course} />
 
-      {/* 2. Main Content + Right Sticky Sidebar Layout */}
-      <main className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-10 md:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-          {/* Left 2-Columns: Module List & Lessons */}
-          <div className="lg:col-span-2 space-y-10">
-            {/* Pill Tabs (Figma 60:102 - About / Lesson / Reviews) */}
-            <div className="flex items-center gap-3">
+      {/* 2. Main Content (Left Column 723px) */}
+      <main className="relative w-full bg-white flex-1">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-12 md:pt-16 pb-24">
+          <div className="w-full lg:w-[723px] flex flex-col">
+            {/* Pill Tabs (Figma 60:104 - About / Lesson / Reviews) */}
+            <div className="flex items-center gap-3 mb-10">
               <Link
                 href={`/courses/${course.id}`}
-                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 About
               </Link>
               <Link
                 href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
-                className="h-9 px-5 rounded-full bg-secondary-400 text-neutral-950 font-sans font-medium text-sm flex items-center justify-center shadow-xs"
+                className="h-[43px] px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 Lesson
               </Link>
               <Link
                 href={`/courses/${course.id}/reviews`}
-                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 Reviews
               </Link>
             </div>
 
-            {/* Explore the Modules Section */}
-            <div>
-              <h2 className="font-heading font-semibold text-2xl text-neutral-950 mb-3">
+            {/* Explore the Modules (Figma 60:104) */}
+            <div className="mb-10">
+              <h2 className="font-heading font-semibold text-[20px] text-[#242528] mb-3">
                 Explore the Modules
               </h2>
-              <p className="font-sans text-neutral-700 text-sm md:text-base leading-relaxed">
+              <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
                 Immerse yourself in the course content as we break down each module into comprehensive lessons, providing practical insights and hands-on experiences.
               </p>
             </div>
 
-            {/* Lesson List with Neon Lime Video Camera Badges */}
-            <div className="space-y-6">
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 mb-2">
+            {/* Lesson List (Figma 60:104) */}
+            <div className="mb-10">
+              <h3 className="font-heading font-semibold text-[20px] text-[#242528] mb-6">
                 Lesson List
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {modulesList.map((mod, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-4 p-4 rounded-2xl border border-neutral-100 bg-white hover:border-neutral-200 transition-colors"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-secondary-400 text-neutral-950 flex items-center justify-center shrink-0 shadow-xs">
-                      <Video className="w-5 h-5 fill-current" />
+                  <div key={idx} className="flex items-start gap-4">
+                    <div className="w-[72px] h-[72px] rounded-[24px] bg-[#D4FB20] text-[#242528] flex items-center justify-center shrink-0">
+                      <Video className="w-6 h-6 fill-current text-[#242528]" />
                     </div>
-                    <div>
-                      <h4 className="font-heading font-semibold text-base text-neutral-950 mb-1">
+                    <div className="flex-1 pt-1">
+                      <h4 className="font-heading font-semibold text-base text-[#242528] mb-1">
                         {mod.title}
                       </h4>
-                      <p className="font-sans text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                      <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
                         {mod.desc}
                       </p>
                     </div>
@@ -120,43 +115,38 @@ export default function CourseLessonsPage({
             </div>
 
             {/* Lesson Content Section */}
-            <div>
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 mb-2">
+            <div className="mb-10">
+              <h3 className="font-heading font-semibold text-[20px] text-[#242528] mb-3">
                 Lesson Content
               </h3>
-              <p className="font-sans text-neutral-700 text-sm md:text-base leading-relaxed">
+              <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
                 Engage with each lesson through captivating video content, detailed textual explanations, and interactive elements. Download resources, complete assignments, and test your understanding with quizzes.
               </p>
             </div>
 
             {/* Lesson Progress Tracking Section */}
             <div>
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 mb-2">
+              <h3 className="font-heading font-semibold text-[20px] text-[#242528] mb-3">
                 Lesson Progress Tracking
               </h3>
-              <p className="font-sans text-neutral-700 text-sm md:text-base leading-relaxed mb-6">
+              <p className="font-sans text-base text-[#4B4C53] leading-relaxed mb-6">
                 Witness your growth as you complete lessons, with an intuitive progress tracking feature guiding you through your learning journey.
               </p>
 
-              {/* Progress Box (Figma 60:102) */}
-              <div className="p-6 rounded-2xl border border-neutral-200/80 bg-white shadow-xs max-w-xl">
-                <p className="text-xs font-medium text-neutral-600 mb-1">Learning Progress</p>
-                <p className="font-heading font-bold text-3xl text-neutral-950 mb-3">55%</p>
-                <div className="w-full bg-neutral-100 h-2.5 rounded-full overflow-hidden">
-                  <div className="bg-secondary-400 h-full w-[55%] rounded-full" />
+              {/* Progress Box (Figma 60:668) */}
+              <div className="w-full rounded-[16px] border border-[#CED0D3] bg-white p-6">
+                <p className="font-sans text-xs text-[#242528] mb-1">Learning Progress</p>
+                <p className="font-heading font-bold text-3xl text-[#242528] mb-4">55%</p>
+                <div className="w-full bg-[#E5E6E8] h-2.5 rounded-full overflow-hidden">
+                  <div className="bg-[#D4FB20] h-full w-[55%] rounded-full" />
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Right Column: Sticky Video Preview & Enrollment Card */}
-          <div className="lg:col-span-1">
-            <CourseSidebarCard course={course} />
-          </div>
         </div>
       </main>
 
-      {/* Footer */}
+      {/* 3. Footer */}
       <Footer />
     </div>
   );

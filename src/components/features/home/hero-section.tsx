@@ -31,7 +31,7 @@ export function HeroSection() {
                   d="M 120 0 L 0 0 0 120"
                   fill="none"
                   stroke="white"
-                  strokeWidth="1"
+                  strokeWidth="2"
                 />
               </pattern>
             </defs>
@@ -52,7 +52,7 @@ export function HeroSection() {
             </h1>
 
             {/* Unlock your creativity, gain valuable knowledge... */}
-            <p className="font-sans text-[#E5E6E8] text-xs sm:text-base lg:text-[18px] max-w-[819px] leading-[1.6] mt-3 sm:mt-6 lg:mt-8">
+            <p className="font-sans text-[#E5E6E8] text-xs sm:text-base lg:text-[18px] max-w-[840px] leading-[1.6] mt-3 sm:mt-6 lg:mt-8">
               Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.
             </p>
           </div>
@@ -64,7 +64,7 @@ export function HeroSection() {
               className="flex items-center gap-2 sm:gap-4 w-full"
             >
               {/* Input Pill */}
-              <div className="flex-1 min-w-0 h-[44px] sm:h-[52px] bg-white rounded-[24px] px-3 sm:px-6 flex items-center gap-1.5 sm:gap-2 shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
+              <div className="flex-1 min-w-0 h-[44px] sm:h-[52px] bg-white rounded-[24px] px-4 sm:px-6 flex items-center gap-2 shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
                 <Search className="w-4 h-4 sm:w-6 sm:h-6 text-[#82868E] shrink-0" />
                 <input
                   type="text"
@@ -92,7 +92,6 @@ export function HeroSection() {
             height: "1149px",
             top: "582px",
             border: "320px solid #CBFC01",
-            opacity: 0.85,
           }}
         />
 
@@ -120,11 +119,11 @@ export function HeroSection() {
         </div>
 
         {/* 7. Floating Card 1: UI/UX Design (Figma 46:126, top: 639px, left: calc(50% - 316px), 208x70px) */}
-        <div className="absolute left-3 sm:left-[calc(50%-260px)] lg:left-[calc(50%-316px)] top-[540px] sm:top-[580px] lg:top-[639px] bg-white/95 backdrop-blur-[10px] text-[#242528] p-2.5 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left z-25 w-[145px] sm:w-[208px]">
+        <div className="absolute left-3 sm:left-[calc(50%-260px)] lg:left-[calc(50%-316px)] top-[540px] sm:top-[580px] lg:top-[639px] bg-white/95 backdrop-blur-[20px] text-[#242528] p-3 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left z-25 w-[160px] sm:w-[208px]">
           <p className="text-[13px] sm:text-[16px] font-medium font-sans text-[#242528] leading-[1.2]">
             UI/UX Design
           </p>
-          <p className="text-[10px] sm:text-[12px] text-[#82868E] font-sans leading-[1.6] mt-0.5 sm:mt-1 flex items-center gap-1">
+          <p className="text-[10px] sm:text-[12px] text-[#82868E] font-sans leading-[1.6] mt-0.5 sm:mt-1 flex items-center gap-1 whitespace-nowrap">
             <span>200 Courses</span>
             <span>•</span>
             <span>1000+ Students</span>
@@ -132,7 +131,7 @@ export function HeroSection() {
         </div>
 
         {/* 8. Floating Card 2: Learning Progress 55% (Figma 1:1797, top: 651px, left: calc(50% + 122px), 232x131px) */}
-        <div className="hidden sm:block absolute sm:left-[calc(50%+80px)] lg:left-[calc(50%+122px)] top-[560px] sm:top-[600px] lg:top-[651px] bg-white/95 backdrop-blur-[10px] text-[#242528] p-2.5 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left w-[170px] sm:w-[190px] lg:w-[232px] z-25">
+        <div className="hidden sm:block absolute sm:left-[calc(50%+80px)] lg:left-[calc(50%+122px)] top-[560px] sm:top-[600px] lg:top-[651px] bg-white/95 backdrop-blur-[20px] text-[#242528] p-3 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left w-[170px] sm:w-[190px] lg:w-[232px] z-25">
           <p className="text-[11px] sm:text-[14px] font-medium font-sans text-[#242528] leading-[1.2]">
             Learning Progress
           </p>
@@ -145,12 +144,12 @@ export function HeroSection() {
         </div>
 
         {/* 9. Floating Card 3: Happy Students (Figma 1:1821, top: 837px, left: calc(50% - 392px), 258x121px) */}
-        <div className="absolute left-3 sm:left-[calc(50%-280px)] lg:left-[calc(50%-392px)] top-[740px] sm:top-[780px] lg:top-[837px] bg-white/95 backdrop-blur-[10px] text-[#242528] p-2.5 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left w-[190px] sm:w-[258px] z-25">
-          <div className="flex items-center justify-between gap-1 sm:gap-4 mb-1.5 sm:mb-2">
+        <div className="absolute left-3 sm:left-[calc(50%-280px)] lg:left-[calc(50%-392px)] top-[740px] sm:top-[780px] lg:top-[837px] bg-white/95 backdrop-blur-[20px] text-[#242528] p-3 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left w-[190px] sm:w-[258px] z-25">
+          <div className="flex flex-col gap-0 mb-1.5 sm:mb-2">
             <span className="text-[12px] sm:text-[16px] font-medium text-[#242528] font-sans leading-[1.2]">
               Happy Students
             </span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 mt-0.5">
               <span className="text-[10px] sm:text-[12px] font-normal text-[#242528] font-sans">
                 4.5 (240)
               </span>

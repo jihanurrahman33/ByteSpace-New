@@ -1,23 +1,24 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Star, Users, Signal, Share2 } from "lucide-react";
+import { Star, Play, Share2 } from "lucide-react";
 import { Header } from "@/components/layout/header";
+import { CourseSidebarCard } from "./course-sidebar-card";
 import { FullCourseDetails } from "@/lib/constants/courses-data";
 
 interface CourseDetailsHeroProps {
   course: FullCourseDetails;
-  activeTab: "about" | "lessons" | "reviews";
 }
 
-export function CourseDetailsHero({
-  course,
-  activeTab,
-}: CourseDetailsHeroProps) {
+export function CourseDetailsHero({ course }: CourseDetailsHeroProps) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
-    <section className="relative w-full bg-brand-blue text-neutral-50 overflow-hidden pb-12">
+    <section className="relative w-full min-h-[960px] bg-brand-blue text-neutral-50 overflow-visible">
       {/* 120px Architectural Grid Lines (matching Figma 57:171 Group 4) */}
-      <div className="absolute inset-0 pointer-events-none opacity-15">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.12] overflow-hidden">
         <svg
           className="w-full h-full"
           width="100%"
@@ -35,7 +36,7 @@ export function CourseDetailsHero({
                 d="M 120 0 L 0 0 0 120"
                 fill="none"
                 stroke="white"
-                strokeWidth="1"
+                strokeWidth="2"
               />
             </pattern>
           </defs>
@@ -43,92 +44,102 @@ export function CourseDetailsHero({
         </svg>
       </div>
 
-      {/* Floating 3D Ornaments (Figma 55:4177, 55:4179, 55:4181) */}
-      <div className="absolute left-6 top-24 w-12 h-12 pointer-events-none drop-shadow-xl hidden lg:block">
-        <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
-          <defs>
-            <linearGradient id="cd-silver-cone" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFFFFF" />
-              <stop offset="50%" stopColor="#C0C4CC" />
-              <stop offset="100%" stopColor="#8E929B" />
-            </linearGradient>
-          </defs>
-          <polygon points="32,4 58,54 6,54" fill="url(#cd-silver-cone)" />
-          <ellipse cx="32" cy="54" rx="26" ry="6" fill="#8E929B" />
-        </svg>
-      </div>
-
-      <div className="absolute right-10 top-20 w-16 h-16 pointer-events-none drop-shadow-xl hidden lg:block">
-        <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
-          <defs>
-            <linearGradient id="cd-lime-cone" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F5FFAE" />
-              <stop offset="60%" stopColor="#D4FB20" />
-              <stop offset="100%" stopColor="#8FB500" />
-            </linearGradient>
-          </defs>
-          <polygon points="32,6 56,52 8,52" fill="url(#cd-lime-cone)" />
-          <ellipse cx="32" cy="52" rx="24" ry="6" fill="#8FB500" />
-        </svg>
-      </div>
-
       {/* Embedded Header Variant Hero */}
       <Header variant="hero" />
 
       {/* Main Course Details Header Container (Figma 55:4183) */}
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8 flex flex-col">
-        {/* Title */}
-        <h1 className="font-heading font-semibold text-2xl sm:text-4xl md:text-[44px] text-white tracking-tight leading-[1.2] mb-3 max-w-4xl">
-          {course.title}: A Comprehensive Guide
-        </h1>
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8 flex flex-col">
+        {/* Top Metadata Row: Title, Subtitle, Badges & Share button */}
+        <div className="flex flex-wrap items-start justify-between gap-6 mb-8">
+          <div className="max-w-3xl">
+            <h1 className="font-heading font-semibold text-[32px] sm:text-[40px] md:text-[44px] text-white tracking-tight leading-[1.2] mb-3">
+              Build Digital Asset: A Comprehensive Guide
+            </h1>
+            <p className="font-sans text-neutral-100 text-base md:text-lg mb-2">
+              Unlock the Power of Digital Creation with Expert Guidance
+            </p>
+            <Link
+              href="/creators/purepearl-studio"
+              className="font-sans text-sm text-[#CBFC01] hover:underline mb-4 inline-block"
+            >
+              by purepearl studio
+            </Link>
 
-        {/* Subtitle */}
-        <p className="font-sans text-neutral-100 text-base md:text-lg mb-2 max-w-3xl">
-          {course.description}
-        </p>
-
-        {/* Instructor link */}
-        <Link
-          href={`/creators/${course.instructor.id}`}
-          className="font-sans text-sm md:text-base text-neutral-300 hover:text-white transition-colors mb-6 inline-block w-fit"
-        >
-          {course.author}
-        </Link>
-
-        {/* Metadata Pill Row & Right-Aligned Share Button (Figma 55:4189) */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            {/* Level */}
-            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
-              <Signal className="w-4 h-4 text-secondary-400" />
-              <span>{course.level}</span>
-            </div>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
-              <Star className="w-4 h-4 fill-secondary-400 text-secondary-400" />
-              <span>{course.rating} (172 reviews)</span>
-            </div>
-
-            {/* Students */}
-            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
-              <Users className="w-4 h-4 text-secondary-400" />
-              <span>199 Students</span>
+            {/* Badges Row */}
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="h-[36px] px-4 rounded-full bg-white text-[#242528] text-xs font-medium font-sans flex items-center gap-1.5 shadow-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-[#4B4C53]">
+                  <path d="M2 17h4v4H2v-4zm6-5h4v9H8v-9zm6-5h4v14h-4V7zm6-5h4v19h-4V2z" />
+                </svg>
+                Intermediate
+              </span>
+              <span className="h-[36px] px-4 rounded-full bg-white text-[#242528] text-xs font-medium font-sans flex items-center gap-1.5 shadow-sm">
+                <Star className="w-4 h-4 fill-[#F5A623] text-[#F5A623]" />
+                4.8 (172 reviews)
+              </span>
+              <span className="h-[36px] px-4 rounded-full bg-white text-[#242528] text-xs font-medium font-sans flex items-center gap-1.5 shadow-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#4B4C53]">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                199 Students
+              </span>
             </div>
           </div>
 
-          {/* Figma Neon Lime Share Button */}
-          <button
-            onClick={() => {
-              if (typeof navigator !== "undefined" && navigator.share) {
-                navigator.share({ title: course.title, url: window.location.href });
-              }
-            }}
-            className="flex items-center gap-2 px-5 py-2 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 text-sm font-medium transition-colors shadow-xs cursor-pointer"
-          >
-            <Share2 className="w-4 h-4 stroke-[2.5]" />
-            <span>Share</span>
-          </button>
+          {/* Share Button (Figma 55:4200: #CBFC01 pill button) */}
+          <div>
+            <button
+              type="button"
+              className="h-[46px] px-6 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-sm flex items-center gap-2 transition-colors shadow-md cursor-pointer"
+            >
+              <Share2 className="w-4 h-4" />
+              <span>Share</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Video Preview on Left + Floating Sidebar Card on Right */}
+        <div className="relative flex flex-col lg:flex-row items-start justify-between gap-8 pb-16 lg:pb-0">
+          {/* Large Video Preview (Figma 55:4202: 720x479) */}
+          <div className="w-full lg:w-[720px] h-[340px] sm:h-[420px] lg:h-[479px] lg:mb-16 rounded-[24px] overflow-hidden relative bg-black shadow-2xl shrink-0">
+            {!isPlaying ? (
+              <>
+                <Image
+                  src="/assets/courses/video-preview-girl.png"
+                  alt="Build Digital Asset Preview"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <button
+                  type="button"
+                  onClick={() => setIsPlaying(true)}
+                  className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors cursor-pointer group"
+                  aria-label="Play course preview"
+                >
+                  <div className="w-16 h-16 rounded-full bg-white/70 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Play className="w-6 h-6 fill-neutral-900 ml-1 text-neutral-900" />
+                  </div>
+                </button>
+              </>
+            ) : (
+              <iframe
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                title="Course Preview Video"
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+          </div>
+
+          {/* Floating Sidebar Card (Figma 55:4206: 412x959) */}
+          <div className="w-full lg:w-[412px] shrink-0 lg:absolute lg:top-0 lg:right-0 z-20">
+            <CourseSidebarCard course={course} />
+          </div>
         </div>
       </div>
     </section>

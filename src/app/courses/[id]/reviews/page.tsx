@@ -6,7 +6,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Star } from "lucide-react";
 import { CourseDetailsHero } from "@/components/features/courses/course-details-hero";
-import { CourseSidebarCard } from "@/components/features/courses/course-sidebar-card";
 import { Footer } from "@/components/layout/footer";
 import { ALL_COURSES } from "@/lib/constants/courses-data";
 
@@ -32,7 +31,7 @@ export default function CourseReviewsPage({
       role: "UI/UX Designer",
       time: "a year ago",
       rating: 5,
-      avatar: "/assets/creators/purepearl-studio.png",
+      avatar: "/assets/testimonials/james-l.png",
       comment:
         "The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!",
     },
@@ -41,7 +40,7 @@ export default function CourseReviewsPage({
       role: "UI/UX Designer",
       time: "a year ago",
       rating: 5,
-      avatar: "/assets/testimonials/james-l.png",
+      avatar: "/assets/testimonials/sarah-m.png",
       comment:
         "This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I've learned!",
     },
@@ -59,7 +58,7 @@ export default function CourseReviewsPage({
       role: "UI/UX Designer",
       time: "a year ago",
       rating: 5,
-      avatar: "/assets/testimonials/sarah-m.png",
+      avatar: "/assets/testimonials/james-l.png",
       comment:
         "The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape, and the engaging content kept me motivated throughout.",
     },
@@ -77,61 +76,60 @@ export default function CourseReviewsPage({
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* 1. Royal Blue Hero Banner (matching Figma 60:681) */}
-      <CourseDetailsHero course={course} activeTab="reviews" />
+      {/* 1. Hero Banner with Course Title, Meta, Video, and Floating Sidebar (Figma 60:681) */}
+      <CourseDetailsHero course={course} />
 
-      {/* 2. Main Content + Right Sticky Sidebar Layout */}
-      <main className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-10 md:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-          {/* Left 2-Columns: Ratings Breakdown & Individual Reviews */}
-          <div className="lg:col-span-2 space-y-10">
-            {/* Pill Tabs (Figma 60:681 - About / Lesson / Reviews) */}
-            <div className="flex items-center gap-3">
+      {/* 2. Main Content (Left Column 723px) */}
+      <main className="relative w-full bg-white flex-1">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-12 md:pt-16 pb-24">
+          <div className="w-full lg:w-[723px] flex flex-col">
+            {/* Pill Tabs (Figma 60:683 - About / Lesson / Reviews) */}
+            <div className="flex items-center gap-3 mb-10">
               <Link
                 href={`/courses/${course.id}`}
-                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 About
               </Link>
               <Link
                 href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
-                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 Lesson
               </Link>
               <Link
                 href={`/courses/${course.id}/reviews`}
-                className="h-9 px-5 rounded-full bg-secondary-400 text-neutral-950 font-sans font-medium text-sm flex items-center justify-center shadow-xs"
+                className="h-[43px] px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
               >
                 Reviews
               </Link>
             </div>
 
             {/* What Learners Are Saying Section */}
-            <div>
-              <h2 className="font-heading font-semibold text-2xl text-neutral-950 mb-3">
+            <div className="mb-10">
+              <h2 className="font-heading font-semibold text-[20px] text-[#242528] mb-3">
                 What Learners Are Saying
               </h2>
-              <p className="font-sans text-neutral-700 text-sm md:text-base leading-relaxed">
+              <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
                 Discover what our learners have to say about their experience with &apos;Build Digital Assets: A Comprehensive Guide.&apos; Read reviews and ratings from individuals who have embarked on the transformative journey of mastering digital asset creation.
               </p>
             </div>
 
-            {/* Ratings Summary Box (Figma 60:681) */}
-            <div className="p-6 md:p-8 rounded-3xl border border-neutral-200/80 bg-white flex flex-col sm:flex-row items-center gap-8 shadow-xs">
+            {/* Ratings Summary Box (Figma 60:1294: 723x226) */}
+            <div className="w-full rounded-[16px] border border-[#CED0D3] bg-white p-6 md:p-8 flex flex-col sm:flex-row items-center gap-8 mb-10">
               {/* Neon Lime Rating Square */}
-              <div className="w-28 h-28 rounded-2xl bg-secondary-400 text-neutral-950 flex flex-col items-center justify-center shrink-0 shadow-xs">
-                <span className="font-sans text-xs font-medium">Ratings</span>
-                <span className="font-heading font-bold text-4xl">4.7</span>
+              <div className="w-[104px] h-[104px] rounded-[16px] bg-[#D4FB20] text-[#242528] flex flex-col items-center justify-center shrink-0">
+                <span className="font-sans text-xs font-medium text-[#242528]">Ratings</span>
+                <span className="font-heading font-bold text-4xl text-[#242528]">4.7</span>
               </div>
 
               {/* Breakdown Bars */}
-              <div className="flex-1 w-full space-y-2.5">
+              <div className="flex-1 w-full space-y-3">
                 {ratingBars.map((bar) => (
-                  <div key={bar.stars} className="flex items-center gap-3 text-xs text-neutral-600">
-                    <div className="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
+                  <div key={bar.stars} className="flex items-center gap-3 text-xs text-[#4B4C53]">
+                    <div className="w-full bg-[#E5E6E8] h-2 rounded-full overflow-hidden">
                       <div
-                        className="bg-secondary-400 h-full rounded-full"
+                        className="bg-[#D4FB20] h-full rounded-full"
                         style={{ width: bar.percent }}
                       />
                     </div>
@@ -139,13 +137,11 @@ export default function CourseReviewsPage({
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-3.5 h-3.5 ${
-                            i < bar.stars ? "fill-neutral-950 text-neutral-950" : "text-neutral-300"
-                          }`}
+                          className="w-3.5 h-3.5 fill-[#242528] text-[#242528]"
                         />
                       ))}
                     </div>
-                    <span className="w-8 text-right font-medium text-neutral-700 shrink-0">
+                    <span className="w-8 text-right font-medium text-[#4B4C53] shrink-0 font-sans">
                       {bar.count}
                     </span>
                   </div>
@@ -154,27 +150,27 @@ export default function CourseReviewsPage({
             </div>
 
             {/* Individual Reviews Section */}
-            <div className="space-y-6">
-              <h3 className="font-heading font-semibold text-xl text-neutral-950">
+            <div>
+              <h3 className="font-heading font-semibold text-[20px] text-[#242528] mb-4">
                 Individual Reviews:
               </h3>
 
               {/* Filter Pills */}
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 mb-8">
                 {filterButtons.map((btn) => {
                   const isActive = selectedFilter === btn;
                   return (
                     <button
                       key={btn}
                       onClick={() => setSelectedFilter(btn)}
-                      className={`h-9 px-4 rounded-full text-xs font-medium transition-colors cursor-pointer flex items-center gap-1.5 ${
+                      className={`h-[40px] px-5 rounded-full text-sm font-medium font-sans transition-colors cursor-pointer flex items-center gap-1.5 ${
                         isActive
-                          ? "bg-secondary-400 text-neutral-950 font-bold shadow-xs"
-                          : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
+                          ? "bg-[#D4FB20] text-[#242528]"
+                          : "bg-white border border-[#CED0D3] text-[#242528] hover:bg-[#F5F5F6]"
                       }`}
                     >
                       {btn !== "All rating" && (
-                        <Star className="w-3 h-3 fill-current text-current" />
+                        <Star className="w-3.5 h-3.5 fill-current text-current" />
                       )}
                       <span>{btn}</span>
                     </button>
@@ -182,42 +178,42 @@ export default function CourseReviewsPage({
                 })}
               </div>
 
-              {/* Reviews List */}
-              <div className="space-y-4">
+              {/* Reviews Cards (Figma 60:1373 etc: rounded-24px border border-[#CED0D3]) */}
+              <div className="space-y-6">
                 {reviews.map((rev, idx) => (
                   <div
                     key={idx}
-                    className="p-6 rounded-2xl border border-neutral-100 bg-white hover:border-neutral-200 transition-colors shadow-xs"
+                    className="p-8 rounded-[24px] border border-[#CED0D3] bg-white flex flex-col"
                   >
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-neutral-100">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border border-[#CED0D3]">
                           <Image
                             src={rev.avatar}
                             alt={rev.name}
                             fill
                             className="object-cover"
-                            sizes="40px"
+                            sizes="48px"
                           />
                         </div>
                         <div>
-                          <h4 className="font-heading font-semibold text-sm text-neutral-950">
+                          <h4 className="font-heading font-semibold text-base text-[#242528]">
                             {rev.name}
                           </h4>
-                          <p className="font-sans text-[11px] text-neutral-500">{rev.role}</p>
+                          <p className="font-sans text-xs text-[#82868E]">{rev.role}</p>
                         </div>
                       </div>
-                      <span className="font-sans text-xs text-neutral-400">{rev.time}</span>
+                      <span className="font-sans text-xs text-[#82868E]">{rev.time}</span>
                     </div>
 
                     {/* Star Rating */}
-                    <div className="flex items-center gap-1 mb-3">
+                    <div className="flex items-center gap-1 mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-neutral-950 text-neutral-950" />
+                        <Star key={i} className="w-4 h-4 fill-[#242528] text-[#242528]" />
                       ))}
                     </div>
 
-                    <p className="font-sans text-xs sm:text-sm text-neutral-700 leading-relaxed">
+                    <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
                       &quot;{rev.comment}&quot;
                     </p>
                   </div>
@@ -225,15 +221,10 @@ export default function CourseReviewsPage({
               </div>
             </div>
           </div>
-
-          {/* Right Column: Sticky Video Preview & Enrollment Card */}
-          <div className="lg:col-span-1">
-            <CourseSidebarCard course={course} />
-          </div>
         </div>
       </main>
 
-      {/* Footer */}
+      {/* 3. Footer */}
       <Footer />
     </div>
   );
