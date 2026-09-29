@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, Bookmark, Signal } from "lucide-react";
+import { Star, Bookmark } from "lucide-react";
 
 interface Course {
   id: string;
   title: string;
+  category: string;
   author: string;
   lessons: string;
   duration: string;
@@ -23,6 +24,7 @@ const COURSES_DATA: Course[] = [
   {
     id: "figma-basic",
     title: "Learn Figma from Basic",
+    category: "Design",
     author: "by purepearl studio",
     lessons: "17 Lessons",
     duration: "2 hours 16 mins",
@@ -36,11 +38,12 @@ const COURSES_DATA: Course[] = [
   {
     id: "digital-asset",
     title: "Build Digital Asset",
+    category: "Business",
     author: "by purepearl studio",
-    lessons: "24 Lessons",
-    duration: "3 hours 40 mins",
-    comments: "82 Comments",
-    level: "Intermediate",
+    lessons: "17 Lessons",
+    duration: "2 hours 16 mins",
+    comments: "59 Comments",
+    level: "Beginner",
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
@@ -49,11 +52,12 @@ const COURSES_DATA: Course[] = [
   {
     id: "big-data",
     title: "the Power of Big Data",
+    category: "Data",
     author: "by purepearl studio",
-    lessons: "19 Lessons",
-    duration: "4 hours 10 mins",
-    comments: "45 Comments",
-    level: "All Levels",
+    lessons: "17 Lessons",
+    duration: "2 hours 16 mins",
+    comments: "59 Comments",
+    level: "Beginner",
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
@@ -62,10 +66,11 @@ const COURSES_DATA: Course[] = [
   {
     id: "productivity-self-care",
     title: "Balancing Productivity and Self-Care",
+    category: "Wellness",
     author: "by purepearl studio",
-    lessons: "12 Lessons",
-    duration: "1 hour 45 mins",
-    comments: "37 Comments",
+    lessons: "17 Lessons",
+    duration: "2 hours 16 mins",
+    comments: "59 Comments",
     level: "Beginner",
     price: "$25",
     period: "/lifetime",
@@ -75,11 +80,12 @@ const COURSES_DATA: Course[] = [
   {
     id: "money-management",
     title: "Mastering Money Management",
+    category: "Finance",
     author: "by purepearl studio",
-    lessons: "28 Lessons",
-    duration: "5 hours 12 mins",
-    comments: "94 Comments",
-    level: "Intermediate",
+    lessons: "17 Lessons",
+    duration: "2 hours 16 mins",
+    comments: "59 Comments",
+    level: "Beginner",
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
@@ -88,11 +94,12 @@ const COURSES_DATA: Course[] = [
   {
     id: "idea-to-startup",
     title: "From Idea to Startup Success",
+    category: "Business",
     author: "by purepearl studio",
-    lessons: "32 Lessons",
-    duration: "6 hours 30 mins",
-    comments: "118 Comments",
-    level: "Advanced",
+    lessons: "17 Lessons",
+    duration: "2 hours 16 mins",
+    comments: "59 Comments",
+    level: "Beginner",
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
@@ -137,18 +144,8 @@ export function FeaturedCoursesSection() {
   };
 
   return (
-    <section className="w-full bg-white py-20 md:py-28 overflow-hidden">
+    <section className="w-full bg-white pb-20 md:pb-28 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px]">
-        {/* Section Heading & Subtitle (Figma Frame 3_12_101) */}
-        <div className="max-w-3xl mx-auto text-center mb-12 md:mb-14">
-          <h2 className="font-heading font-semibold text-3xl sm:text-4xl md:text-[44px] text-[#040819] leading-[1.2] mb-4">
-            Discover Your Passion, Build Your Skills
-          </h2>
-          <p className="font-sans text-neutral-400 text-base md:text-lg leading-relaxed">
-            At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety of courses across different fields, from technology to the arts, and make a difference in your career and life.
-          </p>
-        </div>
-
         {/* Category Tabs (Figma Tab_Categories_21_33, Frame 6_21_56, Frame 7_21_63) */}
         <div className="flex flex-col items-center gap-3 md:gap-4 mb-14 md:mb-16">
           {/* Row 1 */}
@@ -159,10 +156,10 @@ export function FeaturedCoursesSection() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`h-11 px-4 sm:px-5 rounded-full text-sm font-medium transition-all cursor-pointer ${
+                  className={`h-11 px-4 sm:px-5 rounded-[24px] text-[16px] font-medium font-sans transition-all cursor-pointer ${
                     isActive
-                      ? "bg-secondary-400 text-neutral-950 font-semibold shadow-xs"
-                      : "bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                      ? "bg-[#D4FB20] text-[#242528] font-medium shadow-xs"
+                      : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E8E8EA]"
                   }`}
                 >
                   {tab}
@@ -179,10 +176,10 @@ export function FeaturedCoursesSection() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`h-11 px-4 sm:px-5 rounded-full text-sm font-medium transition-all cursor-pointer ${
+                  className={`h-11 px-4 sm:px-5 rounded-[24px] text-[16px] font-medium font-sans transition-all cursor-pointer ${
                     isActive
-                      ? "bg-secondary-400 text-neutral-950 font-semibold shadow-xs"
-                      : "bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                      ? "bg-[#D4FB20] text-[#242528] font-medium shadow-xs"
+                      : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E8E8EA]"
                   }`}
                 >
                   {tab}
@@ -199,10 +196,10 @@ export function FeaturedCoursesSection() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`h-11 px-4 sm:px-5 rounded-full text-sm font-medium transition-all cursor-pointer ${
+                  className={`h-11 px-4 sm:px-5 rounded-[24px] text-[16px] font-medium font-sans transition-all cursor-pointer ${
                     isActive
-                      ? "bg-secondary-400 text-neutral-950 font-semibold shadow-xs"
-                      : "bg-neutral-50 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                      ? "bg-[#D4FB20] text-[#242528] font-medium shadow-xs"
+                      : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E8E8EA]"
                   }`}
                 >
                   {tab}
@@ -211,7 +208,7 @@ export function FeaturedCoursesSection() {
             })}
             <Link
               href="/courses"
-              className="h-11 px-4 flex items-center text-sm font-semibold text-brand-blue hover:underline cursor-pointer"
+              className="h-11 px-4 flex items-center text-[16px] font-medium font-sans text-[#003BE2] hover:underline cursor-pointer"
             >
               + More
             </Link>
@@ -223,10 +220,10 @@ export function FeaturedCoursesSection() {
           {COURSES_DATA.map((course) => (
             <div
               key={course.id}
-              className="bg-white rounded-[24px] border border-neutral-100 p-4 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white rounded-[24px] border border-[#CED0D3] p-4 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group"
             >
-              {/* Course Thumbnail with Floating Badges */}
-              <div className="relative w-full h-[210px] rounded-[16px] overflow-hidden mb-4">
+              {/* Course Thumbnail with Category & Best Seller Badges */}
+              <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden mb-4 bg-[#443131]">
                 <Image
                   src={course.image}
                   alt={course.title}
@@ -234,80 +231,103 @@ export function FeaturedCoursesSection() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 373px"
                 />
-                {/* Overlay Top Badges */}
-                <div className="absolute top-3 inset-x-3 flex items-center justify-between gap-1 z-10">
-                  <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur text-[11px] font-medium text-neutral-800 shadow-xs">
-                    {course.lessons}
+                {/* Badges on Thumbnail */}
+                <div className="absolute bottom-3 left-3 flex items-center gap-2 z-10">
+                  <span className="px-3 py-1 rounded-[16px] bg-black/50 backdrop-blur-sm text-[10px] font-medium text-white">
+                    {course.category}
                   </span>
-                  <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur text-[11px] font-medium text-neutral-800 shadow-xs">
-                    {course.duration}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-white/95 backdrop-blur text-[11px] font-medium text-neutral-800 shadow-xs">
-                    {course.comments}
+                  <span className="px-3 py-1 rounded-[16px] bg-[#D4FB20] text-[10px] font-medium text-[#242528]">
+                    Best Seller
                   </span>
                 </div>
               </div>
 
-              {/* Course Title & Author */}
-              <div className="mb-4">
-                <h3 className="font-heading font-semibold text-lg sm:text-xl text-neutral-950 mb-1 group-hover:text-brand-blue transition-colors line-clamp-1">
-                  {course.title}
-                </h3>
-                <p className="font-sans text-xs text-neutral-400">{course.author}</p>
-              </div>
-
-              {/* Level & Student Avatars */}
-              <div className="flex items-center justify-between py-2 border-t border-neutral-100 mb-4">
-                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-50 text-neutral-800 text-xs font-medium">
-                  <Signal className="w-3.5 h-3.5 text-neutral-500" />
-                  <span>{course.level}</span>
-                </div>
-                {/* Mini student avatars stack */}
-                <div className="flex items-center -space-x-1.5">
-                  {[
-                    "/assets/testimonials/sarah-m.png",
-                    "/assets/creators/student-1.png",
-                    "/assets/creators/student-2.png",
-                  ].map((avatar, idx) => (
-                    <div
-                      key={idx}
-                      className="w-5 h-5 rounded-full border border-white overflow-hidden relative"
-                    >
-                      <Image src={avatar} alt="student" fill className="object-cover" sizes="20px" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price, Rating & Bookmark Button */}
-              <div className="flex items-center justify-between pt-2">
-                <div className="flex items-baseline gap-1">
-                  <span className="font-heading font-semibold text-xl text-brand-blue">
-                    {course.price}
-                  </span>
-                  <span className="font-sans text-xs text-neutral-500">{course.period}</span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1">
-                    <span className="text-sm font-medium text-neutral-700">{course.rating}</span>
-                    <Star className="w-4 h-4 fill-secondary-400 text-secondary-400" />
+              {/* Course Details Body */}
+              <div className="flex flex-col flex-1 justify-between">
+                <div>
+                  {/* Meta Row: Lessons, Duration, Comments */}
+                  <div className="flex items-center gap-3 text-[12px] font-medium text-[#4F4F4F] font-sans mb-3">
+                    <span>{course.lessons}</span>
+                    <span>•</span>
+                    <span>{course.duration}</span>
+                    <span>•</span>
+                    <span>{course.comments}</span>
                   </div>
-                  <button
-                    onClick={(e) => toggleBookmark(course.id, e)}
-                    className={`w-9 h-9 rounded-full border flex items-center justify-center transition-colors cursor-pointer ${
-                      bookmarked[course.id]
-                        ? "bg-secondary-400 border-secondary-400 text-neutral-950"
-                        : "border-neutral-200 text-neutral-400 hover:text-neutral-950 hover:bg-neutral-50"
-                    }`}
-                    aria-label="Bookmark course"
-                  >
-                    <Bookmark
-                      className={`w-4 h-4 ${
-                        bookmarked[course.id] ? "fill-neutral-950" : ""
-                      }`}
-                    />
-                  </button>
+
+                  {/* Course Title */}
+                  <h3 className="font-heading font-semibold text-[20px] text-black leading-[1.3] mb-1 group-hover:text-brand-blue transition-colors line-clamp-1">
+                    {course.title}
+                  </h3>
+
+                  {/* Course Author */}
+                  <p className="font-sans text-[12px] text-[#82868E] mb-4">
+                    {course.author}
+                  </p>
+                </div>
+
+                <div>
+                  {/* Level & Student Count with Mini Avatars */}
+                  <div className="flex items-center justify-between py-2 border-t border-neutral-100 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 rounded-[16px] bg-[#F5F5F6] text-[#4B4C53] text-[12px] font-medium font-sans">
+                        {course.level}
+                      </span>
+                      <span className="text-[12px] font-medium text-[#242528] font-sans">
+                        26+
+                      </span>
+                    </div>
+                    {/* Mini student avatars stack */}
+                    <div className="flex items-center -space-x-1.5">
+                      {[
+                        "/assets/testimonials/sarah-m.png",
+                        "/assets/creators/student-1.png",
+                        "/assets/creators/student-2.png",
+                      ].map((avatar, idx) => (
+                        <div
+                          key={idx}
+                          className="w-5 h-5 rounded-full border border-white overflow-hidden relative"
+                        >
+                          <Image src={avatar} alt="student" fill className="object-cover" sizes="20px" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Price, Rating & Bookmark Button */}
+                  <div className="flex items-center justify-between pt-1">
+                    <div className="flex items-baseline gap-1">
+                      <span className="font-heading font-semibold text-[20px] text-[#003BE2]">
+                        {course.price}
+                      </span>
+                      <span className="font-sans text-[12px] text-[#4F4F4F]">
+                        {course.period}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-1">
+                        <span className="text-[18px] text-[#4F4F4F] font-sans">
+                          {course.rating}
+                        </span>
+                        <Star className="w-5 h-5 fill-[#F5A623] text-[#F5A623]" />
+                      </div>
+                      <button
+                        onClick={(e) => toggleBookmark(course.id, e)}
+                        className={`w-9 h-9 rounded-full border flex items-center justify-center transition-colors cursor-pointer ${
+                          bookmarked[course.id]
+                            ? "bg-[#D4FB20] border-[#D4FB20] text-[#242528]"
+                            : "border-[#CED0D3] text-neutral-400 hover:text-neutral-950 hover:bg-neutral-50"
+                        }`}
+                        aria-label="Bookmark course"
+                      >
+                        <Bookmark
+                          className={`w-4 h-4 ${
+                            bookmarked[course.id] ? "fill-[#242528]" : ""
+                          }`}
+                        />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
