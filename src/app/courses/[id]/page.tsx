@@ -37,18 +37,68 @@ export default function CourseDetailsPage({
       <CourseDetailsHero course={course} activeTab="about" />
 
       {/* 2. Main Content + Right Sticky Sidebar Layout */}
-      <main className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-12 md:py-16">
+      <main className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-10 md:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
-          {/* Left 2-Columns: Course Description, Key Points, Syllabus & Instructor */}
-          <div className="lg:col-span-2 space-y-12">
+          {/* Left 2-Columns: Course Description, Sneak Peak, Key Points, Syllabus & Instructor */}
+          <div className="lg:col-span-2 space-y-10">
+            {/* Pill Tabs (Figma 55:4118 - About / Lessons / Reviews) */}
+            <div className="flex items-center gap-3">
+              <Link
+                href={`/courses/${course.id}`}
+                className="h-9 px-5 rounded-full bg-secondary-400 text-neutral-950 font-sans font-medium text-sm flex items-center justify-center shadow-xs"
+              >
+                About
+              </Link>
+              <Link
+                href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
+                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+              >
+                Lessons
+              </Link>
+              <Link
+                href={`/courses/${course.id}/reviews`}
+                className="h-9 px-5 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-sans font-medium text-sm flex items-center justify-center transition-colors"
+              >
+                Reviews
+              </Link>
+            </div>
+
             {/* Description (Figma Description 55:4125) */}
             <div>
-              <h2 className="font-heading font-semibold text-2xl text-neutral-950 mb-4">
+              <h2 className="font-heading font-semibold text-2xl text-neutral-950 mb-3">
                 Description
               </h2>
-              <p className="font-sans text-neutral-700 text-base leading-relaxed whitespace-pre-line mb-6">
+              <p className="font-sans text-neutral-700 text-sm md:text-base leading-relaxed whitespace-pre-line">
                 {course.longDescription}
               </p>
+            </div>
+
+            {/* Sneak Peak (Figma 55:4130 - 55:4133) */}
+            <div>
+              <h3 className="font-heading font-semibold text-xl text-neutral-950 mb-4">
+                Sneak Peak
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {[
+                  { src: "/assets/courses/sneak-peak-1.png", alt: "Sketching wireframe" },
+                  { src: "/assets/courses/sneak-peak-2.png", alt: "Design palettes on laptop" },
+                  { src: "/assets/courses/sneak-peak-3.png", alt: "Website UI on desktop" },
+                  { src: "/assets/courses/sneak-peak-4.png", alt: "Mobile app interfaces" },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-100 shadow-sm"
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, 200px"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Key Points (Figma Key Points 55:4125) */}
@@ -68,8 +118,8 @@ export default function CourseDetailsPage({
                   "Capstone Project: Building Your Portfolio",
                 ].map((point, idx) => (
                   <div key={idx} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-secondary-400 flex items-center justify-center shrink-0">
-                      <Check className="w-3.5 h-3.5 text-neutral-950 stroke-[3]" />
+                    <div className="w-5 h-5 rounded-full bg-brand-blue text-white flex items-center justify-center shrink-0">
+                      <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                     <span className="font-sans text-sm font-medium text-neutral-800">
                       {point}

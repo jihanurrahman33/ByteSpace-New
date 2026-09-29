@@ -31,7 +31,7 @@ const COURSES_DATA: Course[] = [
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1581291518655-9523c932deb4?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/courses/course-figma.png",
   },
   {
     id: "digital-asset",
@@ -44,7 +44,7 @@ const COURSES_DATA: Course[] = [
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/courses/course-digital-asset.png",
   },
   {
     id: "big-data",
@@ -57,7 +57,7 @@ const COURSES_DATA: Course[] = [
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/courses/course-big-data.png",
   },
   {
     id: "productivity-self-care",
@@ -70,7 +70,7 @@ const COURSES_DATA: Course[] = [
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/courses/course-productivity.png",
   },
   {
     id: "money-management",
@@ -83,7 +83,7 @@ const COURSES_DATA: Course[] = [
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/courses/course-money-management.png",
   },
   {
     id: "idea-to-startup",
@@ -96,7 +96,7 @@ const COURSES_DATA: Course[] = [
     price: "$25",
     period: "/lifetime",
     rating: 4.5,
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/courses/course-startup-success.png",
   },
 ];
 
@@ -265,9 +265,9 @@ export function FeaturedCoursesSection() {
                 {/* Mini student avatars stack */}
                 <div className="flex items-center -space-x-1.5">
                   {[
-                    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop",
-                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop",
-                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop",
+                    "/assets/testimonials/sarah-m.png",
+                    "/assets/creators/student-1.png",
+                    "/assets/creators/student-2.png",
                   ].map((avatar, idx) => (
                     <div
                       key={idx}
