@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { Search } from "lucide-react";
 import { Header } from "@/components/layout/header";
 
 interface CoursesSearchBannerProps {
@@ -14,9 +12,9 @@ export function CoursesSearchBanner({
   onSearchChange,
 }: CoursesSearchBannerProps) {
   return (
-    <section className="relative w-full bg-brand-blue text-neutral-50 overflow-hidden pb-14">
+    <section className="relative w-full h-[360px] bg-brand-blue text-neutral-50 overflow-hidden flex flex-col justify-between">
       {/* 120px Architectural Grid Lines (matching Figma 55:1693 Group 4) */}
-      <div className="absolute inset-0 pointer-events-none opacity-15">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
         <svg
           className="w-full h-full"
           width="100%"
@@ -34,7 +32,7 @@ export function CoursesSearchBanner({
                 d="M 120 0 L 0 0 0 120"
                 fill="none"
                 stroke="white"
-                strokeWidth="1"
+                strokeWidth="2"
               />
             </pattern>
           </defs>
@@ -42,69 +40,55 @@ export function CoursesSearchBanner({
         </svg>
       </div>
 
-      {/* Floating 3D Ornaments from Figma Group 2 (search-decorations.png) */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-between overflow-hidden">
-        <div className="relative w-full h-full max-w-[1440px] mx-auto">
-          {/* Left decorations */}
-          <div className="absolute -left-12 top-10 w-44 h-44 opacity-90 hidden sm:block">
-            <Image
-              src="/assets/hero-cones.png"
-              alt=""
-              width={180}
-              height={180}
-              className="object-contain"
-            />
-          </div>
-          {/* Right decorations */}
-          <div className="absolute -right-8 bottom-4 w-48 h-48 opacity-90 hidden sm:block">
-            <Image
-              src="/assets/cta-decorations.png"
-              alt=""
-              width={200}
-              height={200}
-              className="object-contain"
-            />
-          </div>
-        </div>
-      </div>
-
       {/* Embedded Header Variant Hero */}
       <Header variant="hero" />
 
-      {/* Title & Search Bar (Figma 55:857) */}
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-6 md:pt-10 flex flex-col items-center text-center">
-        <h1 className="font-heading font-semibold text-3xl sm:text-4xl md:text-[44px] text-white tracking-tight leading-[1.2] mb-8">
+      {/* Title & Search Bar (Figma 55:857: 624x127 at y: 1912) */}
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full flex flex-col items-center text-center pb-12">
+        <h1 className="font-heading font-semibold text-[32px] sm:text-[40px] md:text-[44px] text-white tracking-tight leading-[1.2] mb-6">
           Find Your Next Course
         </h1>
 
-        <div className="w-full max-w-[624px] z-10">
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex items-center gap-3 sm:gap-4"
+        <div className="w-full max-w-[624px] h-[54px] bg-white rounded-full p-1.5 pl-6 flex items-center shadow-lg">
+          <svg
+            className="w-5 h-5 text-[#82868E] shrink-0 mr-3"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            {/* Search Input Pill */}
-            <div className="flex-1 h-[52px] bg-white rounded-full px-5 flex items-center gap-3 shadow-md">
-              <Search className="w-5 h-5 text-neutral-400 shrink-0" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
-                placeholder="Search"
-                className="w-full bg-transparent border-none outline-none text-neutral-900 placeholder:text-neutral-400 font-sans text-sm md:text-base"
-              />
-            </div>
-
-            {/* Courses Filter Button Pill */}
-            <button
-              type="button"
-              className="h-[52px] px-6 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-medium font-sans text-sm md:text-base flex items-center gap-2 shadow-md transition-colors cursor-pointer shrink-0"
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="flex-1 bg-transparent border-none text-[#242528] placeholder-[#82868E] font-sans text-base outline-none"
+          />
+          <button
+            type="button"
+            className="h-[42px] px-6 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-sm flex items-center gap-2 transition-colors cursor-pointer shrink-0"
+          >
+            <span>Courses</span>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <span>Courses</span>
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 12 8">
-                <path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" />
-              </svg>
-            </button>
-          </form>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

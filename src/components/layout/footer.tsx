@@ -96,59 +96,48 @@ export function Footer() {
           </div>
 
           {/* Right Columns: Navigation Links (Figma Node 34:1272) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-10 xl:gap-12 lg:max-w-[580px] w-full">
-            {/* Column 1: Browse (Node 34:1273) */}
-            <div className="flex flex-col gap-6">
-              <h3 className="text-base font-medium text-neutral-950">Browse</h3>
-              <ul className="flex flex-col gap-4">
-                {browseCol1.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-neutral-950/90 hover:text-brand-blue transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-10 xl:gap-12 lg:max-w-[580px] w-full pt-1">
+            {/* Column 1 (Figma Node 34:1273) */}
+            <ul className="flex flex-col gap-4">
+              {browseCol1.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-neutral-950/90 hover:text-brand-blue transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-            {/* Column 2: Browse (Categories continuation) (Node 34:1281) */}
-            <div className="flex flex-col gap-6">
-              <span className="hidden sm:block text-base font-medium text-transparent select-none" aria-hidden="true">
-                &nbsp;
-              </span>
-              <ul className="flex flex-col gap-4">
-                {browseCol2.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-neutral-950/90 hover:text-brand-blue transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Column 2 (Figma Node 34:1281) */}
+            <ul className="flex flex-col gap-4">
+              {browseCol2.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-neutral-950/90 hover:text-brand-blue transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-            {/* Column 3: Platform (Node 34:1288) */}
-            <div className="flex flex-col gap-6 col-span-2 sm:col-span-1">
-              <h3 className="text-base font-medium text-neutral-950">Platform</h3>
-              <ul className="flex flex-col gap-4">
-                {platformCol.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="text-sm text-neutral-950/90 hover:text-brand-blue transition-colors"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Column 3 (Figma Node 34:1288) */}
+            <ul className="flex flex-col gap-4 col-span-2 sm:col-span-1">
+              {platformCol.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-neutral-950/90 hover:text-brand-blue transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
