@@ -17,27 +17,27 @@ export function FeatureSplitSection() {
               Explore our curated selection of courses tailored to enhance your capabilities and accelerate your career journey. Whether you are looking to sharpen specific skills, gain industry expertise, or embark on a new career path entirely, we have the resources you need.
             </p>
 
-            {/* 3 Stats (Figma 34:774, 34:777, 34:780) */}
-            <div className="flex flex-wrap items-center gap-8 sm:gap-12 pt-4 border-t border-neutral-200/60">
+            {/* 3 Stats (Figma Frame 13: 12K Students, 70+ Courses, 16 Creators) */}
+            <div className="flex flex-wrap items-center gap-8 sm:gap-14 pt-4 border-t border-neutral-200/60">
               <div>
-                <p className="font-heading font-semibold text-3xl md:text-4xl text-neutral-950">
+                <p className="font-heading font-medium text-3xl md:text-[36px] text-brand-blue tracking-[-0.01em] leading-[1.2]">
                   12K
                 </p>
-                <p className="font-sans text-sm text-neutral-500 mt-1">Students</p>
+                <p className="font-sans text-[18px] text-[#4B4C53] mt-1 leading-[1.6]">Students</p>
               </div>
               <div className="w-px h-12 bg-neutral-200 hidden sm:block" />
               <div>
-                <p className="font-heading font-semibold text-3xl md:text-4xl text-neutral-950">
+                <p className="font-heading font-medium text-3xl md:text-[36px] text-brand-blue tracking-[-0.01em] leading-[1.2]">
                   70+
                 </p>
-                <p className="font-sans text-sm text-neutral-500 mt-1">Courses</p>
+                <p className="font-sans text-[18px] text-[#4B4C53] mt-1 leading-[1.6]">Courses</p>
               </div>
               <div className="w-px h-12 bg-neutral-200 hidden sm:block" />
               <div>
-                <p className="font-heading font-semibold text-3xl md:text-4xl text-neutral-950">
+                <p className="font-heading font-medium text-3xl md:text-[36px] text-brand-blue tracking-[-0.01em] leading-[1.2]">
                   16
                 </p>
-                <p className="font-sans text-sm text-neutral-500 mt-1">Creators</p>
+                <p className="font-sans text-[18px] text-[#4B4C53] mt-1 leading-[1.6]">Creators</p>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@ export function FeatureSplitSection() {
             </div>
 
             {/* Floating Mini Course Card (Top Left) */}
-            <div className="absolute -top-6 -left-4 sm:-left-8 bg-white p-3 sm:p-4 rounded-2xl shadow-[0_16px_36px_rgba(0,0,0,0.12)] border border-neutral-100 w-[200px] sm:w-[220px] z-10">
+            <div className="absolute -top-6 -left-4 sm:-left-8 bg-white p-3 sm:p-4 rounded-2xl shadow-[0_16px_36px_rgba(0,0,0,0.12)] border border-[#CED0D3] w-[200px] sm:w-[220px] z-10">
               <div className="relative w-full h-24 rounded-lg overflow-hidden mb-2">
                 <Image
                   src="/assets/courses/course-figma.png"
@@ -105,33 +105,34 @@ export function FeatureSplitSection() {
             </div>
 
             {/* Floating Blue Revenue Card (Top Left) */}
-            <div className="absolute -top-6 -left-4 sm:-left-8 bg-brand-blue text-white p-4 rounded-2xl shadow-[0_16px_36px_rgba(0,59,226,0.3)] w-[190px] sm:w-[210px] z-10">
+            <div className="absolute -top-6 -left-4 sm:-left-8 bg-brand-blue text-[#F5F5F6] p-4 rounded-[16px] shadow-[0_16px_36px_rgba(0,59,226,0.3)] w-[210px] sm:w-[232px] z-10 backdrop-blur-[10px]">
               <div className="flex items-center justify-between mb-1">
-                <p className="text-xs text-neutral-100">Total Revenue</p>
-                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-                  <TrendingUp className="w-3 h-3 text-secondary-400" />
+                <div>
+                  <p className="text-[16px] font-medium font-sans text-[#F5F5F6] leading-[1.2]">Total Revenue</p>
+                  <p className="text-[10px] font-sans text-[#F5F5F6]/80 leading-[1.2] mt-0.5">July 1-28</p>
+                </div>
+                <div className="px-2 py-0.5 rounded-full bg-[#CBFC01] text-[#242528] text-[10px] font-medium">
+                  +12$
                 </div>
               </div>
-              <p className="text-2xl font-bold font-heading text-white">$1,200.38</p>
-              {/* Mini Trend Line */}
-              <div className="mt-2 h-6 flex items-end gap-1">
-                <div className="w-3 h-2 bg-white/30 rounded-xs" />
-                <div className="w-3 h-3 bg-white/40 rounded-xs" />
-                <div className="w-3 h-4 bg-white/60 rounded-xs" />
-                <div className="w-3 h-3 bg-white/50 rounded-xs" />
-                <div className="w-3 h-5 bg-white/80 rounded-xs" />
-                <div className="w-3 h-6 bg-secondary-400 rounded-xs" />
+              <p className="text-[24px] font-semibold font-heading text-[#F5F5F6] my-1 leading-[1.33]">$120.29</p>
+              <div className="w-full bg-white h-[8px] rounded-[24px] overflow-hidden mt-2">
+                <div className="bg-[#D4FB20] h-full w-[56%] rounded-[24px]" />
               </div>
             </div>
 
-            {/* Floating Blue Students Card (Bottom Right) */}
-            <div className="absolute -bottom-6 -right-4 sm:-right-8 bg-brand-blue text-white p-4 rounded-2xl shadow-[0_16px_36px_rgba(0,59,226,0.3)] w-[180px] z-10">
-              <div className="flex items-center gap-2 mb-1">
-                <Users className="w-4 h-4 text-secondary-400" />
-                <span className="text-xs text-neutral-100">Enrolled</span>
+            {/* Floating Blue Year-to-Date Card (Bottom Left) */}
+            <div className="absolute -bottom-6 -left-2 sm:-left-4 bg-brand-blue text-[#F5F5F6] p-4 rounded-[16px] shadow-[0_16px_36px_rgba(0,59,226,0.3)] w-[140px] sm:w-[150px] z-10 backdrop-blur-[10px]">
+              <div className="flex items-center justify-between mb-1">
+                <div>
+                  <p className="text-[14px] font-medium font-sans text-[#F5F5F6]">Year to Date</p>
+                  <p className="text-[10px] font-sans text-[#F5F5F6]/80">2023</p>
+                </div>
+                <div className="px-1.5 py-0.5 rounded-full bg-[#CBFC01] text-[#242528] text-[9px] font-medium">
+                  +12$
+                </div>
               </div>
-              <p className="text-xl font-bold font-heading text-white">4,850+</p>
-              <p className="text-[11px] text-neutral-200 mt-0.5">Active Learners</p>
+              <p className="text-[18px] font-semibold font-heading text-[#F5F5F6] mt-1">$1,200.38</p>
             </div>
           </div>
 
@@ -140,11 +141,11 @@ export function FeatureSplitSection() {
             <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] text-neutral-950 leading-[1.2] mb-6">
               Create & Manage Courses Easily.
             </h2>
-            <p className="font-sans text-neutral-700 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+            <p className="font-sans text-[#242528] font-bold text-base md:text-[18px] leading-[1.56] mb-8 max-w-xl">
               ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.
             </p>
 
-            {/* 4 Feature Checklist Points (Figma 34:903, 34:906, 34:909, 34:912) */}
+            {/* 4 Feature Checklist Points (Figma Frame 14: #003BE2 blue vectors) */}
             <div className="flex flex-col gap-4 mb-8">
               {[
                 "Share Your Expertise",
@@ -153,10 +154,10 @@ export function FeatureSplitSection() {
                 "Build a Community",
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-full bg-secondary-400 flex items-center justify-center shrink-0 shadow-xs">
-                    <Check className="w-4 h-4 text-neutral-950 stroke-[3]" />
+                  <div className="w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center shrink-0 shadow-xs">
+                    <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
                   </div>
-                  <span className="font-sans font-medium text-base md:text-lg text-neutral-950">
+                  <span className="font-sans font-medium text-base md:text-[18px] text-[#242528]">
                     {item}
                   </span>
                 </div>

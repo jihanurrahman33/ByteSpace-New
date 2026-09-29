@@ -54,11 +54,11 @@ export function TestimonialsSection() {
           {TESTIMONIALS.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-[24px] p-8 border border-neutral-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              className="bg-white rounded-[24px] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               {/* Avatar + Author Details */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0 border border-neutral-100 shadow-xs">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border border-neutral-100 shadow-xs">
                   <Image
                     src={item.avatar}
                     alt={item.name}
@@ -68,15 +68,15 @@ export function TestimonialsSection() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-heading font-semibold text-lg text-neutral-950">
+                  <h3 className="font-heading font-semibold text-[20px] text-black leading-[1.2]">
                     {item.name}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-500">{item.role}</p>
+                  <p className="font-sans text-[18px] text-brand-blue font-normal leading-[1.6]">{item.role}</p>
                 </div>
               </div>
 
               {/* Quote */}
-              <p className="font-sans text-neutral-700 text-sm sm:text-base leading-relaxed italic">
+              <p className="font-sans text-[#4F4F4F] text-[18px] leading-[1.6]">
                 &ldquo;{item.quote}&rdquo;
               </p>
             </div>
