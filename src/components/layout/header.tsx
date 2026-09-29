@@ -60,14 +60,6 @@ export function Header({ variant = "hero", className }: HeaderProps) {
                 )}
               >
                 {link.name}
-                {isActive && (
-                  <span
-                    className={cn(
-                      "absolute bottom-0 left-0 right-0 h-[2px] rounded-full",
-                      isLight ? "bg-neutral-950" : "bg-secondary-400"
-                    )}
-                  />
-                )}
               </Link>
             );
           })}

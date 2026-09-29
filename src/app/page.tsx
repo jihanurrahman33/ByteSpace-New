@@ -1,7 +1,6 @@
 import { HeroSection } from "@/components/features/home/hero-section";
 import { PartnerLogos } from "@/components/features/home/partner-logos";
 import { DiscoverSectionHeading } from "@/components/features/home/discover-section";
-import { FeaturedCategoriesSection } from "@/components/features/home/featured-categories";
 import { FeaturedCoursesSection } from "@/components/features/home/featured-courses";
 import { ExploreCategoriesSection } from "@/components/features/home/explore-categories";
 import { FeatureSplitSection } from "@/components/features/home/feature-split-section";
@@ -21,10 +20,7 @@ export default function Home() {
       {/* 3. Discover Section Heading (Frame 3 12:101) */}
       <DiscoverSectionHeading />
 
-      {/* 4. Featured Categories (Categories_Cards_Frame 11:21) */}
-      <FeaturedCategoriesSection />
-
-      {/* 5. Tag Pills & 6 Featured Courses (Tab_Categories 21:33 & Frame 8 33:683) */}
+      {/* 4. Tag Pills & 6 Featured Courses (Tab_Categories 21:33 & Frame 8 33:683) */}
       <FeaturedCoursesSection />
 
       {/* 6. Explore Diverse Learning Paths (Frame 9 34:684 & Frame 10 34:725) */}

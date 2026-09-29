@@ -3,11 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Star, Eye, EyeOff } from "lucide-react";
-import { Header } from "@/components/layout/header";
 
 export default function RegisterPage() {
-  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,9 +15,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-blue text-neutral-50 relative overflow-hidden flex flex-col justify-between">
+    <div className="min-h-screen w-full bg-brand-blue relative overflow-hidden flex items-center justify-center">
       {/* 120px Architectural Grid Lines (matching Figma 49:156 Group 4) */}
-      <div className="absolute inset-0 pointer-events-none opacity-15">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
         <svg
           className="w-full h-full"
           width="100%"
@@ -38,7 +35,7 @@ export default function RegisterPage() {
                 d="M 120 0 L 0 0 0 120"
                 fill="none"
                 stroke="white"
-                strokeWidth="1"
+                strokeWidth="2"
               />
             </pattern>
           </defs>
@@ -46,147 +43,136 @@ export default function RegisterPage() {
         </svg>
       </div>
 
-      {/* Floating 3D Ornaments */}
-      <div className="absolute left-8 bottom-12 w-20 h-20 pointer-events-none drop-shadow-xl hidden xl:block">
-        <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
-          <defs>
-            <linearGradient id="reg-lime-cone" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F5FFAE" />
-              <stop offset="60%" stopColor="#D4FB20" />
-              <stop offset="100%" stopColor="#8FB500" />
-            </linearGradient>
-          </defs>
-          <polygon points="32,6 56,52 8,52" fill="url(#reg-lime-cone)" />
-          <ellipse cx="32" cy="52" rx="24" ry="6" fill="#8FB500" />
-        </svg>
-      </div>
-
-      {/* Embedded Header Variant Hero */}
-      <Header variant="hero" />
-
-      {/* Main Split Layout Container */}
-      <main className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full flex-1 flex items-center py-10 md:py-16">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column (Figma Text 47:498 + Floating Course Showcase) */}
-          <div className="lg:col-span-6 flex flex-col">
-            <h1 className="font-heading font-semibold text-3xl sm:text-5xl md:text-[54px] text-white tracking-tight leading-[1.15] mb-4">
-              Sign up and come in
-            </h1>
-            <p className="font-sans text-neutral-100 text-base sm:text-lg leading-relaxed max-w-lg mb-12">
-              The registration process is straightforward, uncomplicated, and efficient, allowing
-              users to sign up quickly, easily, and at no cost
-            </p>
-
-            {/* Overlapping Floating Course Showcase Cards & 3D Artwork (Figma 15254:194) */}
-            <div className="relative w-full max-w-[460px] hidden sm:block">
-              <Image
-                src="/assets/auth-cards.png"
-                alt="ByteSpace course preview & community"
-                width={480}
-                height={520}
-                className="w-full h-auto object-contain drop-shadow-2xl"
-                priority
+      {/* 1440x1024 Canvas Coordinate Container */}
+      <div className="relative w-full max-w-[1440px] h-[1024px] mx-auto overflow-hidden">
+        {/* Top Header Logo (Figma 47:501, only the yellow logo icon at x: 122px, y: 35px) */}
+        <div className="absolute left-[120px] top-[35px] z-30">
+          <Link href="/" className="inline-block" aria-label="ByteSpace Home">
+            <svg
+              width="29"
+              height="32"
+              viewBox="0 0 29 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.5 10.5C10.5 4.70101 5.79899 0 0 0L0 21C0 26.799 4.70101 31.5 10.5 31.5L10.5 10.5Z"
+                fill="#CBFC01"
               />
-            </div>
-          </div>
+              <path
+                d="M18.375 10.5C24.174 10.5 28.875 15.201 28.875 21L21 21C15.201 21 10.5 16.299 10.5 10.5L18.375 10.5Z"
+                fill="#CBFC01"
+              />
+              <path
+                d="M18.375 31.5C24.174 31.5 28.875 26.799 28.875 21L21 21C15.201 21 10.5 25.701 10.5 31.5L18.375 31.5Z"
+                fill="#CBFC01"
+              />
+            </svg>
+          </Link>
+        </div>
 
-          {/* Right Column: Register Form Frame (Figma Register_Frame 47:362) */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            <div className="w-full max-w-[500px] bg-white rounded-[32px] p-8 sm:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.25)] border border-white/80 text-neutral-950">
-              <div className="mb-8">
-                <p className="font-sans text-sm font-medium text-brand-blue mb-1">
-                  Create an Account
-                </p>
-                <h2 className="font-heading font-bold text-3xl sm:text-4xl text-neutral-950">
-                  Welcome to ByteSpace
-                </h2>
+        {/* Left Headline & Subtitle (Figma 47:498 at x: 122px, y: 120px) */}
+        <div className="absolute left-[120px] top-[120px] w-[475px] z-20">
+          <h1 className="font-heading font-semibold text-[20px] leading-[24px] tracking-[-0.2px] text-[#F5F5F6]">
+            Sign up and come in
+          </h1>
+          <p className="font-sans font-normal text-[18px] leading-[28.8px] text-[#F5F5F6] mt-4">
+            The registration process is straightforward, uncomplicated, and efficient, allowing users to sign up quickly, easily, and at no cost
+          </p>
+        </div>
+
+        {/* Overlapping Floating Course Showcase Cards & 3D Artwork (Figma Group 7 15254:194 at x: 97px, y: 305px, 548x585) */}
+        <div className="absolute left-[97px] top-[305px] w-[548px] h-[585px] z-10 pointer-events-none">
+          <Image
+            src="/assets/auth-cards.png"
+            alt="ByteSpace course showcase"
+            width={548}
+            height={585}
+            className="w-full h-full object-contain pointer-events-none"
+            priority
+          />
+        </div>
+
+        {/* Right Register Form Frame (Figma 47:362 at x: 741px, y: 120px, 579x784, radius 24px) */}
+        <div className="absolute left-[741px] top-[120px] w-[579px] h-[784px] bg-white rounded-[24px] shadow-[0_24px_64px_rgba(0,0,0,0.25)] p-[61px_63px] z-20 flex flex-col justify-between">
+          <div>
+            {/* Form Title (Figma 47:365) */}
+            <div className="mb-8">
+              <p className="font-sans text-base font-normal text-brand-blue mb-1">
+                Create an Account
+              </p>
+              <h2 className="font-heading font-bold text-[44px] leading-[1.15] text-neutral-950">
+                Welcome to ByteSpace
+              </h2>
+            </div>
+
+            {/* Inputs Form */}
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+              <div>
+                <label className="block font-sans text-sm font-medium text-neutral-950 mb-2">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Jamie Davis"
+                  className="w-full h-[52px] px-4 rounded-[12px] border border-[#E5E6E8] bg-white font-sans text-base text-neutral-950 placeholder-[#82868E] outline-none focus:border-brand-blue transition-colors"
+                  required
+                />
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Full Name */}
-                <div>
-                  <label className="block font-heading font-medium text-xs sm:text-sm text-neutral-800 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Jamie Davis"
-                    className="w-full h-12 px-4.5 rounded-xl border border-neutral-200 outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue font-sans text-sm text-neutral-900 placeholder:text-neutral-400 transition-colors"
-                  />
-                </div>
+              <div>
+                <label className="block font-sans text-sm font-medium text-neutral-950 mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="designer@example.com"
+                  className="w-full h-[52px] px-4 rounded-[12px] border border-[#E5E6E8] bg-white font-sans text-base text-neutral-950 placeholder-[#82868E] outline-none focus:border-brand-blue transition-colors"
+                  required
+                />
+              </div>
 
-                {/* Email */}
-                <div>
-                  <label className="block font-heading font-medium text-xs sm:text-sm text-neutral-800 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="designer@example.com"
-                    className="w-full h-12 px-4.5 rounded-xl border border-neutral-200 outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue font-sans text-sm text-neutral-900 placeholder:text-neutral-400 transition-colors"
-                  />
-                </div>
+              <div>
+                <label className="block font-sans text-sm font-medium text-neutral-950 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="********"
+                  className="w-full h-[52px] px-4 rounded-[12px] border border-[#E5E6E8] bg-white font-sans text-base text-neutral-950 placeholder-[#82868E] outline-none focus:border-brand-blue transition-colors"
+                  required
+                />
+              </div>
 
-                {/* Password */}
-                <div>
-                  <label className="block font-heading font-medium text-xs sm:text-sm text-neutral-800 mb-2">
-                    Password
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="********"
-                      className="w-full h-12 px-4.5 pr-12 rounded-xl border border-neutral-200 outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue font-sans text-sm text-neutral-900 placeholder:text-neutral-400 transition-colors"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-700 transition-colors"
-                    >
-                      {showPassword ? (
-                        <EyeOff className="w-4 h-4" />
-                      ) : (
-                        <Eye className="w-4 h-4" />
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Submit Action */}
+              {/* Submit Button (Figma 47:381, 123x46, radius 24px, #CBFC01, self-end) */}
+              <div className="flex justify-end pt-2">
                 <button
                   type="submit"
-                  className="w-full h-12 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-heading font-semibold text-base transition-colors shadow-md mt-6 cursor-pointer"
+                  className="w-[123px] h-[46px] rounded-[24px] bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-sm flex items-center justify-center transition-colors cursor-pointer"
                 >
                   Continue
                 </button>
-              </form>
-
-              {/* Already have an account */}
-              <div className="text-center mt-8 pt-6 border-t border-neutral-100 font-sans text-sm text-neutral-600">
-                Already have an account?{" "}
-                <Link
-                  href="/login"
-                  className="font-semibold text-brand-blue hover:underline cursor-pointer"
-                >
-                  Login
-                </Link>
               </div>
-            </div>
+            </form>
+          </div>
+
+          {/* Bottom Login Link (Figma 47:383) */}
+          <div className="text-center font-sans text-base text-[#4B4C53]">
+            Already have an account?{" "}
+            <Link
+              href="/login"
+              className="text-brand-blue font-medium hover:underline ml-1 cursor-pointer"
+            >
+              Login
+            </Link>
           </div>
         </div>
-      </main>
-
-      <div className="py-6 text-center text-xs text-white/50 font-sans">
-        © {new Date().getFullYear()} ByteSpace Inc. All rights reserved.
       </div>
     </div>
   );

@@ -134,45 +134,69 @@ export function FeatureSplitSection() {
               </div>
               <p className="text-[18px] font-semibold font-heading text-[#F5F5F6] mt-1">$1,200.38</p>
             </div>
-          </div>
 
-          {/* Right Text Column */}
-          <div className="flex flex-col text-left order-1 lg:order-2">
-            <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] text-neutral-950 leading-[1.2] mb-6">
-              Create & Manage Courses Easily.
-            </h2>
-            <p className="font-sans text-[#242528] font-bold text-base md:text-[18px] leading-[1.56] mb-8 max-w-xl">
-              ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.
-            </p>
-
-            {/* 4 Feature Checklist Points (Figma Frame 14: #003BE2 blue vectors) */}
-            <div className="flex flex-col gap-4 mb-8">
-              {[
-                "Share Your Expertise",
-                "Monetize Your Passion",
-                "Flexibility and Autonomy",
-                "Build a Community",
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center shrink-0 shadow-xs">
-                    <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
-                  </div>
-                  <span className="font-sans font-medium text-base md:text-[18px] text-[#242528]">
-                    {item}
+            {/* Floating Happy Students Card (Bottom Right, Figma 34:1038) */}
+            <div className="absolute -bottom-6 -right-2 sm:-right-6 bg-white p-3 sm:p-4 rounded-[16px] shadow-[0_16px_36px_rgba(0,0,0,0.12)] border border-[#CED0D3] w-[200px] sm:w-[240px] z-10">
+              <div className="flex flex-col gap-0 mb-1.5">
+                <span className="text-[13px] sm:text-[15px] font-medium text-[#242528] font-sans leading-[1.2]">
+                  Happy Students
+                </span>
+                <div className="flex items-center gap-1 mt-0.5">
+                  <span className="text-[10px] sm:text-[11px] font-normal text-[#242528] font-sans">
+                    4.5 (240)
                   </span>
+                  <Star className="w-3 h-3 fill-[#D4FB20] text-[#D4FB20]" />
                 </div>
-              ))}
-            </div>
-
-            <div>
-              <Link
-                href="/creators"
-                className="inline-flex items-center justify-center h-12 px-7 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white font-medium text-sm md:text-base transition-colors shadow-sm"
-              >
-                Learn More About Teaching
-              </Link>
+              </div>
+              <div className="flex items-center -space-x-2">
+                {[
+                  "/assets/testimonials/sarah-m.png",
+                  "/assets/creators/student-1.png",
+                  "/assets/creators/student-2.png",
+                  "/assets/creators/student-3.png",
+                ].map((src, idx) => (
+                  <div
+                    key={idx}
+                    className="w-6 h-6 rounded-full border-2 border-white overflow-hidden relative shrink-0"
+                  >
+                    <Image src={src} alt="student" fill className="object-cover" sizes="24px" />
+                  </div>
+                ))}
+                <div className="w-6 h-6 rounded-full border-2 border-white bg-[#D4FB20] text-[#242528] flex items-center justify-center text-[8px] font-bold font-sans shrink-0">
+                  2K+
+                </div>
+              </div>
             </div>
           </div>
+
+            {/* Right Text Column */}
+            <div className="flex flex-col text-left order-1 lg:order-2">
+              <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] text-neutral-950 leading-[1.2] mb-6">
+                Create & Manage Courses Easily.
+              </h2>
+              <p className="font-sans text-[#242528] font-bold text-base md:text-[18px] leading-[1.56] mb-8 max-w-xl">
+                ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.
+              </p>
+
+              {/* 4 Feature Checklist Points (Figma Frame 14: #003BE2 blue vectors) */}
+              <div className="flex flex-col gap-4">
+                {[
+                  "Share Your Expertise",
+                  "Monetize Your Passion",
+                  "Flexibility and Autonomy",
+                  "Build a Community",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center shrink-0 shadow-xs">
+                      <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
+                    </div>
+                    <span className="font-sans font-medium text-base md:text-[18px] text-[#242528]">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
         </div>
       </div>
     </section>

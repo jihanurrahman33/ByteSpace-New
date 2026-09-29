@@ -2,10 +2,10 @@
 
 import { use, useState } from "react";
 import Image from "next/image";
-import { Filter, ChevronDown, Check } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CourseCard } from "@/components/features/courses/course-card";
+import { CoursesFilterBar } from "@/components/features/courses/courses-filter-bar";
 import { ALL_COURSES } from "@/lib/constants/courses-data";
 
 export default function CreatorProfilePage({
@@ -15,24 +15,16 @@ export default function CreatorProfilePage({
 }) {
   const resolvedParams = use(params);
   const [isFollowing, setIsFollowing] = useState(false);
-  const [selectedLevel, setSelectedLevel] = useState<string>("All");
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const creatorCourses = ALL_COURSES.filter((c) => {
-    const matchesLevel = selectedLevel === "All" || c.level === selectedLevel;
-    const matchesCategory =
-      selectedCategory === "All" ||
-      c.category === selectedCategory ||
-      (c.category && selectedCategory.toLowerCase().includes(c.category.toLowerCase()));
-    return matchesLevel && matchesCategory;
-  });
+  // Take the 6 exact courses shown in Figma frame 78:2503
+  const creatorCourses = ALL_COURSES.slice(0, 6);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* 1. Creator Hero & Profile Card Banner (Figma 60:2155) */}
-      <section className="relative w-full bg-brand-blue text-neutral-50 overflow-hidden pb-16">
-        {/* 120px Architectural Grid Pattern */}
-        <div className="absolute inset-0 pointer-events-none opacity-15">
+      {/* 1. Creator Hero & Profile Card Banner (Figma 60:2155, height: 592px) */}
+      <section className="relative w-full min-h-[592px] bg-brand-blue text-neutral-50 overflow-hidden pb-16">
+        {/* 120px Architectural Grid Pattern (matching Figma 60:2454 Group 4) */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
           <svg
             className="w-full h-full"
             width="100%"
@@ -50,7 +42,7 @@ export default function CreatorProfilePage({
                   d="M 120 0 L 0 0 0 120"
                   fill="none"
                   stroke="white"
-                  strokeWidth="1"
+                  strokeWidth="2"
                 />
               </pattern>
             </defs>
@@ -61,13 +53,13 @@ export default function CreatorProfilePage({
         {/* Embedded Header Variant Hero */}
         <Header variant="hero" />
 
-        {/* Profile Details Container */}
-        <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8">
-          <div className="flex flex-col gap-6 max-w-4xl">
-            {/* Header info row: Avatar + Name + Role */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        {/* Profile Details Container (Figma 60:2171: 1198x338 at y=1920) */}
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8 flex flex-col justify-between">
+          <div className="flex flex-col gap-6 max-w-[1198px]">
+            {/* Header info row: Avatar + Name + Creator Tag + Subtitle */}
+            <div className="flex items-center gap-6">
               {/* Avatar: 96x96 with 24px border radius as in Figma node 60:2175 */}
-              <div className="relative w-24 h-24 rounded-[24px] overflow-hidden shrink-0 shadow-lg bg-neutral-100">
+              <div className="relative w-24 h-24 rounded-[24px] overflow-hidden shrink-0 bg-neutral-100 shadow-md">
                 <Image
                   src="/assets/creators/purepearl-studio.png"
                   alt="PurePearl Studio"
@@ -79,47 +71,54 @@ export default function CreatorProfilePage({
               </div>
 
               {/* Profile Name & Subtitle */}
-              <div>
+              <div className="flex flex-col gap-1.5">
                 <div className="flex items-center gap-3">
-                  <h1 className="font-heading font-semibold text-3xl sm:text-4xl text-[#f5f5f6] tracking-tight">
+                  <h1 className="font-heading font-semibold text-3xl sm:text-4xl text-[#F5F5F6] tracking-tight">
                     PurePearl Studio
                   </h1>
-                  <span className="px-3 py-1 rounded-full bg-secondary-400 text-neutral-900 font-sans text-xs font-semibold">
+                  <span className="h-[35px] px-4 rounded-full bg-[#D4FB20] text-[#242528] font-sans text-xs font-semibold flex items-center justify-center">
                     Creator
                   </span>
                 </div>
-                <p className="font-sans text-[#f5f5f6]/90 text-lg font-normal mt-1">
+                <p className="font-sans text-[#F5F5F6] text-base sm:text-lg font-normal">
                   Passionate UI/UX, Web designer
                 </p>
               </div>
             </div>
 
-            {/* Bio text from Figma */}
-            <p className="font-sans text-[#f5f5f6] text-base sm:text-lg leading-relaxed whitespace-pre-line">
-              Welcome to the creative world of PurePearl Studio. Here, you&apos;ll discover the passion, expertise, and inspiration that drive my creative journey. Let&apos;s explore and learn together!
-              {"\n"}Dive into my creative portfolio, showcasing a glimpse of my artistic endeavors. From digital designs to multimedia projects, each piece tells a unique story. Explore the world of creativity with me.
-            </p>
+            {/* Bio text from Figma node 60:2185 */}
+            <div className="font-sans text-[#F5F5F6] text-base leading-relaxed space-y-2">
+              <p>
+                Welcome to the creative world of [Creator&apos;s Name]. Here, you&apos;ll discover the passion, expertise, and inspiration that drive my creative journey. Let&apos;s explore and learn together!
+              </p>
+              <p>
+                Dive into my creative portfolio, showcasing a glimpse of my artistic endeavors. From digital designs to multimedia projects, each piece tells a unique story. Explore the world of creativity with me.
+              </p>
+            </div>
 
-            {/* Stats pills & Follow Button */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <div className="flex items-center gap-3">
-                {/* Products Stat Pill */}
-                <div className="bg-white rounded-full px-5 py-2 flex items-center gap-2 shadow-sm">
-                  <span className="font-sans font-medium text-lg text-brand-blue">3</span>
-                  <span className="font-sans font-medium text-lg text-neutral-900">Products</span>
+            {/* Stats pills & Follow Button (Figma 60:2186) */}
+            <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center gap-4">
+                {/* Products Stat Pill (Figma 60:2188: 140x46, radius 24) */}
+                <div className="h-[46px] px-6 rounded-full bg-white flex items-center gap-2 shadow-xs">
+                  <span className="font-heading font-semibold text-lg text-[#003BE2]">3</span>
+                  <span className="font-sans font-medium text-base text-[#242528]">Products</span>
                 </div>
 
-                {/* Followers Stat Pill */}
-                <div className="bg-white rounded-full px-5 py-2 flex items-center gap-2 shadow-sm">
-                  <span className="font-sans font-medium text-lg text-brand-blue">{isFollowing ? "13" : "12"}</span>
-                  <span className="font-sans font-medium text-lg text-neutral-900">Followers</span>
+                {/* Followers Stat Pill (Figma 60:2191: 150x46, radius 24) */}
+                <div className="h-[46px] px-6 rounded-full bg-white flex items-center gap-2 shadow-xs">
+                  <span className="font-heading font-semibold text-lg text-[#003BE2]">
+                    {isFollowing ? "13" : "12"}
+                  </span>
+                  <span className="font-sans font-medium text-base text-[#242528]">Followers</span>
                 </div>
               </div>
 
-              {/* Follow Button */}
+              {/* Follow Button (Figma 60:2194: 101x46, radius 24, bg #D4FB20) */}
               <button
+                type="button"
                 onClick={() => setIsFollowing(!isFollowing)}
-                className="h-11 px-8 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-sans font-medium text-lg transition-all cursor-pointer shadow-sm ml-auto sm:ml-0"
+                className="h-[46px] px-8 rounded-full bg-[#D4FB20] hover:bg-[#c2ea1b] text-[#242528] font-sans font-medium text-base transition-colors cursor-pointer shadow-xs"
               >
                 {isFollowing ? "Following" : "Follow"}
               </button>
@@ -130,47 +129,11 @@ export default function CreatorProfilePage({
 
       {/* 2. Creator Courses Section with Filters Bar (Figma 60:1928) */}
       <main className="flex-1 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-12 md:py-16">
-        {/* Filters Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-neutral-100 mb-10">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-sm font-semibold text-neutral-950 font-heading">
-              <Filter className="w-4 h-4 text-brand-blue" />
-              <span>Filter:</span>
-            </div>
+        {/* Filters Bar (Figma 60:1930) */}
+        <CoursesFilterBar />
 
-            {/* Level Filter */}
-            <select
-              value={selectedLevel}
-              onChange={(e) => setSelectedLevel(e.target.value)}
-              className="h-10 px-4 rounded-full border border-neutral-200 bg-white text-xs sm:text-sm font-sans text-neutral-700 outline-none hover:border-neutral-300 cursor-pointer"
-            >
-              <option value="All">All Levels</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-            </select>
-
-            {/* Category Filter */}
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="h-10 px-4 rounded-full border border-neutral-200 bg-white text-xs sm:text-sm font-sans text-neutral-700 outline-none hover:border-neutral-300 cursor-pointer"
-            >
-              <option value="All">All Categories</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Development">Development</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Business">Business</option>
-            </select>
-          </div>
-
-          <div className="text-xs text-neutral-400 font-sans">
-            Showing <span className="font-semibold text-neutral-800">{creatorCourses.length}</span> courses
-          </div>
-        </div>
-
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {/* 6 Course Cards Grid (Figma Frame 8 78:2503) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-10">
           {creatorCourses.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}
