@@ -8,7 +8,7 @@ interface CategoryItem {
   href: string;
 }
 
-const CATEGORIES: CategoryItem[] = [
+const FEATURED_CATEGORIES: CategoryItem[] = [
   {
     id: "design",
     name: "Design",
@@ -47,39 +47,45 @@ const CATEGORIES: CategoryItem[] = [
   },
 ];
 
-export function ExploreCategoriesSection() {
+export function FeaturedCategoriesSection() {
   return (
-    <section className="w-full bg-white pb-20 md:pb-28 overflow-hidden">
+    <section className="w-full bg-white pb-14 md:pb-16 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px]">
-        {/* Section Heading & Subtitle (Figma Frame 9_34_684) */}
-        <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16">
-          <h2 className="font-heading font-semibold text-3xl sm:text-4xl md:text-[36px] text-[#040819] leading-[1.2] mb-4">
-            Explore Diverse Learning Paths at Bytespace
-          </h2>
-          <p className="font-sans text-[18px] text-[#82868E] max-w-[917px] mx-auto leading-[1.6]">
-            At Bytespace, we believe in empowering individuals through knowledge. Our diverse range of courses spans various fields, ensuring there's something for everyone. Unleash your potential and explore our carefully curated categories.
-          </p>
+        {/* Featured Categories Header (Figma Heading 11:22) */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-10">
+          <div>
+            <span className="text-[18px] font-medium text-[#7F30F7] font-sans block mb-2">
+              Featured Categories
+            </span>
+            <h2 className="font-heading font-medium text-3xl sm:text-4xl lg:text-[44px] text-black leading-[1.2] max-w-[694px]">
+              Innovative Paths to Knowledge
+            </h2>
+          </div>
+          <Link
+            href="/courses"
+            className="inline-flex items-center justify-center h-10 px-6 rounded-[24px] bg-[#C1E338] hover:bg-[#b0d227] text-[#3A3B3F] font-sans font-medium text-[16px] transition-colors shrink-0"
+          >
+            View More
+          </Link>
         </div>
 
-        {/* 6 Category Cards Grid with Icon Circles (Figma Frame 10_34_725) */}
+        {/* 6 Category Cards (Figma Categories_Card 11:28, 167x167px, #F5F5F6 fill, 24px radius) */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 justify-items-center">
-          {CATEGORIES.map((cat) => (
+          {FEATURED_CATEGORIES.map((cat) => (
             <Link
               key={cat.id}
               href={cat.href}
-              className="w-full max-w-[167px] h-[167px] rounded-[24px] border border-[#CED0D3] bg-white hover:border-[#D4FB20] hover:shadow-[0_12px_28px_rgba(212,251,32,0.18)] hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center p-4 text-center group cursor-pointer"
+              className="w-full max-w-[167px] h-[167px] rounded-[24px] bg-[#F5F5F6] hover:bg-[#E8E8EA] transition-all flex flex-col items-center justify-center gap-3 text-center group cursor-pointer"
             >
-              {/* 60x60 Neon Lime Circle Icon Box (Figma Frame 4 fill:#D4FB20) */}
-              <div className="w-[60px] h-[60px] rounded-full bg-[#D4FB20] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-xs">
+              <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Image
                   src={cat.iconSrc}
                   alt={cat.name}
-                  width={28}
-                  height={28}
-                  className="w-7 h-7"
+                  width={36}
+                  height={36}
+                  className="w-9 h-9 object-contain"
                 />
               </div>
-              {/* Category Title */}
               <span className="font-sans font-medium text-[18px] text-[#242528] group-hover:text-brand-blue transition-colors">
                 {cat.name}
               </span>
