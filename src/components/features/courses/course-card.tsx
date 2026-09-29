@@ -71,9 +71,9 @@ export function CourseCard({ course }: CourseCardProps) {
         {/* Mini student avatars stack */}
         <div className="flex items-center -space-x-1.5">
           {[
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop",
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop",
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop",
+            "/assets/creators/student-1.png",
+            "/assets/creators/student-2.png",
+            "/assets/creators/student-3.png",
           ].map((avatar, idx) => (
             <div
               key={idx}
