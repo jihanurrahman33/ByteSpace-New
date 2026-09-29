@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function CreatorCtaSection() {
   return (
@@ -30,33 +31,14 @@ export function CreatorCtaSection() {
         </svg>
       </div>
 
-      {/* Floating 3D Ornaments (Cones in Silver & Lime, matching Figma Group 6) */}
-      <div className="absolute left-8 md:left-24 top-12 w-12 h-12 md:w-16 md:h-16 pointer-events-none drop-shadow-xl opacity-90 hidden sm:block">
-        <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
-          <defs>
-            <linearGradient id="cta-lime-cone" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F5FFAE" />
-              <stop offset="60%" stopColor="#D4FB20" />
-              <stop offset="100%" stopColor="#8FB500" />
-            </linearGradient>
-          </defs>
-          <polygon points="32,6 56,52 8,52" fill="url(#cta-lime-cone)" />
-          <ellipse cx="32" cy="52" rx="24" ry="6" fill="#8FB500" />
-        </svg>
-      </div>
-
-      <div className="absolute right-8 md:right-24 bottom-12 w-14 h-14 md:w-20 md:h-20 pointer-events-none drop-shadow-xl opacity-90 hidden sm:block">
-        <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
-          <defs>
-            <linearGradient id="cta-silver-cone" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFFFFF" />
-              <stop offset="50%" stopColor="#C0C4CC" />
-              <stop offset="100%" stopColor="#8E929B" />
-            </linearGradient>
-          </defs>
-          <polygon points="32,4 58,54 6,54" fill="url(#cta-silver-cone)" />
-          <ellipse cx="32" cy="54" rx="26" ry="6" fill="#8E929B" />
-        </svg>
+      {/* Authentic Figma 3D Floating Ornaments (Figma 46:78) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        <Image
+          src="/assets/cta-decorations.png"
+          alt="ByteSpace 3D decorations"
+          fill
+          className="object-cover opacity-90 pointer-events-none"
+        />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] flex flex-col items-center">

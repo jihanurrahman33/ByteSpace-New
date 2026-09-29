@@ -1,17 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
-import {
-  PenTool,
-  Code2,
-  Server,
-  Briefcase,
-  Megaphone,
-  Camera,
-} from "lucide-react";
 
 interface CategoryItem {
   id: string;
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
+  iconSrc: string;
   href: string;
 }
 
@@ -19,37 +12,37 @@ const CATEGORIES: CategoryItem[] = [
   {
     id: "design",
     name: "Design",
-    icon: PenTool,
+    iconSrc: "/assets/icons/category-design.svg",
     href: "/courses?category=design",
   },
   {
     id: "development",
     name: "Development",
-    icon: Code2,
+    iconSrc: "/assets/icons/category-development.svg",
     href: "/courses?category=development",
   },
   {
     id: "it-software",
     name: "IT & Software",
-    icon: Server,
+    iconSrc: "/assets/icons/category-it-software.svg",
     href: "/courses?category=it-software",
   },
   {
     id: "business",
     name: "Business",
-    icon: Briefcase,
+    iconSrc: "/assets/icons/category-business.svg",
     href: "/courses?category=business",
   },
   {
     id: "marketing",
     name: "Marketing",
-    icon: Megaphone,
+    iconSrc: "/assets/icons/category-marketing.svg",
     href: "/courses?category=marketing",
   },
   {
     id: "photography",
     name: "Photography",
-    icon: Camera,
+    iconSrc: "/assets/icons/category-photography.svg",
     href: "/courses?category=photography",
   },
 ];
@@ -71,7 +64,6 @@ export function ExploreCategoriesSection() {
         {/* 6 Category Cards Grid (Figma Frame 10_34_725) */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8 justify-items-center">
           {CATEGORIES.map((cat) => {
-            const Icon = cat.icon;
             return (
               <Link
                 key={cat.id}
@@ -80,7 +72,13 @@ export function ExploreCategoriesSection() {
               >
                 {/* 60x60 Neon Lime Circle Icon Box (Figma Frame 4) */}
                 <div className="w-[60px] h-[60px] rounded-full bg-secondary-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-xs">
-                  <Icon className="w-6 h-6 text-neutral-950" />
+                  <Image
+                    src={cat.iconSrc}
+                    alt={cat.name}
+                    width={28}
+                    height={28}
+                    className="w-7 h-7"
+                  />
                 </div>
                 {/* Category Title */}
                 <span className="font-sans font-medium text-base sm:text-lg text-neutral-950 group-hover:text-brand-blue transition-colors">

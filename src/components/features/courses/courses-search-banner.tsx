@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Search } from "lucide-react";
 import { Header } from "@/components/layout/header";
 
@@ -41,40 +42,37 @@ export function CoursesSearchBanner({
         </svg>
       </div>
 
-      {/* Floating 3D Ornaments (Cones in Silver & Lime, matching Figma 55:845) */}
-      <div className="absolute left-10 top-24 w-12 h-12 pointer-events-none drop-shadow-xl hidden sm:block">
-        <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
-          <defs>
-            <linearGradient id="sb-lime-cone" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F5FFAE" />
-              <stop offset="60%" stopColor="#D4FB20" />
-              <stop offset="100%" stopColor="#8FB500" />
-            </linearGradient>
-          </defs>
-          <polygon points="32,6 56,52 8,52" fill="url(#sb-lime-cone)" />
-          <ellipse cx="32" cy="52" rx="24" ry="6" fill="#8FB500" />
-        </svg>
-      </div>
-
-      <div className="absolute right-12 bottom-8 w-14 h-14 pointer-events-none drop-shadow-xl hidden sm:block">
-        <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
-          <defs>
-            <linearGradient id="sb-silver-cone" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFFFFF" />
-              <stop offset="50%" stopColor="#C0C4CC" />
-              <stop offset="100%" stopColor="#8E929B" />
-            </linearGradient>
-          </defs>
-          <polygon points="32,4 58,54 6,54" fill="url(#sb-silver-cone)" />
-          <ellipse cx="32" cy="54" rx="26" ry="6" fill="#8E929B" />
-        </svg>
+      {/* Floating 3D Ornaments from Figma Group 2 (search-decorations.png) */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-between overflow-hidden">
+        <div className="relative w-full h-full max-w-[1440px] mx-auto">
+          {/* Left decorations */}
+          <div className="absolute -left-12 top-10 w-44 h-44 opacity-90 hidden sm:block">
+            <Image
+              src="/assets/hero-cones.png"
+              alt=""
+              width={180}
+              height={180}
+              className="object-contain"
+            />
+          </div>
+          {/* Right decorations */}
+          <div className="absolute -right-8 bottom-4 w-48 h-48 opacity-90 hidden sm:block">
+            <Image
+              src="/assets/cta-decorations.png"
+              alt=""
+              width={200}
+              height={200}
+              className="object-contain"
+            />
+          </div>
+        </div>
       </div>
 
       {/* Embedded Header Variant Hero */}
       <Header variant="hero" />
 
       {/* Title & Search Bar (Figma 55:857) */}
-      <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8 flex flex-col items-center text-center">
+      <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-6 md:pt-10 flex flex-col items-center text-center">
         <h1 className="font-heading font-semibold text-3xl sm:text-4xl md:text-[44px] text-white tracking-tight leading-[1.2] mb-8">
           Find Your Next Course
         </h1>
@@ -82,23 +80,29 @@ export function CoursesSearchBanner({
         <div className="w-full max-w-[624px] z-10">
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="h-[52px] bg-white rounded-full pl-5 pr-1.5 flex items-center justify-between shadow-[0_12px_32px_rgba(0,0,0,0.2)]"
+            className="flex items-center gap-3 sm:gap-4"
           >
-            <div className="flex items-center gap-3 flex-1 min-w-0">
+            {/* Search Input Pill */}
+            <div className="flex-1 h-[52px] bg-white rounded-full px-5 flex items-center gap-3 shadow-md">
               <Search className="w-5 h-5 text-neutral-400 shrink-0" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
-                placeholder="Course, topic, creator"
+                placeholder="Search"
                 className="w-full bg-transparent border-none outline-none text-neutral-900 placeholder:text-neutral-400 font-sans text-sm md:text-base"
               />
             </div>
+
+            {/* Courses Filter Button Pill */}
             <button
-              type="submit"
-              className="h-10 px-6 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-medium font-sans text-sm tracking-wide transition-colors cursor-pointer shrink-0"
+              type="button"
+              className="h-[52px] px-6 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-medium font-sans text-sm md:text-base flex items-center gap-2 shadow-md transition-colors cursor-pointer shrink-0"
             >
-              Search
+              <span>Courses</span>
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 12 8">
+                <path d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z" />
+              </svg>
             </button>
           </form>
         </div>

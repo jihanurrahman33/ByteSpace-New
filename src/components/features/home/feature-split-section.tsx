@@ -47,10 +47,10 @@ export function FeatureSplitSection() {
             {/* Main Visual Image */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-neutral-100">
               <Image
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop"
+                src="/assets/hero-student.png"
                 alt="Professional learning together"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 1024px) 100vw, 540px"
               />
             </div>
@@ -59,7 +59,7 @@ export function FeatureSplitSection() {
             <div className="absolute -top-6 -left-4 sm:-left-8 bg-white p-3 sm:p-4 rounded-2xl shadow-[0_16px_36px_rgba(0,0,0,0.12)] border border-neutral-100 w-[200px] sm:w-[220px] z-10">
               <div className="relative w-full h-24 rounded-lg overflow-hidden mb-2">
                 <Image
-                  src="https://images.unsplash.com/photo-1581291518655-9523c932deb4?q=80&w=400&auto=format&fit=crop"
+                  src="/assets/courses/course-figma.png"
                   alt="Course preview"
                   fill
                   className="object-cover"
@@ -96,10 +96,10 @@ export function FeatureSplitSection() {
             {/* Main Visual Image */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-neutral-100">
               <Image
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop"
+                src="/assets/creator-woman.png"
                 alt="Creator hosting courses"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 1024px) 100vw, 540px"
               />
             </div>
