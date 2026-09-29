@@ -15,8 +15,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Enthusiastic Learner",
     quote:
       "ByteSpace has transformed my approach to learning. The diverse range of courses and the quality of content provided by creators have exceeded my expectations. The platform truly fosters a sense of community and lifelong learning.",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
+    avatar: "/assets/testimonials/sarah-m.png",
   },
   {
     id: "james",
@@ -24,8 +23,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Lifelong Learner",
     quote:
       "I've tried several online learning platforms, and ByteSpace stands out for its vibrant community and the variety of courses available. The easy navigation and engaging content make it a go-to platform for continuous skill development.",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+    avatar: "/assets/testimonials/james-l.png",
   },
   {
     id: "alex",
@@ -33,8 +31,7 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Inspired Creator",
     quote:
       "As a creator, ByteSpace has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It's fulfilling to see my courses making a positive impact on learners globally.",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+    avatar: "/assets/testimonials/alex-b.png",
   },
 ];
 

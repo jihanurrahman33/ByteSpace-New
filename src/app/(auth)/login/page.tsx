@@ -76,62 +76,29 @@ export default function LoginPage() {
               to a world of knowledge.
             </p>
 
-            {/* Overlapping Floating Course Showcase Card (Figma 49:251 & 49:282) */}
-            <div className="relative w-full max-w-[380px] h-[340px] hidden sm:block">
-              {/* Back Card */}
-              <div className="absolute top-0 right-0 w-[300px] bg-white/90 backdrop-blur rounded-[20px] p-4 shadow-xl border border-white/40 transform translate-x-4 -rotate-3 opacity-75">
-                <div className="relative w-full h-28 rounded-xl overflow-hidden mb-2 bg-neutral-200">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop"
-                    alt="Course Preview"
-                    fill
-                    className="object-cover"
-                    sizes="300px"
-                  />
-                </div>
-                <p className="font-heading font-semibold text-xs text-neutral-900">
-                  the Power of Big Data
-                </p>
-                <p className="font-sans text-[10px] text-neutral-500">by purepearl studio</p>
-              </div>
-
-              {/* Front Card */}
-              <div className="absolute top-6 left-0 w-[320px] bg-white rounded-[24px] p-4 shadow-2xl border border-white/60">
-                <div className="relative w-full h-32 rounded-xl overflow-hidden mb-3">
-                  <Image
-                    src="https://images.unsplash.com/photo-1581291518655-9523c932deb4?w=500&h=250&fit=crop"
-                    alt="Learn Figma from Basic"
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                  />
-                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-white/95 text-[10px] font-semibold text-neutral-900">
-                    17 Lessons
-                  </div>
-                </div>
-                <h4 className="font-heading font-semibold text-sm text-neutral-950 mb-0.5">
-                  Learn Figma from Basic
-                </h4>
-                <p className="font-sans text-xs text-neutral-400 mb-2">by purepearl studio</p>
-                <div className="flex items-center justify-between pt-1 border-t border-neutral-100">
-                  <span className="font-heading font-bold text-sm text-brand-blue">$25</span>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs text-neutral-700">4.5</span>
-                    <Star className="w-3.5 h-3.5 fill-secondary-400 text-secondary-400" />
-                  </div>
-                </div>
-              </div>
+            {/* Overlapping Floating Course Showcase Cards & 3D Artwork (Figma 15254:194) */}
+            <div className="relative w-full max-w-[460px] hidden sm:block">
+              <Image
+                src="/assets/auth-cards.png"
+                alt="ByteSpace course preview & community"
+                width={480}
+                height={520}
+                className="w-full h-auto object-contain drop-shadow-2xl"
+                priority
+              />
             </div>
           </div>
 
           {/* Right Column: Login Form Frame (Figma Register_Frame 49:220) */}
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            <div className="w-full max-w-[560px] bg-white rounded-[32px] p-8 sm:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.25)] border border-white/80 text-neutral-950">
+            <div className="w-full max-w-[500px] bg-white rounded-[32px] p-8 sm:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.25)] border border-white/80 text-neutral-950">
               <div className="mb-8">
-                <h2 className="font-heading font-semibold text-2xl sm:text-3xl text-neutral-950 mb-1">
+                <p className="font-sans text-sm font-medium text-brand-blue mb-1">
                   Sign In
+                </p>
+                <h2 className="font-heading font-bold text-3xl sm:text-4xl text-neutral-950">
+                  Welcome Back
                 </h2>
-                <p className="font-sans text-sm text-neutral-500">Welcome Back</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -156,16 +123,6 @@ export default function LoginPage() {
                     <label className="font-heading font-medium text-xs sm:text-sm text-neutral-800">
                       Password
                     </label>
-                    <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        alert("Password reset link sent to your email!");
-                      }}
-                      className="font-sans text-xs text-brand-blue hover:underline"
-                    >
-                      Forgot password?
-                    </a>
                   </div>
                   <div className="relative">
                     <input
@@ -191,20 +148,57 @@ export default function LoginPage() {
                 </div>
 
                 {/* Submit Action */}
-                <button
-                  type="submit"
-                  className="w-full h-12 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-heading font-semibold text-base transition-colors shadow-md mt-6 cursor-pointer"
-                >
-                  Sign In
-                </button>
+                <div className="flex justify-end pt-2">
+                  <button
+                    type="submit"
+                    className="h-11 px-8 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-heading font-medium text-sm transition-colors shadow-md cursor-pointer"
+                  >
+                    Sign In
+                  </button>
+                </div>
               </form>
 
+              {/* Or Divider (Figma 49:230) */}
+              <div className="relative my-8 text-center">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-neutral-200" />
+                </div>
+                <span className="relative px-4 bg-white text-xs text-neutral-400 font-sans">
+                  or
+                </span>
+              </div>
+
+              {/* Social Login Buttons (Facebook & Google, Figma 49:233) */}
+              <div className="flex items-center justify-center gap-4 mb-8">
+                {/* Facebook */}
+                <button
+                  type="button"
+                  className="w-12 h-12 rounded-full border border-neutral-200 hover:border-neutral-400 flex items-center justify-center text-neutral-950 transition-colors cursor-pointer"
+                  aria-label="Login with Facebook"
+                >
+                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </button>
+
+                {/* Google */}
+                <button
+                  type="button"
+                  className="w-12 h-12 rounded-full border border-neutral-200 hover:border-neutral-400 flex items-center justify-center text-neutral-950 transition-colors cursor-pointer"
+                  aria-label="Login with Google"
+                >
+                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" />
+                  </svg>
+                </button>
+              </div>
+
               {/* New user link */}
-              <div className="text-center mt-8 pt-6 border-t border-neutral-100 font-sans text-sm text-neutral-600">
+              <div className="text-center pt-2 font-sans text-xs sm:text-sm text-neutral-600">
                 New user?{" "}
                 <Link
                   href="/register"
-                  className="font-semibold text-brand-blue hover:underline cursor-pointer"
+                  className="font-medium text-brand-blue hover:underline cursor-pointer"
                 >
                   Create an account
                 </Link>

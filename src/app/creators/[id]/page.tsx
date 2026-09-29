@@ -63,70 +63,66 @@ export default function CreatorProfilePage({
 
         {/* Profile Details Container */}
         <div className="relative max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8">
-          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
-            {/* Avatar */}
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden shrink-0 border-4 border-white shadow-2xl bg-white">
-              <Image
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop"
-                alt="PurePearl Studio"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 768px) 112px, 144px"
-              />
+          <div className="flex flex-col gap-6 max-w-4xl">
+            {/* Header info row: Avatar + Name + Role */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              {/* Avatar: 96x96 with 24px border radius as in Figma node 60:2175 */}
+              <div className="relative w-24 h-24 rounded-[24px] overflow-hidden shrink-0 shadow-lg bg-neutral-100">
+                <Image
+                  src="/assets/creators/purepearl-studio.png"
+                  alt="PurePearl Studio"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="96px"
+                />
+              </div>
+
+              {/* Profile Name & Subtitle */}
+              <div>
+                <div className="flex items-center gap-3">
+                  <h1 className="font-heading font-semibold text-3xl sm:text-4xl text-[#f5f5f6] tracking-tight">
+                    PurePearl Studio
+                  </h1>
+                  <span className="px-3 py-1 rounded-full bg-secondary-400 text-neutral-900 font-sans text-xs font-semibold">
+                    Creator
+                  </span>
+                </div>
+                <p className="font-sans text-[#f5f5f6]/90 text-lg font-normal mt-1">
+                  Passionate UI/UX, Web designer
+                </p>
+              </div>
             </div>
 
-            {/* Profile Info */}
-            <div className="flex-1">
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <h1 className="font-heading font-semibold text-2xl sm:text-3xl md:text-4xl text-white">
-                  PurePearl Studio
-                </h1>
-                <span className="px-3 py-1 rounded-full bg-secondary-400 text-neutral-950 font-sans text-xs font-semibold">
-                  Creator
-                </span>
-              </div>
+            {/* Bio text from Figma */}
+            <p className="font-sans text-[#f5f5f6] text-base sm:text-lg leading-relaxed whitespace-pre-line">
+              Welcome to the creative world of PurePearl Studio. Here, you&apos;ll discover the passion, expertise, and inspiration that drive my creative journey. Let&apos;s explore and learn together!
+              {"\n"}Dive into my creative portfolio, showcasing a glimpse of my artistic endeavors. From digital designs to multimedia projects, each piece tells a unique story. Explore the world of creativity with me.
+            </p>
 
-              <p className="font-sans text-secondary-200 text-sm sm:text-base font-medium mb-4">
-                Passionate UI/UX, Web designer
-              </p>
-
-              <p className="font-sans text-neutral-100 text-sm sm:text-base max-w-3xl leading-relaxed mb-6">
-                Welcome to the creative world of PurePearl Studio. Here, you will discover the
-                passion, expertise, and inspiration that drive our creative journey. Let&apos;s explore
-                and learn together! Dive into our creative portfolio, showcasing a glimpse of artistic
-                endeavors from digital designs to multimedia projects.
-              </p>
-
-              {/* Stats & Follow Button */}
-              <div className="flex flex-wrap items-center gap-6 sm:gap-10">
-                <div>
-                  <p className="font-heading font-bold text-2xl sm:text-3xl text-white">
-                    {ALL_COURSES.length}
-                  </p>
-                  <p className="font-sans text-xs text-neutral-300">Products</p>
+            {/* Stats pills & Follow Button */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <div className="flex items-center gap-3">
+                {/* Products Stat Pill */}
+                <div className="bg-white rounded-full px-5 py-2 flex items-center gap-2 shadow-sm">
+                  <span className="font-sans font-medium text-lg text-brand-blue">3</span>
+                  <span className="font-sans font-medium text-lg text-neutral-900">Products</span>
                 </div>
 
-                <div className="w-px h-8 bg-white/20" />
-
-                <div>
-                  <p className="font-heading font-bold text-2xl sm:text-3xl text-white">
-                    {isFollowing ? "14,201" : "14,200"}
-                  </p>
-                  <p className="font-sans text-xs text-neutral-300">Followers</p>
+                {/* Followers Stat Pill */}
+                <div className="bg-white rounded-full px-5 py-2 flex items-center gap-2 shadow-sm">
+                  <span className="font-sans font-medium text-lg text-brand-blue">{isFollowing ? "13" : "12"}</span>
+                  <span className="font-sans font-medium text-lg text-neutral-900">Followers</span>
                 </div>
-
-                <button
-                  onClick={() => setIsFollowing(!isFollowing)}
-                  className={`h-11 px-7 rounded-full font-sans font-semibold text-sm transition-all cursor-pointer shadow-md ${
-                    isFollowing
-                      ? "bg-white text-neutral-950"
-                      : "bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950"
-                  }`}
-                >
-                  {isFollowing ? "Following" : "Follow"}
-                </button>
               </div>
+
+              {/* Follow Button */}
+              <button
+                onClick={() => setIsFollowing(!isFollowing)}
+                className="h-11 px-8 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 font-sans font-medium text-lg transition-all cursor-pointer shadow-sm ml-auto sm:ml-0"
+              >
+                {isFollowing ? "Following" : "Follow"}
+              </button>
             </div>
           </div>
         </div>

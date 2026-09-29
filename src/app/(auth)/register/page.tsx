@@ -77,62 +77,29 @@ export default function RegisterPage() {
               users to sign up quickly, easily, and at no cost
             </p>
 
-            {/* Overlapping Floating Course Showcase Card (Figma 49:32 & 49:63) */}
-            <div className="relative w-full max-w-[380px] h-[340px] hidden sm:block">
-              {/* Back Card */}
-              <div className="absolute top-0 right-0 w-[300px] bg-white/90 backdrop-blur rounded-[20px] p-4 shadow-xl border border-white/40 transform translate-x-4 -rotate-3 opacity-75">
-                <div className="relative w-full h-28 rounded-xl overflow-hidden mb-2 bg-neutral-200">
-                  <Image
-                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=200&fit=crop"
-                    alt="Course Preview"
-                    fill
-                    className="object-cover"
-                    sizes="300px"
-                  />
-                </div>
-                <p className="font-heading font-semibold text-xs text-neutral-900">
-                  Build Digital Asset
-                </p>
-                <p className="font-sans text-[10px] text-neutral-500">by purepearl studio</p>
-              </div>
-
-              {/* Front Card */}
-              <div className="absolute top-6 left-0 w-[320px] bg-white rounded-[24px] p-4 shadow-2xl border border-white/60">
-                <div className="relative w-full h-32 rounded-xl overflow-hidden mb-3">
-                  <Image
-                    src="https://images.unsplash.com/photo-1581291518655-9523c932deb4?w=500&h=250&fit=crop"
-                    alt="Learn Figma from Basic"
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                  />
-                  <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-white/95 text-[10px] font-semibold text-neutral-900">
-                    17 Lessons
-                  </div>
-                </div>
-                <h4 className="font-heading font-semibold text-sm text-neutral-950 mb-0.5">
-                  Learn Figma from Basic
-                </h4>
-                <p className="font-sans text-xs text-neutral-400 mb-2">by purepearl studio</p>
-                <div className="flex items-center justify-between pt-1 border-t border-neutral-100">
-                  <span className="font-heading font-bold text-sm text-brand-blue">$25</span>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs text-neutral-700">4.5</span>
-                    <Star className="w-3.5 h-3.5 fill-secondary-400 text-secondary-400" />
-                  </div>
-                </div>
-              </div>
+            {/* Overlapping Floating Course Showcase Cards & 3D Artwork (Figma 15254:194) */}
+            <div className="relative w-full max-w-[460px] hidden sm:block">
+              <Image
+                src="/assets/auth-cards.png"
+                alt="ByteSpace course preview & community"
+                width={480}
+                height={520}
+                className="w-full h-auto object-contain drop-shadow-2xl"
+                priority
+              />
             </div>
           </div>
 
           {/* Right Column: Register Form Frame (Figma Register_Frame 47:362) */}
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            <div className="w-full max-w-[560px] bg-white rounded-[32px] p-8 sm:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.25)] border border-white/80 text-neutral-950">
+            <div className="w-full max-w-[500px] bg-white rounded-[32px] p-8 sm:p-12 shadow-[0_24px_64px_rgba(0,0,0,0.25)] border border-white/80 text-neutral-950">
               <div className="mb-8">
-                <h2 className="font-heading font-semibold text-2xl sm:text-3xl text-neutral-950 mb-1">
+                <p className="font-sans text-sm font-medium text-brand-blue mb-1">
                   Create an Account
+                </p>
+                <h2 className="font-heading font-bold text-3xl sm:text-4xl text-neutral-950">
+                  Welcome to ByteSpace
                 </h2>
-                <p className="font-sans text-sm text-neutral-500">Welcome to ByteSpace</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">

@@ -95,72 +95,40 @@ export function CourseDetailsHero({
           {course.author}
         </Link>
 
-        {/* Metadata Pill Row (Figma 55:4189) */}
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
-          {/* Level */}
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
-            <Signal className="w-4 h-4 text-secondary-400" />
-            <span>{course.level}</span>
+        {/* Metadata Pill Row & Right-Aligned Share Button (Figma 55:4189) */}
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            {/* Level */}
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
+              <Signal className="w-4 h-4 text-secondary-400" />
+              <span>{course.level}</span>
+            </div>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
+              <Star className="w-4 h-4 fill-secondary-400 text-secondary-400" />
+              <span>{course.rating} (172 reviews)</span>
+            </div>
+
+            {/* Students */}
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
+              <Users className="w-4 h-4 text-secondary-400" />
+              <span>199 Students</span>
+            </div>
           </div>
 
-          {/* Rating */}
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
-            <Star className="w-4 h-4 fill-secondary-400 text-secondary-400" />
-            <span>{course.rating} (172 reviews)</span>
-          </div>
-
-          {/* Students */}
-          <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100">
-            <Users className="w-4 h-4 text-secondary-400" />
-            <span>199 Students</span>
-          </div>
-
-          {/* Share */}
+          {/* Figma Neon Lime Share Button */}
           <button
             onClick={() => {
-              if (navigator.share) {
+              if (typeof navigator !== "undefined" && navigator.share) {
                 navigator.share({ title: course.title, url: window.location.href });
               }
             }}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-sm font-medium text-neutral-100 hover:bg-white/20 transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-5 py-2 rounded-full bg-secondary-400 hover:bg-[#c2ea1b] text-neutral-950 text-sm font-medium transition-colors shadow-xs cursor-pointer"
           >
-            <Share2 className="w-4 h-4" />
+            <Share2 className="w-4 h-4 stroke-[2.5]" />
             <span>Share</span>
           </button>
-        </div>
-
-        {/* Navigation Tabs (Figma 55:4118 - About / Lessons / Reviews) */}
-        <div className="flex items-center gap-2 border-b border-white/20 pt-2">
-          <Link
-            href={`/courses/${course.id}`}
-            className={`px-6 py-3 font-heading font-medium text-sm sm:text-base border-b-2 transition-all cursor-pointer ${
-              activeTab === "about"
-                ? "border-secondary-400 text-secondary-400 font-semibold"
-                : "border-transparent text-neutral-300 hover:text-white"
-            }`}
-          >
-            About
-          </Link>
-          <Link
-            href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
-            className={`px-6 py-3 font-heading font-medium text-sm sm:text-base border-b-2 transition-all cursor-pointer ${
-              activeTab === "lessons"
-                ? "border-secondary-400 text-secondary-400 font-semibold"
-                : "border-transparent text-neutral-300 hover:text-white"
-            }`}
-          >
-            Lessons ({course.lessons})
-          </Link>
-          <Link
-            href={`/courses/${course.id}/reviews`}
-            className={`px-6 py-3 font-heading font-medium text-sm sm:text-base border-b-2 transition-all cursor-pointer ${
-              activeTab === "reviews"
-                ? "border-secondary-400 text-secondary-400 font-semibold"
-                : "border-transparent text-neutral-300 hover:text-white"
-            }`}
-          >
-            Reviews
-          </Link>
         </div>
       </div>
     </section>
