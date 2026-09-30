@@ -1,202 +1,369 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Check, TrendingUp, Star, Users } from "lucide-react";
+import { Check, Star } from "lucide-react";
+
+const HAPPY_STUDENTS_AVATARS = [
+  "/assets/figma/9ef8cb329b949267cc8214b6727067c4a13af4b4.png",
+  "/assets/figma/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png",
+  "/assets/figma/83fb3e04056cc892636460bee5791aa3f243854c.png",
+  "/assets/figma/f3cf29a8fed39589ceb38423e65b26b8d6c93123.png",
+  "/assets/figma/5824acacb3b76175bc84084ec18597109498f96d.png",
+  "/assets/figma/7fdccc783264eedc4fb989984eecbc4058a219f2.png",
+  "/assets/figma/1e078348a54489bfd231d82fe1944770883c8d80.png",
+];
+
+const COURSE_CARD_AVATARS = [
+  "/assets/figma/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png",
+  "/assets/figma/3fe559181733e0fb69226caee836e40092facb44.png",
+  "/assets/figma/0577f0e9b7fca2f32639871454da0de95f951709.png",
+  "/assets/figma/d0cd3adb501c64c1b4cf766de6abb9fe8925fb5f.png",
+];
+
+const FIGMA_IMAGE_DROP_SHADOW =
+  "drop-shadow(0.5px 0.74px 3px rgba(0, 0, 0, 0.04)) drop-shadow(2.2px 3.2px 5.7px rgba(0, 0, 0, 0.06)) drop-shadow(5.4px 7.7px 9.6px rgba(0, 0, 0, 0.07)) drop-shadow(10.2px 14.6px 16px rgba(0, 0, 0, 0.08)) drop-shadow(17px 24px 24px rgba(0, 0, 0, 0.09)) drop-shadow(26px 37px 36px rgba(0, 0, 0, 0.10)) drop-shadow(37px 53px 56px rgba(0, 0, 0, 0.105)) drop-shadow(51px 73px 72px rgba(0, 0, 0, 0.13))";
 
 export function FeatureSplitSection() {
   return (
-    <section className="w-full bg-[#FAFAFA] py-20 md:py-32 overflow-hidden border-t border-neutral-100">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] flex flex-col gap-24 md:gap-36">
-        {/* Showcase 1: Learner Growth (Figma Frame 13) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Text Column */}
-          <div className="flex flex-col text-left">
-            <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] text-neutral-950 leading-[1.2] mb-6">
-              Your Path to Professional Growth Starts Here!
+    <section className="relative w-full bg-[#FAFAFA] overflow-hidden min-h-[1460px]">
+      {/* Figma Frame 15 Background Radial Glows (Group 5 & Ellipse 12) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Top-Left Lime Glow (Ellipse 11: 1137x1137 at x=-152, y=-466, 40% opacity) */}
+        <div
+          className="absolute -left-[152px] -top-[466px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(203, 252, 1, 0.40) 0%, rgba(203, 252, 1, 0.15) 53%, rgba(203, 252, 1, 0.04) 75%, transparent 100%)",
+          }}
+        />
+
+        {/* Top-Right Blue Glow (Ellipse 10: 1137x1137 at x=811, y=-458, 8% opacity) */}
+        <div
+          className="absolute left-[811px] -top-[458px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(0, 59, 226, 0.08) 0%, rgba(0, 59, 226, 0.03) 53%, transparent 100%)",
+          }}
+        />
+
+        {/* Middle-Left Blue Glow (Ellipse 9: 1137x1137 at x=-508, y=183, 16% opacity) */}
+        <div
+          className="absolute -left-[508px] top-[183px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(0, 59, 226, 0.16) 0%, rgba(0, 59, 226, 0.06) 53%, transparent 100%)",
+          }}
+        />
+
+        {/* Right Middle Blue Glow (Ellipse 8: 1137x1137 at x=722, y=788, 24% opacity) */}
+        <div
+          className="absolute left-[722px] top-[788px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(0, 59, 226, 0.24) 0%, rgba(0, 59, 226, 0.08) 53%, transparent 100%)",
+          }}
+        />
+
+        {/* Bottom-Left Lime Glow (Ellipse 12: 672x672 at x=-287, y=946, 60% opacity) */}
+        <div
+          className="absolute -left-[287px] top-[946px] w-[672px] h-[672px] rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(203, 252, 1, 0.60) 0%, rgba(203, 252, 1, 0.23) 53%, rgba(203, 252, 1, 0.06) 75%, transparent 100%)",
+          }}
+        />
+      </div>
+
+      {/* Main Container matching Figma Frame 16 (1258px wide, y=120 padding) */}
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:pl-[121px] lg:pr-[61px] py-[120px] flex flex-col gap-[72px]">
+        {/* ========================================================================= */}
+        {/* Showcase 1: Learner Growth (Figma Frame 13, 1258x552)                     */}
+        {/* ========================================================================= */}
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0 min-h-[552px]">
+          {/* Left Text Column (Figma 34:768: 574x404) */}
+          <div className="w-full lg:w-[574px] flex flex-col">
+            <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] lg:leading-[52.8px] text-[#242528] max-w-[577px] tracking-tight">
+              Your Path to Professional
+              <br />
+              Growth Starts Here!
             </h2>
-            <p className="font-sans text-neutral-700 text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+
+            <p className="font-sans font-normal text-base lg:text-[18px] lg:leading-[28.8px] text-[#4B4C53] max-w-[477px] mt-10">
               Explore our curated selection of courses tailored to enhance your capabilities and accelerate your career journey. Whether you are looking to sharpen specific skills, gain industry expertise, or embark on a new career path entirely, we have the resources you need.
             </p>
 
-            {/* 3 Stats (Figma Frame 13: 12K Students, 70+ Courses, 16 Creators) */}
-            <div className="flex flex-wrap items-center gap-8 sm:gap-14 pt-4 border-t border-neutral-200/60">
-              <div>
-                <p className="font-heading font-medium text-3xl md:text-[36px] text-brand-blue tracking-[-0.01em] leading-[1.2]">
+            {/* Statistics (Figma 34:773: 12K Students, 70+ Courses, 16 Creators) */}
+            <div className="mt-10 flex items-center gap-[56px]">
+              <div className="flex flex-col">
+                <span className="font-heading font-medium text-3xl lg:text-[36px] lg:leading-[44px] text-[#003BE2]">
                   12K
-                </p>
-                <p className="font-sans text-[18px] text-[#4B4C53] mt-1 leading-[1.6]">Students</p>
+                </span>
+                <span className="font-sans font-normal text-base lg:text-[18px] lg:leading-[29px] text-[#4B4C53]">
+                  Students
+                </span>
               </div>
-              <div className="w-px h-12 bg-neutral-200 hidden sm:block" />
-              <div>
-                <p className="font-heading font-medium text-3xl md:text-[36px] text-brand-blue tracking-[-0.01em] leading-[1.2]">
+              <div className="flex flex-col">
+                <span className="font-heading font-medium text-3xl lg:text-[36px] lg:leading-[44px] text-[#003BE2]">
                   70+
-                </p>
-                <p className="font-sans text-[18px] text-[#4B4C53] mt-1 leading-[1.6]">Courses</p>
+                </span>
+                <span className="font-sans font-normal text-base lg:text-[18px] lg:leading-[29px] text-[#4B4C53]">
+                  Courses
+                </span>
               </div>
-              <div className="w-px h-12 bg-neutral-200 hidden sm:block" />
-              <div>
-                <p className="font-heading font-medium text-3xl md:text-[36px] text-brand-blue tracking-[-0.01em] leading-[1.2]">
+              <div className="flex flex-col">
+                <span className="font-heading font-medium text-3xl lg:text-[36px] lg:leading-[44px] text-[#003BE2]">
                   16
-                </p>
-                <p className="font-sans text-[18px] text-[#4B4C53] mt-1 leading-[1.6]">Creators</p>
+                </span>
+                <span className="font-sans font-normal text-base lg:text-[18px] lg:leading-[29px] text-[#4B4C53]">
+                  Creators
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Right Visual Showcase (Figma Frame 11) */}
-          <div className="relative w-full max-w-[540px] mx-auto lg:max-w-none h-[420px] sm:h-[480px] rounded-3xl overflow-visible flex items-center justify-center">
-            {/* Main Visual Image */}
-            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-neutral-100">
-              <Image
-                src="/assets/hero-student.png"
-                alt="Professional learning together"
-                fill
-                className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 540px"
-              />
-            </div>
-
-            {/* Floating Mini Course Card (Top Left) */}
-            <div className="absolute -top-6 -left-4 sm:-left-8 bg-white p-3 sm:p-4 rounded-2xl shadow-[0_16px_36px_rgba(0,0,0,0.12)] border border-[#CED0D3] w-[200px] sm:w-[220px] z-10">
-              <div className="relative w-full h-24 rounded-lg overflow-hidden mb-2">
+          {/* Right Visual Composition (Figma Frame 11: 621x552) */}
+          <div className="relative w-full max-w-[621px] h-[552px] shrink-0 mx-auto lg:mx-0 overflow-visible">
+            {/* 1. Main Course Card (Figma 34:1055: 373x384 at left: 0, top: 0) */}
+            <div className="absolute left-0 top-0 w-[373px] h-[384px] bg-white rounded-[24px] border border-[#CED0D3] p-4 flex flex-col justify-between z-0">
+              {/* Thumbnail with Frosted Badges */}
+              <div className="w-[341px] h-[195px] rounded-[12px] relative overflow-hidden bg-neutral-100">
                 <Image
                   src="/assets/courses/course-figma.png"
-                  alt="Course preview"
+                  alt="Learn Figma from Basic"
                   fill
                   className="object-cover"
-                  sizes="200px"
                 />
+                <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                  <span className="h-8 px-3 rounded-full bg-black/40 backdrop-blur-[8px] text-white font-sans font-medium text-xs flex items-center">
+                    17 Lessons
+                  </span>
+                  <span className="h-8 px-3 rounded-full bg-black/40 backdrop-blur-[8px] text-white font-sans font-medium text-xs flex items-center">
+                    2 hours 16 mins
+                  </span>
+                  <span className="h-8 px-3 rounded-full bg-black/40 backdrop-blur-[8px] text-white font-sans font-medium text-xs flex items-center">
+                    59 Comments
+                  </span>
+                </div>
               </div>
-              <p className="font-heading font-semibold text-xs sm:text-sm text-neutral-950 line-clamp-1">
-                Learn Figma from Basic
-              </p>
-              <div className="flex items-center justify-between mt-1">
-                <span className="font-heading font-bold text-xs text-brand-blue">$25</span>
-                <div className="flex items-center gap-1">
-                  <span className="text-[10px] text-neutral-600">4.5</span>
-                  <Star className="w-3 h-3 fill-secondary-400 text-secondary-400" />
+
+              {/* Title, Creator, and Top-Right Rating (Figma 34:1064 & 34:1083) */}
+              <div className="relative flex items-start justify-between">
+                <div>
+                  <h3 className="font-heading font-semibold text-[20px] leading-[28px] text-[#242528]">
+                    Learn Figma from Basic
+                  </h3>
+                  <p className="font-sans text-xs text-[#4F4F4F] mt-0.5">by purepearl studio</p>
+                </div>
+                <div className="flex items-center gap-1 shrink-0 pt-0.5">
+                  <span className="font-sans font-medium text-[18px] text-[#242528]">4.5</span>
+                  <Star className="w-5 h-5 fill-[#D4FB20] text-[#D4FB20]" />
+                </div>
+              </div>
+
+              {/* Metadata: Beginner & Avatar Stack (Figma 34:1068) */}
+              <div className="flex items-center justify-between">
+                <div className="h-8 px-3 rounded-full bg-[#F5F5F6] text-[#242528] text-xs font-medium font-sans flex items-center gap-1.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2 17h4v4H2v-4zm6-5h4v9H8v-9zm6-5h4v14h-4V7zm6-5h4v19h-4V2z" />
+                  </svg>
+                  Beginner
+                </div>
+                <div className="flex items-center -space-x-2">
+                  {COURSE_CARD_AVATARS.map((src, idx) => (
+                    <div
+                      key={idx}
+                      className="w-8 h-8 rounded-full border-2 border-white overflow-hidden relative shrink-0"
+                    >
+                      <Image src={src} alt="student" fill className="object-cover" sizes="32px" />
+                    </div>
+                  ))}
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-[#D4FB20] text-[#242528] text-[10px] font-bold font-sans flex items-center justify-center shrink-0">
+                    26+
+                  </div>
+                </div>
+              </div>
+
+              {/* Price Row (Figma 34:1080) */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-baseline gap-1">
+                  <span className="font-heading font-semibold text-[20px] text-[#003BE2]">$25</span>
+                  <span className="font-sans text-xs text-[#4B4C53]">/lifetime</span>
                 </div>
               </div>
             </div>
 
-            {/* Floating Progress Card (Bottom Right) */}
-            <div className="absolute -bottom-6 -right-4 sm:-right-8 bg-white p-4 rounded-2xl shadow-[0_16px_36px_rgba(0,0,0,0.12)] border border-neutral-100 w-[180px] sm:w-[200px] z-10">
-              <p className="text-xs font-medium text-neutral-600">Learning Progress</p>
-              <p className="text-xl font-bold font-heading text-neutral-950 my-1">55%</p>
-              <div className="w-full bg-[#F6F6F6] h-2 rounded-full overflow-hidden">
-                <div className="bg-secondary-400 h-full w-[55%] rounded-full" />
+            {/* 2. Lime-Green Decorative 3D Spiral Element (Figma 34:981: 215x215 at left: 406, top: 67) */}
+            <div className="absolute left-[406px] top-[67px] w-[215px] h-[215px] pointer-events-none z-0">
+              <Image
+                src="/assets/home/lime-spiral-decor.png"
+                alt="Lime decorative element"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* 3. Main Person Image (Figma 34:971: 577x540 at left: 0, top: 12) */}
+            <div
+              className="absolute left-0 top-[12px] w-[577px] h-[540px] pointer-events-none z-10"
+              style={{ filter: FIGMA_IMAGE_DROP_SHADOW }}
+            >
+              <Image
+                src="/assets/figma/29a52a24e51266edcd7d57d73392ee5fc4833220.png"
+                alt="Learner with laptop and headphones"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* 4. Learning Progress Card (Figma 34:1031: 232x138 at left: 345, top: 213) */}
+            <div className="absolute left-[345px] top-[213px] w-[232px] h-[138px] bg-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,0,0,0.08)] backdrop-blur-[20px] z-20 flex flex-col justify-between">
+              <div>
+                <p className="font-sans font-medium text-base leading-[24px] text-[#242528]">
+                  Learning Progress
+                </p>
+                <p className="font-heading font-semibold text-[48px] leading-[57.6px] tracking-[-0.48px] text-[#242528] mt-1">
+                  55%
+                </p>
+              </div>
+              <div className="w-[200px] h-[8px] rounded-[24px] bg-[#F6F6F6] overflow-hidden">
+                <div className="w-[112px] h-[8px] rounded-[24px] bg-[#D4FB20]" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Showcase 2: Creator Platform (Figma Frame 14) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Visual Showcase (Figma Frame 12) */}
-          <div className="relative w-full max-w-[540px] mx-auto lg:max-w-none h-[420px] sm:h-[480px] rounded-3xl overflow-visible flex items-center justify-center order-2 lg:order-1">
-            {/* Main Visual Image */}
-            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-neutral-100">
+        {/* ========================================================================= */}
+        {/* Showcase 2: Creator Platform (Figma Frame 14, 1200x596)                   */}
+        {/* ========================================================================= */}
+        <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-0 min-h-[596px]">
+          {/* Left Visual Composition (Figma Frame 12: 541x596) */}
+          <div className="relative w-full max-w-[541px] h-[596px] shrink-0 mx-auto lg:mx-0 overflow-visible">
+            {/* 1. Total Revenue Card (Figma 34:987: 232x119 at left: 0, top: 44) */}
+            <div className="absolute left-0 top-[44px] w-[232px] h-[119px] bg-[#003BE2] text-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,59,226,0.3)] z-0 flex flex-col justify-between">
+              <div>
+                <p className="font-sans font-medium text-base leading-[19.2px] text-[#F5F5F6]">
+                  Total Revenue
+                </p>
+                <p className="font-sans text-[10px] leading-[12px] text-[#F5F5F6] mt-0.5">
+                  July 1-28
+                </p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="font-heading font-semibold text-2xl leading-[32px] text-[#F5F5F6]">
+                  $120.29
+                </p>
+                <span className="px-2 py-0.5 rounded-[4px] bg-[#D4FB20] text-[#242528] text-[10px] font-medium font-sans leading-[20px]">
+                  +12$
+                </span>
+              </div>
+              <div className="w-[200px] h-[8px] rounded-[24px] bg-white overflow-hidden">
+                <div className="w-[112px] h-[8px] rounded-[24px] bg-[#D4FB20]" />
+              </div>
+            </div>
+
+            {/* 2. Year to Date Card (Figma 34:998: 134x135 at left: 0, top: 194) */}
+            <div className="absolute left-0 top-[194px] w-[134px] h-[135px] bg-[#003BE2] text-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,59,226,0.3)] z-0 flex flex-col justify-between">
+              <div>
+                <p className="font-sans font-medium text-base leading-[19.2px] text-[#F5F5F6]">
+                  Year to Date
+                </p>
+                <p className="font-sans text-[10px] leading-[12px] text-[#F5F5F6] mt-0.5">2023</p>
+              </div>
+              <p className="font-heading font-semibold text-2xl leading-[32px] text-[#F5F5F6]">
+                $1,200.38
+              </p>
+              <div>
+                <span className="inline-block px-2 py-0.5 rounded-[4px] bg-[#D4FB20] text-[#242528] text-[10px] font-medium font-sans leading-[20px]">
+                  +12$
+                </span>
+              </div>
+            </div>
+
+            {/* 3. Lime Spiral Decorative Element (Figma 34:1006: 215x215 at left: 305, top: 114) */}
+            <div className="absolute left-[305px] top-[114px] w-[215px] h-[215px] pointer-events-none z-0">
               <Image
-                src="/assets/creator-woman.png"
-                alt="Creator hosting courses"
+                src="/assets/home/lime-spiral-decor.png"
+                alt="Lime spiral decoration"
                 fill
                 className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 540px"
+                priority
               />
             </div>
 
-            {/* Floating Blue Revenue Card (Top Left) */}
-            <div className="absolute -top-6 -left-4 sm:-left-8 bg-brand-blue text-[#F5F5F6] p-4 rounded-[16px] shadow-[0_16px_36px_rgba(0,59,226,0.3)] w-[210px] sm:w-[232px] z-10 backdrop-blur-[10px]">
-              <div className="flex items-center justify-between mb-1">
-                <div>
-                  <p className="text-[16px] font-medium font-sans text-[#F5F5F6] leading-[1.2]">Total Revenue</p>
-                  <p className="text-[10px] font-sans text-[#F5F5F6]/80 leading-[1.2] mt-0.5">July 1-28</p>
-                </div>
-                <div className="px-2 py-0.5 rounded-full bg-[#CBFC01] text-[#242528] text-[10px] font-medium">
-                  +12$
-                </div>
-              </div>
-              <p className="text-[24px] font-semibold font-heading text-[#F5F5F6] my-1 leading-[1.33]">$120.29</p>
-              <div className="w-full bg-white h-[8px] rounded-[24px] overflow-hidden mt-2">
-                <div className="bg-[#D4FB20] h-full w-[56%] rounded-[24px]" />
-              </div>
+            {/* 4. Female Creator Image (Figma 34:1011: 435x596 at left: 28, top: 0) */}
+            <div
+              className="absolute left-[28px] top-0 w-[435px] h-[596px] pointer-events-none z-10"
+              style={{ filter: FIGMA_IMAGE_DROP_SHADOW }}
+            >
+              <Image
+                src="/assets/figma/0d6596fb1df66aaf843ee85722f439fada233946.png"
+                alt="Female creator hosting courses"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
 
-            {/* Floating Blue Year-to-Date Card (Bottom Left) */}
-            <div className="absolute -bottom-6 -left-2 sm:-left-4 bg-brand-blue text-[#F5F5F6] p-4 rounded-[16px] shadow-[0_16px_36px_rgba(0,59,226,0.3)] w-[140px] sm:w-[150px] z-10 backdrop-blur-[10px]">
-              <div className="flex items-center justify-between mb-1">
-                <div>
-                  <p className="text-[14px] font-medium font-sans text-[#F5F5F6]">Year to Date</p>
-                  <p className="text-[10px] font-sans text-[#F5F5F6]/80">2023</p>
-                </div>
-                <div className="px-1.5 py-0.5 rounded-full bg-[#CBFC01] text-[#242528] text-[9px] font-medium">
-                  +12$
-                </div>
-              </div>
-              <p className="text-[18px] font-semibold font-heading text-[#F5F5F6] mt-1">$1,200.38</p>
-            </div>
-
-            {/* Floating Happy Students Card (Bottom Right, Figma 34:1038) */}
-            <div className="absolute -bottom-6 -right-2 sm:-right-6 bg-white p-3 sm:p-4 rounded-[16px] shadow-[0_16px_36px_rgba(0,0,0,0.12)] border border-[#CED0D3] w-[200px] sm:w-[240px] z-10">
-              <div className="flex flex-col gap-0 mb-1.5">
-                <span className="text-[13px] sm:text-[15px] font-medium text-[#242528] font-sans leading-[1.2]">
+            {/* 5. Happy Students Card (Figma 34:1038: 258x123 at left: 283, top: 413) */}
+            <div className="absolute left-[283px] top-[413px] w-[258px] h-[123px] bg-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,0,0,0.08)] backdrop-blur-[20px] z-20 flex flex-col justify-between">
+              <div className="flex flex-col">
+                <span className="font-sans font-medium text-base leading-[24px] text-[#242528]">
                   Happy Students
                 </span>
                 <div className="flex items-center gap-1 mt-0.5">
-                  <span className="text-[10px] sm:text-[11px] font-normal text-[#242528] font-sans">
+                  <span className="font-sans text-[10px] leading-[15px] text-[#82868E]">
                     4.5 (240)
                   </span>
-                  <Star className="w-3 h-3 fill-[#D4FB20] text-[#D4FB20]" />
+                  <Star className="w-4 h-4 fill-[#D4FB20] text-[#D4FB20]" />
                 </div>
               </div>
-              <div className="flex items-center -space-x-2">
-                {[
-                  "/assets/testimonials/sarah-m.png",
-                  "/assets/creators/student-1.png",
-                  "/assets/creators/student-2.png",
-                  "/assets/creators/student-3.png",
-                ].map((src, idx) => (
+              <div className="flex items-center -space-x-[16px]">
+                {HAPPY_STUDENTS_AVATARS.map((src, i) => (
                   <div
-                    key={idx}
-                    className="w-6 h-6 rounded-full border-2 border-white overflow-hidden relative shrink-0"
+                    key={i}
+                    className="w-[43px] h-[43px] rounded-full border-2 border-white overflow-hidden relative shrink-0"
                   >
-                    <Image src={src} alt="student" fill className="object-cover" sizes="24px" />
+                    <Image src={src} alt="student" fill className="object-cover" sizes="43px" />
                   </div>
                 ))}
-                <div className="w-6 h-6 rounded-full border-2 border-white bg-[#D4FB20] text-[#242528] flex items-center justify-center text-[8px] font-bold font-sans shrink-0">
+                <div className="w-[43px] h-[43px] rounded-full border-2 border-white bg-[#D4FB20] text-[#242528] text-xs font-bold font-sans flex items-center justify-center shrink-0">
                   2K+
                 </div>
               </div>
             </div>
           </div>
 
-            {/* Right Text Column */}
-            <div className="flex flex-col text-left order-1 lg:order-2">
-              <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] text-neutral-950 leading-[1.2] mb-6">
-                Create & Manage Courses Easily.
-              </h2>
-              <p className="font-sans text-[#242528] font-bold text-base md:text-[18px] leading-[1.56] mb-8 max-w-xl">
-                ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.
-              </p>
+          {/* Right Text Column (Figma 34:897: 580x388) */}
+          <div className="w-full lg:w-[580px] flex flex-col">
+            <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] lg:leading-[52.8px] text-[#242528] max-w-[391px] tracking-tight">
+              Create & Manage
+              <br />
+              Courses Easily.
+            </h2>
 
-              {/* 4 Feature Checklist Points (Figma Frame 14: #003BE2 blue vectors) */}
-              <div className="flex flex-col gap-4">
-                {[
-                  "Share Your Expertise",
-                  "Monetize Your Passion",
-                  "Flexibility and Autonomy",
-                  "Build a Community",
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-brand-blue flex items-center justify-center shrink-0 shadow-xs">
-                      <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
-                    </div>
-                    <span className="font-sans font-medium text-base md:text-[18px] text-[#242528]">
-                      {item}
-                    </span>
+            <p className="font-sans font-normal text-base lg:text-[18px] lg:leading-[28.8px] text-[#4B4C53] max-w-[574px] mt-10">
+              ByteSpace supports individuals or entities in the creation, publication, and administration of educational courses.
+            </p>
+
+            {/* 4 Feature Checklist Points with #003BE2 filled checkmarks */}
+            <div className="mt-10 flex flex-col gap-4">
+              {[
+                "Share Your Expertise",
+                "Monetize Your Passion",
+                "Flexibility and Autonomy",
+                "Build a Community",
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-[#003BE2] flex items-center justify-center shrink-0 shadow-xs">
+                    <Check className="w-3.5 h-3.5 text-white stroke-[3]" />
                   </div>
-                ))}
-              </div>
+                  <span className="font-sans font-medium text-[18px] leading-[21.6px] text-[#242528]">
+                    {item}
+                  </span>
+                </div>
+              ))}
             </div>
+          </div>
         </div>
       </div>
     </section>
