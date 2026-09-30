@@ -136,6 +136,8 @@ const ROW_3_TABS = [
   "Cooking",
 ];
 
+const ALL_TABS = [...ROW_1_TABS, ...ROW_2_TABS, ...ROW_3_TABS];
+
 export function FeaturedCoursesSection() {
   const [activeTab, setActiveTab] = useState("Featured");
   const [isLoading, setIsLoading] = useState(false);
@@ -192,8 +194,35 @@ export function FeaturedCoursesSection() {
   return (
     <section className="w-full bg-white pb-14 sm:pb-20 md:pb-28 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px]">
-        {/* Category Tabs (Figma Tab_Categories_21_33) */}
-        <div className="flex flex-col items-center gap-2.5 sm:gap-3 md:gap-4 mb-10 sm:mb-14 md:mb-16">
+        {/* Mobile Category Tabs Sidescroll (< md) */}
+        <div className="flex md:hidden w-full overflow-x-auto no-scrollbar gap-2 px-4 -mx-4 pb-2 mb-8 items-center scroll-smooth">
+          {ALL_TABS.map((tab) => {
+            const isActive = activeTab === tab;
+            return (
+              <button
+                key={`mobile-${tab}`}
+                type="button"
+                onClick={() => handleTabChange(tab)}
+                className={`h-9 px-4 rounded-[24px] text-xs font-medium font-sans whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+                  isActive
+                    ? "bg-[#D4FB20] text-[#242528] font-semibold shadow-xs"
+                    : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E8E8EA]"
+                }`}
+              >
+                {tab}
+              </button>
+            );
+          })}
+          <Link
+            href="/courses"
+            className="h-9 px-3 flex items-center text-xs font-medium font-sans text-[#003BE2] hover:underline cursor-pointer whitespace-nowrap shrink-0"
+          >
+            + More
+          </Link>
+        </div>
+
+        {/* Category Tabs for Tablet & Desktop (Figma Tab_Categories_21_33, >= md) */}
+        <div className="hidden md:flex flex-col items-center gap-2.5 sm:gap-3 md:gap-4 mb-10 sm:mb-14 md:mb-16">
           {/* Row 1 */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 md:gap-3">
             {ROW_1_TABS.map((tab) => {
