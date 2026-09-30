@@ -12,7 +12,7 @@ export function CoursesSearchBanner({
   onSearchChange,
 }: CoursesSearchBannerProps) {
   return (
-    <section className="relative w-full h-[360px] bg-brand-blue text-neutral-50 overflow-hidden flex flex-col justify-between">
+    <section className="relative w-full min-h-[300px] sm:h-[360px] bg-brand-blue text-neutral-50 overflow-hidden flex flex-col justify-between">
       {/* 120px Architectural Grid Lines (matching Figma 55:1693 Group 4) */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.12]">
         <svg
@@ -44,15 +44,15 @@ export function CoursesSearchBanner({
       <Header variant="hero" />
 
       {/* Title & Search Bar (Figma 55:857: 624x127 at y: 1912) */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full flex flex-col items-center text-center pb-8 sm:pb-12 pt-2 sm:pt-0">
-        <h1 className="font-heading font-semibold text-[28px] sm:text-[36px] md:text-[44px] text-white tracking-tight leading-[1.2] mb-4 sm:mb-6">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full flex flex-col items-center text-center pb-6 sm:pb-12 pt-2 sm:pt-0">
+        <h1 className="font-heading font-semibold text-[26px] sm:text-[36px] md:text-[44px] text-white tracking-tight leading-[1.2] mb-3 sm:mb-6">
           Find Your Next Course
         </h1>
 
         {/* Separate Search Input and Courses Dropdown Button (matching Figma 04_Search_Page) */}
-        <div className="w-full max-w-[624px] flex items-center justify-center gap-2.5 sm:gap-3.5">
+        <div className="w-full max-w-[624px] flex items-center justify-center gap-2 sm:gap-3.5">
           {/* 1. Search Input Pill */}
-          <div className="flex-1 h-[48px] sm:h-[54px] bg-white rounded-full px-4 sm:px-6 flex items-center shadow-lg">
+          <div className="flex-1 min-w-0 h-[46px] sm:h-[54px] bg-white rounded-full px-3.5 sm:px-6 flex items-center shadow-lg">
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5 text-[#82868E] shrink-0 mr-2 sm:mr-3"
               fill="none"
@@ -71,14 +71,14 @@ export function CoursesSearchBanner({
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full bg-transparent border-none text-[#242528] placeholder-[#82868E] font-sans text-sm sm:text-base outline-none"
+              className="w-full min-w-0 bg-transparent border-none text-[#242528] placeholder-[#82868E] font-sans text-xs sm:text-base outline-none"
             />
           </div>
 
           {/* 2. Separate Courses Dropdown Button */}
           <button
             type="button"
-            className="h-[48px] sm:h-[54px] px-5 sm:px-7 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-sm sm:text-base flex items-center gap-2 transition-colors cursor-pointer shadow-lg shrink-0"
+            className="h-[46px] sm:h-[54px] px-4 sm:px-7 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-xs sm:text-base flex items-center gap-1.5 sm:gap-2 transition-colors cursor-pointer shadow-lg shrink-0"
           >
             <span>Courses</span>
             <svg
