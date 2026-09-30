@@ -322,14 +322,14 @@ export function FeaturedCoursesSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 373px"
                   />
                   {/* Frosted Badges at bottom of thumbnail (Figma 13:251) */}
-                  <div className="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between gap-1 z-10">
-                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
+                  <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 flex items-center justify-between gap-1 z-10">
+                    <span className="px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[9.5px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
                       {course.lessons}
                     </span>
-                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
+                    <span className="px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[9.5px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
                       {course.duration}
                     </span>
-                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
+                    <span className="px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[9.5px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
                       {course.comments}
                     </span>
                   </div>
