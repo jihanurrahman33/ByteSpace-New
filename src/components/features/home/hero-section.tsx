@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Search, Star } from "lucide-react";
 import { Header } from "@/components/layout/header";
+import { AnimatedNumber, AnimatedProgressBar } from "@/components/ui/animated-number";
 
 export function HeroSection() {
   return (
@@ -148,11 +149,13 @@ export function HeroSection() {
             Learning Progress
           </p>
           <p className="text-2xl sm:text-3xl lg:text-[48px] font-semibold font-heading text-[#242528] tracking-[-0.01em] leading-[1.2] my-0.5 sm:my-1">
-            55%
+            <AnimatedNumber value={55} suffix="%" />
           </p>
-          <div className="w-full bg-[#F6F6F6] h-[5px] sm:h-[8px] rounded-[24px] overflow-hidden">
-            <div className="bg-[#D4FB20] h-full w-[56%] rounded-[24px]" />
-          </div>
+          <AnimatedProgressBar
+            percent={56}
+            className="w-full bg-[#F6F6F6] h-[5px] sm:h-[8px] rounded-[24px] overflow-hidden"
+            barClassName="bg-[#D4FB20] h-full rounded-[24px]"
+          />
         </div>
 
         {/* 9. Floating Card 3: Happy Students (Figma 1:1821, top: 837px, left: calc(50% - 392px), 258x121px) */}

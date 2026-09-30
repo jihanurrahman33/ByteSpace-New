@@ -27,7 +27,7 @@ export function CourseSyllabus({
 
   return (
     <div className="w-full space-y-4">
-      {modules.map((mod, modIdx) => {
+      {modules.map((mod) => {
         const isOpen = !!openModules[mod.id];
         return (
           <div

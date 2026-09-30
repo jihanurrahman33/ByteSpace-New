@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { Check, Star } from "lucide-react";
+import { AnimatedNumber, AnimatedProgressBar } from "@/components/ui/animated-number";
 
 const HAPPY_STUDENTS_AVATARS = [
   "/assets/home/avatars/student-avatar-1.png",
@@ -94,7 +97,7 @@ export function FeatureSplitSection() {
             <div className="mt-8 sm:mt-10 flex items-center gap-8 sm:gap-10 lg:gap-[56px] flex-wrap">
               <div className="flex flex-col">
                 <span className="font-heading font-medium text-2xl sm:text-3xl lg:text-[36px] lg:leading-[44px] text-[#003BE2]">
-                  12K
+                  <AnimatedNumber value={12} suffix="K" />
                 </span>
                 <span className="font-sans font-normal text-sm sm:text-base lg:text-[18px] lg:leading-[29px] text-[#4B4C53]">
                   Students
@@ -102,7 +105,7 @@ export function FeatureSplitSection() {
               </div>
               <div className="flex flex-col">
                 <span className="font-heading font-medium text-2xl sm:text-3xl lg:text-[36px] lg:leading-[44px] text-[#003BE2]">
-                  70+
+                  <AnimatedNumber value={70} suffix="+" />
                 </span>
                 <span className="font-sans font-normal text-sm sm:text-base lg:text-[18px] lg:leading-[29px] text-[#4B4C53]">
                   Courses
@@ -110,7 +113,7 @@ export function FeatureSplitSection() {
               </div>
               <div className="flex flex-col">
                 <span className="font-heading font-medium text-2xl sm:text-3xl lg:text-[36px] lg:leading-[44px] text-[#003BE2]">
-                  16
+                  <AnimatedNumber value={16} />
                 </span>
                 <span className="font-sans font-normal text-sm sm:text-base lg:text-[18px] lg:leading-[29px] text-[#4B4C53]">
                   Creators
@@ -155,7 +158,7 @@ export function FeatureSplitSection() {
                   </div>
                   <div className="flex items-center gap-1 shrink-0 pt-0.5">
                     <span className="font-sans font-medium text-[18px] text-[#242528]">4.5</span>
-                    <Star className="w-5 h-5 fill-[#D4FB20] text-[#D4FB20]" />
+                    <Star className="w-5 h-5 fill-[#94969C] text-[#94969C]" />
                   </div>
                 </div>
 
@@ -223,12 +226,14 @@ export function FeatureSplitSection() {
                     Learning Progress
                   </p>
                   <p className="font-heading font-semibold text-[48px] leading-[57.6px] tracking-[-0.48px] text-[#242528] mt-1">
-                    55%
+                    <AnimatedNumber value={55} suffix="%" />
                   </p>
                 </div>
-                <div className="w-[200px] h-[8px] rounded-[24px] bg-[#F6F6F6] overflow-hidden">
-                  <div className="w-[112px] h-[8px] rounded-[24px] bg-[#D4FB20]" />
-                </div>
+                <AnimatedProgressBar
+                  percent={56}
+                  className="w-[200px] h-[8px] rounded-[24px] bg-[#F6F6F6] overflow-hidden"
+                  barClassName="h-[8px] rounded-[24px] bg-[#D4FB20]"
+                />
               </div>
             </div>
           </div>
