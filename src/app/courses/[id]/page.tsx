@@ -6,7 +6,7 @@ import { Check, Video, Star } from "lucide-react";
 import Image from "next/image";
 import { CourseDetailsHero } from "@/components/features/courses/course-details-hero";
 import { Footer } from "@/components/layout/footer";
-import { ALL_COURSES } from "@/lib/constants/courses-data";
+import { CourseService } from "@/services/course.service";
 import { cn } from "@/lib/utils/cn";
 
 type TabType = "about" | "lessons" | "reviews";
@@ -63,8 +63,9 @@ export default function CourseDetailsPage({
 
   const course = useMemo(() => {
     return (
-      ALL_COURSES.find((c) => c.id === normalizedId || c.id === resolvedParams.id) ||
-      ALL_COURSES[0]
+      CourseService.getCourseById(normalizedId) ||
+      CourseService.getCourseById(resolvedParams.id) ||
+      CourseService.getAllCourses()[0]
     );
   }, [normalizedId, resolvedParams.id]);
 
