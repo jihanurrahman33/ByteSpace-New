@@ -6,12 +6,12 @@ import { Header } from "@/components/layout/header";
 
 export function HeroSection() {
   return (
-    <section className="relative w-full bg-[#003BE2] text-neutral-50 overflow-hidden h-[960px] sm:h-[1000px] lg:h-[1024px]">
+    <section className="relative w-full bg-[#003BE2] text-neutral-50 overflow-hidden min-h-[860px] sm:min-h-[960px] lg:h-[1024px]">
       {/* 
         Unified 1440x1024 Desktop Canvas
         All elements share this single parent container and coordinate system
       */}
-      <div className="relative w-full max-w-[1440px] h-full mx-auto overflow-hidden">
+      <div className="relative w-full max-w-[1440px] h-full min-h-[860px] sm:min-h-[960px] lg:min-h-[1024px] mx-auto overflow-hidden">
         {/* 1. 120px Architectural Grid Lines (matching Figma 12:224 Group 4) */}
         <div className="absolute inset-0 pointer-events-none opacity-12 z-0">
           <svg
@@ -40,10 +40,10 @@ export function HeroSection() {
         </div>
 
         {/* 2. Header (Figma Header_Frame 1:1778, top: 0, left: 0, height: 120px) */}
-        <Header variant="hero" className="absolute top-0 left-0 w-full z-50" />
+        <Header variant="hero" className="absolute top-0 left-0 w-full z-40" />
 
         {/* 3. Upper Portion: Headline, Subtitle & Search Bar (Figma Hero 1:1768, top: 169px) */}
-        <div className="absolute top-24 sm:top-28 lg:top-[169px] left-1/2 -translate-x-1/2 w-full max-w-[1200px] px-4 sm:px-6 flex flex-col items-center text-center z-20">
+        <div className="absolute top-20 sm:top-24 md:top-28 lg:top-[169px] left-1/2 -translate-x-1/2 w-full max-w-[1200px] px-4 sm:px-6 flex flex-col items-center text-center z-20">
           {/* Frame 1: Headline & Subtitle */}
           <div className="max-w-[935px] flex flex-col items-center">
             {/* Get Access to Hundreds Courses Available */}
@@ -64,7 +64,7 @@ export function HeroSection() {
               className="flex items-center gap-2 sm:gap-4 w-full"
             >
               {/* Input Pill */}
-              <div className="flex-1 min-w-0 h-[44px] sm:h-[52px] bg-white rounded-[24px] px-4 sm:px-6 flex items-center gap-2 shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
+              <div className="flex-1 min-w-0 h-[46px] sm:h-[52px] bg-white rounded-[24px] px-3.5 sm:px-6 flex items-center gap-2 shadow-[0_12px_32px_rgba(0,0,0,0.18)]">
                 <Search className="w-4 h-4 sm:w-6 sm:h-6 text-[#82868E] shrink-0" />
                 <input
                   type="text"
@@ -75,7 +75,7 @@ export function HeroSection() {
               {/* Search Button */}
               <button
                 type="submit"
-                className="h-[44px] sm:h-[46px] px-4 sm:px-6 sm:w-[104px] rounded-[24px] bg-[#D4FB20] hover:bg-[#c2ea1b] text-[#242528] font-medium font-sans text-xs sm:text-[18px] leading-[1.2] flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                className="h-[46px] sm:h-[48px] px-4 sm:px-6 sm:w-[104px] rounded-[24px] bg-[#D4FB20] hover:bg-[#c2ea1b] text-[#242528] font-medium font-sans text-xs sm:text-[18px] leading-[1.2] flex items-center justify-center transition-colors cursor-pointer shrink-0 shadow-sm"
               >
                 Search
               </button>
@@ -85,13 +85,25 @@ export function HeroSection() {
 
         {/* 4. Ellipse 7: Neon Lime Arc behind Hero Student (Figma Ellipse 7, top: 582px, 1149x1149px, border: 320px) */}
         <div
-          className="absolute pointer-events-none rounded-full left-1/2 -translate-x-1/2 z-1"
+          className="absolute pointer-events-none rounded-full left-1/2 -translate-x-1/2 z-1 hidden sm:block"
           style={{
             boxSizing: "border-box",
             width: "1149px",
             height: "1149px",
             top: "582px",
             border: "320px solid #CBFC01",
+          }}
+        />
+
+        {/* Mobile Arc: scaled proportionally for smaller viewports */}
+        <div
+          className="absolute pointer-events-none rounded-full left-1/2 -translate-x-1/2 z-1 sm:hidden"
+          style={{
+            boxSizing: "border-box",
+            width: "600px",
+            height: "600px",
+            top: "520px",
+            border: "140px solid #CBFC01",
           }}
         />
 
@@ -107,23 +119,23 @@ export function HeroSection() {
         </div>
 
         {/* 6. Main Hero Student Image (Figma 1:1796, 578x541px, bottom: 0, centered) */}
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[380px] sm:w-[480px] lg:w-[578px] h-[360px] sm:h-[450px] lg:h-[541px] z-10 overflow-hidden drop-shadow-2xl">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[290px] sm:w-[420px] md:w-[480px] lg:w-[578px] h-[300px] sm:h-[400px] md:h-[450px] lg:h-[541px] z-10 overflow-hidden drop-shadow-2xl">
           <Image
             src="/assets/hero-student.png"
             alt="ByteSpace student learning"
             fill
             priority
             className="object-contain object-bottom"
-            sizes="(max-width: 768px) 380px, (max-width: 1200px) 480px, 578px"
+            sizes="(max-width: 640px) 290px, (max-width: 768px) 420px, (max-width: 1200px) 480px, 578px"
           />
         </div>
 
         {/* 7. Floating Card 1: UI/UX Design (Figma 46:126, top: 639px, left: calc(50% - 316px), 208x70px) */}
-        <div className="absolute left-3 sm:left-[calc(50%-260px)] lg:left-[calc(50%-316px)] top-[540px] sm:top-[580px] lg:top-[639px] bg-white/95 backdrop-blur-[20px] text-[#242528] p-3 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left z-25 w-[160px] sm:w-[208px]">
-          <p className="text-[13px] sm:text-[16px] font-medium font-sans text-[#242528] leading-[1.2]">
+        <div className="absolute left-3 sm:left-[calc(50%-260px)] lg:left-[calc(50%-316px)] top-[500px] sm:top-[580px] lg:top-[639px] bg-white/95 backdrop-blur-[20px] text-[#242528] p-2.5 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left z-25 w-[150px] sm:w-[208px]">
+          <p className="text-[12px] sm:text-[16px] font-medium font-sans text-[#242528] leading-[1.2]">
             UI/UX Design
           </p>
-          <p className="text-[10px] sm:text-[12px] text-[#82868E] font-sans leading-[1.6] mt-0.5 sm:mt-1 flex items-center gap-1 whitespace-nowrap">
+          <p className="text-[9px] sm:text-[12px] text-[#82868E] font-sans leading-[1.6] mt-0.5 sm:mt-1 flex items-center gap-1 whitespace-nowrap">
             <span>200 Courses</span>
             <span>•</span>
             <span>1000+ Students</span>
@@ -144,20 +156,20 @@ export function HeroSection() {
         </div>
 
         {/* 9. Floating Card 3: Happy Students (Figma 1:1821, top: 837px, left: calc(50% - 392px), 258x121px) */}
-        <div className="absolute left-3 sm:left-[calc(50%-280px)] lg:left-[calc(50%-392px)] top-[740px] sm:top-[780px] lg:top-[837px] bg-white/95 backdrop-blur-[20px] text-[#242528] p-3 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left w-[190px] sm:w-[258px] z-25">
-          <div className="flex flex-col gap-0 mb-1.5 sm:mb-2">
-            <span className="text-[12px] sm:text-[16px] font-medium text-[#242528] font-sans leading-[1.2]">
+        <div className="absolute left-3 sm:left-[calc(50%-280px)] lg:left-[calc(50%-392px)] top-[670px] sm:top-[780px] lg:top-[837px] bg-white/95 backdrop-blur-[20px] text-[#242528] p-2.5 sm:p-4 rounded-[16px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-white/60 text-left w-[175px] sm:w-[258px] z-25">
+          <div className="flex flex-col gap-0 mb-1 sm:mb-2">
+            <span className="text-[11px] sm:text-[16px] font-medium text-[#242528] font-sans leading-[1.2]">
               Happy Students
             </span>
             <div className="flex items-center gap-1 mt-0.5">
-              <span className="text-[10px] sm:text-[12px] font-normal text-[#242528] font-sans">
+              <span className="text-[9px] sm:text-[12px] font-normal text-[#242528] font-sans">
                 4.5 (240)
               </span>
-              <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-[#D4FB20] text-[#D4FB20]" />
+              <Star className="w-2.5 h-2.5 sm:w-4 sm:h-4 fill-[#D4FB20] text-[#D4FB20]" />
             </div>
           </div>
           {/* Avatar Stack */}
-          <div className="flex items-center -space-x-2.5 sm:-space-x-4">
+          <div className="flex items-center -space-x-2 sm:-space-x-4">
             {[
               "/assets/testimonials/sarah-m.png",
               "/assets/creators/student-1.png",
@@ -167,7 +179,7 @@ export function HeroSection() {
             ].map((src, idx) => (
               <div
                 key={idx}
-                className="w-6 h-6 sm:w-[43px] sm:h-[43px] rounded-full border-2 border-white overflow-hidden relative shrink-0"
+                className="w-5 h-5 sm:w-[43px] sm:h-[43px] rounded-full border border-white sm:border-2 overflow-hidden relative shrink-0"
               >
                 <Image
                   src={src}
@@ -178,7 +190,7 @@ export function HeroSection() {
                 />
               </div>
             ))}
-            <div className="w-6 h-6 sm:w-[43px] sm:h-[43px] rounded-full border-2 border-white bg-[#D4FB20] text-[#242528] flex items-center justify-center text-[8px] sm:text-[12px] font-bold font-sans shrink-0 z-10">
+            <div className="w-5 h-5 sm:w-[43px] sm:h-[43px] rounded-full border border-white sm:border-2 bg-[#D4FB20] text-[#242528] flex items-center justify-center text-[7px] sm:text-[12px] font-bold font-sans shrink-0 z-10">
               2K+
             </div>
           </div>

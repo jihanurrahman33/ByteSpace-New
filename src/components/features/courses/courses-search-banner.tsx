@@ -44,14 +44,14 @@ export function CoursesSearchBanner({
       <Header variant="hero" />
 
       {/* Title & Search Bar (Figma 55:857: 624x127 at y: 1912) */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full flex flex-col items-center text-center pb-12">
-        <h1 className="font-heading font-semibold text-[32px] sm:text-[40px] md:text-[44px] text-white tracking-tight leading-[1.2] mb-6">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full flex flex-col items-center text-center pb-8 sm:pb-12 pt-2 sm:pt-0">
+        <h1 className="font-heading font-semibold text-[28px] sm:text-[36px] md:text-[44px] text-white tracking-tight leading-[1.2] mb-4 sm:mb-6">
           Find Your Next Course
         </h1>
 
-        <div className="w-full max-w-[624px] h-[54px] bg-white rounded-full p-1.5 pl-6 flex items-center shadow-lg">
+        <div className="w-full max-w-[624px] h-[50px] sm:h-[54px] bg-white rounded-full p-1 sm:p-1.5 pl-4 sm:pl-6 flex items-center shadow-lg">
           <svg
-            className="w-5 h-5 text-[#82868E] shrink-0 mr-3"
+            className="w-4 h-4 sm:w-5 sm:h-5 text-[#82868E] shrink-0 mr-2 sm:mr-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -68,15 +68,15 @@ export function CoursesSearchBanner({
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="flex-1 bg-transparent border-none text-[#242528] placeholder-[#82868E] font-sans text-base outline-none"
+            className="flex-1 min-w-0 bg-transparent border-none text-[#242528] placeholder-[#82868E] font-sans text-sm sm:text-base outline-none"
           />
           <button
             type="button"
-            className="h-[42px] px-6 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-sm flex items-center gap-2 transition-colors cursor-pointer shrink-0"
+            className="h-[38px] sm:h-[42px] px-3.5 sm:px-6 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 transition-colors cursor-pointer shrink-0"
           >
             <span>Courses</span>
             <svg
-              className="w-4 h-4"
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

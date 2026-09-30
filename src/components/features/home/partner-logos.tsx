@@ -10,8 +10,8 @@ export function PartnerLogos() {
   ];
 
   return (
-    <section className="w-full bg-[#F5F5F6] h-[160px] md:h-[202px] flex items-center justify-center overflow-hidden">
-      <div className="w-full max-w-[1440px] px-6 md:px-12 lg:px-[154px] flex items-center justify-between gap-6 sm:gap-10 lg:gap-[72px] flex-wrap sm:flex-nowrap">
+    <section className="w-full bg-[#F5F5F6] min-h-[120px] md:h-[202px] py-8 md:py-0 flex items-center justify-center overflow-hidden">
+      <div className="w-full max-w-[1440px] px-4 sm:px-6 md:px-12 lg:px-[154px] flex items-center justify-center sm:justify-between gap-6 sm:gap-8 lg:gap-[72px] flex-wrap sm:flex-nowrap">
         {logos.map((logo, index) => (
           <div
             key={index}
@@ -22,7 +22,7 @@ export function PartnerLogos() {
               alt={logo.alt}
               width={logo.width}
               height={logo.height}
-              className="w-auto h-7 sm:h-9 lg:h-[41px] object-contain"
+              className="w-auto h-6 sm:h-8 lg:h-[41px] max-w-[130px] sm:max-w-none object-contain"
             />
           </div>
         ))}

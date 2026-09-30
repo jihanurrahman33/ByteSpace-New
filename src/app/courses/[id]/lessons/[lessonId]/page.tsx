@@ -56,56 +56,56 @@ export default function CourseLessonsPage({
 
       {/* 2. Main Content (Left Column 723px) */}
       <main className="relative w-full bg-white flex-1">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-12 md:pt-16 pb-24">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] pt-8 md:pt-16 pb-16 md:pb-24">
           <div className="w-full lg:w-[723px] flex flex-col">
             {/* Pill Tabs (Figma 60:104 - About / Lesson / Reviews) */}
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-8 sm:mb-10">
               <Link
                 href={`/courses/${course.id}`}
-                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 About
               </Link>
               <Link
                 href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
-                className="h-[43px] px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 Lesson
               </Link>
               <Link
                 href={`/courses/${course.id}/reviews`}
-                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 Reviews
               </Link>
             </div>
 
             {/* Explore the Modules (Figma 60:104) */}
-            <div className="mb-10">
+            <div className="mb-8 sm:mb-10">
               <h2 className="font-heading font-semibold text-[20px] text-[#242528] mb-3">
                 Explore the Modules
               </h2>
-              <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
+              <p className="font-sans text-sm sm:text-base text-[#4B4C53] leading-relaxed">
                 Immerse yourself in the course content as we break down each module into comprehensive lessons, providing practical insights and hands-on experiences.
               </p>
             </div>
 
             {/* Lesson List (Figma 60:104) */}
-            <div className="mb-10">
+            <div className="mb-8 sm:mb-10">
               <h3 className="font-heading font-semibold text-[20px] text-[#242528] mb-6">
                 Lesson List
               </h3>
               <div className="space-y-6">
                 {modulesList.map((mod, idx) => (
-                  <div key={idx} className="flex items-start gap-4">
-                    <div className="w-[72px] h-[72px] rounded-[24px] bg-[#D4FB20] text-[#242528] flex items-center justify-center shrink-0">
-                      <Video className="w-6 h-6 fill-current text-[#242528]" />
+                  <div key={idx} className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-12 h-12 sm:w-[72px] sm:h-[72px] rounded-[16px] sm:rounded-[24px] bg-[#D4FB20] text-[#242528] flex items-center justify-center shrink-0">
+                      <Video className="w-5 h-5 sm:w-6 sm:h-6 fill-current text-[#242528]" />
                     </div>
-                    <div className="flex-1 pt-1">
-                      <h4 className="font-heading font-semibold text-base text-[#242528] mb-1">
+                    <div className="flex-1 pt-0.5 sm:pt-1">
+                      <h4 className="font-heading font-semibold text-sm sm:text-base text-[#242528] mb-1">
                         {mod.title}
                       </h4>
-                      <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
+                      <p className="font-sans text-xs sm:text-base text-[#4B4C53] leading-relaxed">
                         {mod.desc}
                       </p>
                     </div>

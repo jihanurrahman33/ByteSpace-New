@@ -2,12 +2,12 @@
 
 export function CoursesFilterBar() {
   return (
-    <div className="w-full flex flex-wrap items-center justify-between gap-4 py-6">
+    <div className="w-full flex flex-wrap items-center justify-between gap-3 sm:gap-4 py-4 sm:py-6">
       {/* Left Filter Group */}
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
         <button
           type="button"
-          className="h-[48px] px-5 rounded-full border border-[#CED0D3] bg-white text-[#242528] font-sans text-sm font-normal flex items-center gap-2 hover:bg-neutral-50 transition-colors cursor-pointer"
+          className="h-[44px] sm:h-[48px] px-3.5 sm:px-5 rounded-full border border-[#CED0D3] bg-white text-[#242528] font-sans text-xs sm:text-sm font-normal flex items-center gap-1.5 sm:gap-2 hover:bg-neutral-50 transition-colors cursor-pointer"
         >
           <svg
             className="w-4 h-4 text-[#242528]"
@@ -27,7 +27,7 @@ export function CoursesFilterBar() {
 
         <button
           type="button"
-          className="h-[48px] px-5 rounded-full border border-[#CED0D3] bg-white text-[#242528] font-sans text-sm font-normal flex items-center gap-2 hover:bg-neutral-50 transition-colors cursor-pointer"
+          className="h-[44px] sm:h-[48px] px-3.5 sm:px-5 rounded-full border border-[#CED0D3] bg-white text-[#242528] font-sans text-xs sm:text-sm font-normal flex items-center gap-1.5 sm:gap-2 hover:bg-neutral-50 transition-colors cursor-pointer"
         >
           <svg
             className="w-4 h-4 text-[#242528]"
@@ -41,7 +41,7 @@ export function CoursesFilterBar() {
 
         <button
           type="button"
-          className="h-[48px] px-5 rounded-full border border-[#CED0D3] bg-white text-[#242528] font-sans text-sm font-normal flex items-center gap-2 hover:bg-neutral-50 transition-colors cursor-pointer"
+          className="h-[44px] sm:h-[48px] px-3.5 sm:px-5 rounded-full border border-[#CED0D3] bg-white text-[#242528] font-sans text-xs sm:text-sm font-normal flex items-center gap-1.5 sm:gap-2 hover:bg-neutral-50 transition-colors cursor-pointer"
         >
           <svg
             className="w-4 h-4 text-[#242528]"

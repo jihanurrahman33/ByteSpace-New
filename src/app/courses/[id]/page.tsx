@@ -30,25 +30,25 @@ export default function CourseDetailsPage({
 
       {/* 2. Main Content (Left Column 725px) */}
       <main className="relative w-full bg-white flex-1">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-12 md:pt-16 pb-24">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] pt-8 md:pt-16 pb-16 md:pb-24">
           <div className="w-full lg:w-[725px] flex flex-col">
             {/* Pill Tabs (Figma 55:4118 - About / Lessons / Reviews) */}
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-8 sm:mb-10">
               <Link
                 href={`/courses/${course.id}`}
-                className="h-[43px] px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 About
               </Link>
               <Link
                 href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
-                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 Lessons
               </Link>
               <Link
                 href={`/courses/${course.id}/reviews`}
-                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 Reviews
               </Link>

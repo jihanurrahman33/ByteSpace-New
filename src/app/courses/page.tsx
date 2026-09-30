@@ -147,7 +147,7 @@ export default function CoursesSearchPage() {
       />
 
       {/* 2. Filter Bar & Category Tabs (Figma 55:168 & 55:1819) */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full pt-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full pt-4">
         {/* Filter Bar (Filter, Level, Category, Most relevant) */}
         <CoursesFilterBar />
 
@@ -165,7 +165,7 @@ export default function CoursesSearchPage() {
       </div>
 
       {/* 3. Course Grid (Figma Frame 8 55:1843: 18 Cards, 3 columns x 6 rows) */}
-      <main className="flex-1 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-8 md:py-12">
+      <main className="flex-1 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full py-8 md:py-12">
         {filteredCourses.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {filteredCourses.map((course) => (
