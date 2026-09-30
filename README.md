@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ByteSpace — Next-Gen Creative Learning Platform
 
-## Getting Started
+ByteSpace is a modern, high-performance web platform built with **Next.js 16 (Turbopack)**, **React 19**, **TypeScript**, **Tailwind CSS 4**, and **Zustand**. Designed with pixel-perfect fidelity from Figma designs, it delivers a smooth 60/120 FPS experience across desktop, tablet, and mobile devices.
 
-First, run the development server:
+---
+
+## 🚀 Key Features
+
+- **Pixel-Perfect Figma Fidelity**: Designed directly against Figma source files (Desktop 1440px coordinate system, typography scales, tokens, and precise auto-layouts).
+- **Responsive Mobile & Tablet Design**:
+  - Horizontal touch side-scroll for homepage category tabs.
+  - Responsive full-screen navigation drawer with backdrop blur and body scroll lock.
+  - Sized and responsive 404 error page.
+- **Global Route Transition Animation**: Custom pulsing ByteSpace logo loader on route changes and streaming boundaries.
+- **Instant In-Place Detail Tabs**: Course details (`/courses/[id]`) with instant tab switching (About, Lessons, Reviews) synced to URL query params (`?tab=...`).
+- **Interactive Search & Filtering**: Multi-parameter search, category dropdowns, level filters, sorting options, and pagination with loading feedback.
+- **Hardware-Accelerated Performance**: GPU-composited layers, optimized image shadows, and efficient IntersectionObserver hooks for butter-smooth scrolling.
+
+---
+
+## 🏗️ Architecture & Design Patterns
+
+The project follows a **Feature-First, Layered Clean Architecture** that enforces separation of concerns:
+
+```
+src/
+├── app/                  # Next.js App Router (pages, layouts, streaming boundaries)
+├── components/           # Presentation Layer
+│   ├── features/         # Feature-specific UI components (home, courses, creators, auth)
+│   ├── layout/           # Shared layout components (Header, Footer, RouteLoadingIndicator)
+│   └── ui/               # Reusable atomic UI components (Logo, AnimatedNumber, LogoLoader)
+├── hooks/                # Custom Hooks Layer (React 19 & headless logic)
+│   ├── use-courses.ts    # Course domain integration hook
+│   ├── use-count-up.ts   # RAF-based cubic ease-out counter
+│   ├── use-intersection-observer.ts # Performant one-shot viewport observer
+│   ├── use-media-query.ts # React 19 useSyncExternalStore responsive detection
+│   └── use-debounce.ts   # Value debouncing utility
+├── lib/                  # Utilities & static mock data
+│   ├── constants/        # Master catalog data & design specs
+│   └── utils/            # Shared utility functions (cn, formatting)
+├── services/             # Domain & Data Access Layer
+│   ├── course.service.ts # Course retrieval, multi-parameter filtering & sorting
+│   └── creator.service.ts# Creator data lookup & course relationships
+├── stores/               # Global State Management (Zustand)
+│   ├── use-courses-store.ts # Search queries, active tabs, filters, pagination
+│   └── use-ui-store.ts   # Navigation drawer, global loader, followed creators
+├── styles/               # Design tokens & CSS configurations
+│   └── tokens.ts         # Figma style guide tokens (colors, typography)
+└── types/                # TypeScript Domain Types & Interfaces
+    ├── course.ts         # Course, Lesson, Review, Filter schemas
+    ├── creator.ts        # Creator profile schemas
+    └── ui.ts             # Navigation & layout schemas
+```
+
+---
+
+## ⚡ Performance Optimizations
+
+1. **Eliminated Scroll Jank**:
+   - Replaced multi-pass stacked CSS drop shadows with hardware-accelerated GPU textures (`transform: translateZ(0)`).
+   - Cleaned up atmospheric smoke glows using diffuse radial gradients with `contain: paint` to prevent expensive compositor re-rasterization.
+   - Removed redundant `backdrop-blur` filters from opaque elements.
+2. **One-Shot IntersectionObserver**:
+   - Animated statistics (`AnimatedNumber`, `AnimatedProgressBar`) disconnect immediately upon entry, eliminating scroll-time overhead.
+3. **Optimized React 19 State Sync**:
+   - `useMediaQuery` uses `useSyncExternalStore` for tear-free viewport tracking without cascading renders.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+- **Library**: [React 19](https://react.dev/)
+- **Language**: [TypeScript 5](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: [Zustand 5](https://github.com/pmndrs/zustand)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+---
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js 18.18+ (Node 20+ recommended)
+- npm, yarn, or pnpm
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/jihanurrahman33/ByteSpace-New.git
+cd ByteSpace-New
+
+# Install dependencies
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Lint code
+npm run lint
 
-## Learn More
+# Compile optimized production build
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Start production server
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is proprietary and confidential.

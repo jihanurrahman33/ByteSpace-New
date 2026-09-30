@@ -1,20 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { LogoLoader } from "@/components/ui/logo-loader";
+import { useUIStore } from "@/stores/use-ui-store";
 
 export function RouteLoadingIndicator() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentUrl = `${pathname}?${searchParams.toString()}`;
-  const [isLoading, setIsLoading] = useState(false);
+  const [internalLoading, setInternalLoading] = useState(false);
   const [lastUrl, setLastUrl] = useState(currentUrl);
+  const { isRouteLoading, setIsRouteLoading } = useUIStore();
+
+  const isLoading = internalLoading || isRouteLoading;
+
+  const setIsLoading = useCallback(
+    (val: boolean) => {
+      setInternalLoading(val);
+      setIsRouteLoading(val);
+    },
+    [setIsRouteLoading]
+  );
 
   // Synchronize loading reset upon route arrival without cascading effect renders
   if (isLoading && lastUrl !== currentUrl) {
     setLastUrl(currentUrl);
-    setIsLoading(false);
+    setInternalLoading(false);
+    setIsRouteLoading(false);
   }
 
   // Intercept click on internal links
@@ -68,7 +81,7 @@ export function RouteLoadingIndicator() {
       document.removeEventListener("click", handleClick, { capture: true });
       window.removeEventListener("bytespace-loading", handleCustomLoading);
     };
-  }, [pathname]);
+  }, [pathname, setIsLoading]);
 
   // Fallback safety timeout
   useEffect(() => {
@@ -78,7 +91,7 @@ export function RouteLoadingIndicator() {
       }, 4000);
       return () => clearTimeout(timer);
     }
-  }, [isLoading]);
+  }, [isLoading, setIsLoading]);
 
   if (!isLoading) return null;
 

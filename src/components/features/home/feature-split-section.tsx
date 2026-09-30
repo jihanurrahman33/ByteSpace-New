@@ -22,19 +22,25 @@ const COURSE_CARD_AVATARS = [
 ];
 
 const FIGMA_IMAGE_DROP_SHADOW =
-  "drop-shadow(0.5px 0.74px 3px rgba(0, 0, 0, 0.04)) drop-shadow(2.2px 3.2px 5.7px rgba(0, 0, 0, 0.06)) drop-shadow(5.4px 7.7px 9.6px rgba(0, 0, 0, 0.07)) drop-shadow(10.2px 14.6px 16px rgba(0, 0, 0, 0.08)) drop-shadow(17px 24px 24px rgba(0, 0, 0, 0.09)) drop-shadow(26px 37px 36px rgba(0, 0, 0, 0.10)) drop-shadow(37px 53px 56px rgba(0, 0, 0, 0.105)) drop-shadow(51px 73px 72px rgba(0, 0, 0, 0.13))";
+  "drop-shadow(0 20px 32px rgba(0, 0, 0, 0.12))";
 
 export function FeatureSplitSection() {
   return (
-    <section className="relative w-full bg-[#FAFAFA] overflow-hidden">
-      {/* Figma Frame 15 Atmospheric Smoke / Ambient Diffusion Glows */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden blur-[90px] md:blur-[120px] will-change-transform">
+    <section className="relative w-full bg-[#FAFAFA] overflow-hidden" style={{ transform: "translateZ(0)" }}>
+      {/* Figma Frame 15 Atmospheric Smoke / Ambient Diffusion Glows - Hardware Accelerated */}
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{
+          contain: "paint",
+          transform: "translate3d(0, 0, 0)",
+        }}
+      >
         {/* Top-Left Lime Smoke Plume */}
         <div
-          className="absolute -left-[180px] -top-[480px] w-[1100px] h-[1100px] rounded-full pointer-events-none"
+          className="absolute -left-[180px] -top-[480px] w-[1100px] h-[1100px] rounded-full pointer-events-none blur-3xl opacity-70"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(203, 252, 1, 0.42) 0%, rgba(203, 252, 1, 0.20) 28%, rgba(203, 252, 1, 0.06) 55%, transparent 75%)",
+              "radial-gradient(circle at center, rgba(203, 252, 1, 0.40) 0%, rgba(203, 252, 1, 0.18) 32%, rgba(203, 252, 1, 0.05) 58%, transparent 75%)",
           }}
         />
 
@@ -208,7 +214,7 @@ export function FeatureSplitSection() {
               {/* 3. Main Person Image (Figma 34:971: 577x540 at left: 0, top: 12) */}
               <div
                 className="absolute left-0 top-[12px] w-[577px] h-[540px] pointer-events-none z-10"
-                style={{ filter: FIGMA_IMAGE_DROP_SHADOW }}
+                style={{ filter: FIGMA_IMAGE_DROP_SHADOW, transform: "translateZ(0)" }}
               >
                 <Image
                   src="/assets/hero-student.png"
@@ -220,7 +226,7 @@ export function FeatureSplitSection() {
               </div>
 
               {/* 4. Learning Progress Card (Figma 34:1031: 232x138 at left: 345, top: 213) */}
-              <div className="absolute left-[345px] top-[213px] w-[232px] h-[138px] bg-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,0,0,0.08)] backdrop-blur-[20px] z-20 flex flex-col justify-between">
+              <div className="absolute left-[345px] top-[213px] w-[232px] h-[138px] bg-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,0,0,0.08)] z-20 flex flex-col justify-between">
                 <div>
                   <p className="font-sans font-medium text-base leading-[24px] text-[#242528]">
                     Learning Progress
@@ -301,7 +307,7 @@ export function FeatureSplitSection() {
               {/* 4. Female Creator Image (Figma 34:1011: 435x596 at left: 28, top: 0) */}
               <div
                 className="absolute left-[28px] top-0 w-[435px] h-[596px] pointer-events-none z-10"
-                style={{ filter: FIGMA_IMAGE_DROP_SHADOW }}
+                style={{ filter: FIGMA_IMAGE_DROP_SHADOW, transform: "translateZ(0)" }}
               >
                 <Image
                   src="/assets/creator-woman.png"
@@ -313,7 +319,7 @@ export function FeatureSplitSection() {
               </div>
 
               {/* 5. Happy Students Card (Figma 34:1038: 258x123 at left: 283, top: 413) */}
-              <div className="absolute left-[283px] top-[413px] w-[258px] h-[123px] bg-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,0,0,0.08)] backdrop-blur-[20px] z-20 flex flex-col justify-between">
+              <div className="absolute left-[283px] top-[413px] w-[258px] h-[123px] bg-white rounded-[16px] p-4 shadow-[0_16px_36px_rgba(0,0,0,0.08)] z-20 flex flex-col justify-between">
                 <div className="flex flex-col">
                   <span className="font-sans font-medium text-base leading-[24px] text-[#242528]">
                     Happy Students

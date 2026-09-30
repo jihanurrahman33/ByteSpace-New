@@ -4,10 +4,12 @@ import { useState, useMemo } from "react";
 import { CoursesSearchBanner } from "@/components/features/courses/courses-search-banner";
 import { CoursesFilterBar } from "@/components/features/courses/courses-filter-bar";
 import { CoursesFilterTabs } from "@/components/features/courses/courses-filter-tabs";
-import { CourseCard, CourseItem } from "@/components/features/courses/course-card";
+import { CourseCard } from "@/components/features/courses/course-card";
 import { CoursesPagination } from "@/components/features/courses/courses-pagination";
 import { LogoLoader } from "@/components/ui/logo-loader";
 import { Footer } from "@/components/layout/footer";
+import { useCoursesStore } from "@/stores/use-courses-store";
+import { CourseService } from "@/services/course.service";
 
 const CATEGORY_TABS = [
   "Featured",
@@ -21,128 +23,41 @@ const CATEGORY_TABS = [
   "Cooking",
 ];
 
-const BASE_COURSES: CourseItem[] = [
-  {
-    id: "figma-basic",
-    title: "Learn Figma from Basic",
-    author: "by purepearl studio",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
-    level: "Beginner",
-    price: "$25",
-    period: "/lifetime",
-    rating: 4.5,
-    image: "/assets/courses/course-figma.png",
-    category: "UI/UX Design",
-  },
-  {
-    id: "digital-asset",
-    title: "Build Digital Asset",
-    author: "by purepearl studio",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
-    level: "Intermediate",
-    price: "$25",
-    period: "/lifetime",
-    rating: 4.5,
-    image: "/assets/courses/course-digital-asset.png",
-    category: "Design",
-  },
-  {
-    id: "big-data",
-    title: "the Power of Big Data",
-    author: "by purepearl studio",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
-    level: "Beginner",
-    price: "$25",
-    period: "/lifetime",
-    rating: 4.5,
-    image: "/assets/courses/course-big-data.png",
-    category: "Data",
-  },
-  {
-    id: "productivity-self-care",
-    title: "Balancing Productivity and Self-Care",
-    author: "by purepearl studio",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
-    level: "Beginner",
-    price: "$25",
-    period: "/lifetime",
-    rating: 4.5,
-    image: "/assets/courses/course-productivity.png",
-    category: "Wellness",
-  },
-  {
-    id: "money-management",
-    title: "Mastering Money Management",
-    author: "by purepearl studio",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
-    level: "Beginner",
-    price: "$25",
-    period: "/lifetime",
-    rating: 4.5,
-    image: "/assets/courses/course-money-management.png",
-    category: "Marketing",
-  },
-  {
-    id: "idea-to-startup",
-    title: "From Idea to Startup Success",
-    author: "by purepearl studio",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
-    level: "Advanced",
-    price: "$25",
-    period: "/lifetime",
-    rating: 4.5,
-    image: "/assets/courses/course-startup-success.png",
-    category: "Business",
-  },
-];
-
-// 18 cards total (3 cycles of 6 cards matching Figma 04_Search_Page)
-const FIGMA_18_COURSES: CourseItem[] = [
-  ...BASE_COURSES.map((c) => ({ ...c, id: `${c.id}` })),
-  ...BASE_COURSES.map((c) => ({
-    ...c,
-    id: `${c.id}`,
-    level: c.level === "Beginner" ? "Intermediate" : "Beginner",
-  })),
-  ...BASE_COURSES.map((c) => ({
-    ...c,
-    id: `${c.id}`,
-    level: "Advanced",
-  })),
-];
-
 export default function CoursesSearchPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeTab, setActiveTab] = useState("Featured");
-  const [selectedLevel, setSelectedLevel] = useState("All Levels");
-  const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [selectedSort, setSelectedSort] = useState("relevant");
-  const [selectedFilter, setSelectedFilter] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
+  const {
+    searchQuery,
+    setSearchQuery,
+    activeCategoryTab: activeTab,
+    setActiveCategoryTab: setActiveTab,
+    selectedLevel,
+    setSelectedLevel,
+    selectedCategory,
+    setSelectedCategory,
+    sortBy: selectedSort,
+    setSortBy: setSelectedSort,
+    selectedFilter,
+    setSelectedFilter,
+    currentPage,
+    setCurrentPage,
+  } = useCoursesStore();
+
   const [isLoadingGrid, setIsLoadingGrid] = useState(false);
 
   const triggerLoading = () => {
     setIsLoadingGrid(true);
     setTimeout(() => {
       setIsLoadingGrid(false);
-    }, 300);
+    }, 280);
   };
+
+  // Retrieve base catalog through CourseService
+  const allCourses = useMemo(() => {
+    return CourseService.getAllCourses();
+  }, []);
 
   // Filter courses based on query, tab, level, category, filter, and sort
   const filteredCourses = useMemo(() => {
-    const result = FIGMA_18_COURSES.filter((course) => {
+    const result = allCourses.filter((course) => {
       // 1. Text Search Query
       const matchesQuery =
         searchQuery.trim() === "" ||
@@ -186,15 +101,15 @@ export default function CoursesSearchPage() {
     });
 
     // 6. Sorting
-    if (selectedSort === "rating") {
+    if (selectedSort === "rating" || selectedSort === "Highest Rated") {
       result.sort((a, b) => b.rating - a.rating);
-    } else if (selectedSort === "price-asc") {
+    } else if (selectedSort === "price-asc" || selectedSort === "Price: Low to High") {
       result.sort((a, b) => {
         const pA = parseFloat(a.price.replace(/[^0-9.]/g, "")) || 0;
         const pB = parseFloat(b.price.replace(/[^0-9.]/g, "")) || 0;
         return pA - pB;
       });
-    } else if (selectedSort === "price-desc") {
+    } else if (selectedSort === "price-desc" || selectedSort === "Price: High to Low") {
       result.sort((a, b) => {
         const pA = parseFloat(a.price.replace(/[^0-9.]/g, "")) || 0;
         const pB = parseFloat(b.price.replace(/[^0-9.]/g, "")) || 0;
@@ -204,6 +119,7 @@ export default function CoursesSearchPage() {
 
     return result;
   }, [
+    allCourses,
     searchQuery,
     activeTab,
     selectedLevel,
