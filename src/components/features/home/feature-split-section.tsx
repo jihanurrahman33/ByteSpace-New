@@ -2,20 +2,20 @@ import Image from "next/image";
 import { Check, Star } from "lucide-react";
 
 const HAPPY_STUDENTS_AVATARS = [
-  "/assets/figma/9ef8cb329b949267cc8214b6727067c4a13af4b4.png",
-  "/assets/figma/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png",
-  "/assets/figma/83fb3e04056cc892636460bee5791aa3f243854c.png",
-  "/assets/figma/f3cf29a8fed39589ceb38423e65b26b8d6c93123.png",
-  "/assets/figma/5824acacb3b76175bc84084ec18597109498f96d.png",
-  "/assets/figma/7fdccc783264eedc4fb989984eecbc4058a219f2.png",
-  "/assets/figma/1e078348a54489bfd231d82fe1944770883c8d80.png",
+  "/assets/home/avatars/student-avatar-1.png",
+  "/assets/home/avatars/student-avatar-2.png",
+  "/assets/home/avatars/student-avatar-3.png",
+  "/assets/home/avatars/student-avatar-4.png",
+  "/assets/home/avatars/student-avatar-5.png",
+  "/assets/home/avatars/student-avatar-6.png",
+  "/assets/home/avatars/student-avatar-7.png",
 ];
 
 const COURSE_CARD_AVATARS = [
-  "/assets/figma/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.png",
-  "/assets/figma/3fe559181733e0fb69226caee836e40092facb44.png",
-  "/assets/figma/0577f0e9b7fca2f32639871454da0de95f951709.png",
-  "/assets/figma/d0cd3adb501c64c1b4cf766de6abb9fe8925fb5f.png",
+  "/assets/creators/student-1.png",
+  "/assets/creators/student-2.png",
+  "/assets/creators/student-3.png",
+  "/assets/creators/student-5.png",
 ];
 
 const FIGMA_IMAGE_DROP_SHADOW =
@@ -23,57 +23,57 @@ const FIGMA_IMAGE_DROP_SHADOW =
 
 export function FeatureSplitSection() {
   return (
-    <section className="relative w-full bg-[#FAFAFA] overflow-hidden min-h-[1460px]">
-      {/* Figma Frame 15 Background Radial Glows (Group 5 & Ellipse 12) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Top-Left Lime Glow (Ellipse 11: 1137x1137 at x=-152, y=-466, 40% opacity) */}
+    <section className="relative w-full bg-[#FAFAFA] overflow-hidden">
+      {/* Figma Frame 15 Atmospheric Smoke / Ambient Diffusion Glows */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden blur-[90px] md:blur-[120px] will-change-transform">
+        {/* Top-Left Lime Smoke Plume */}
         <div
-          className="absolute -left-[152px] -top-[466px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          className="absolute -left-[180px] -top-[480px] w-[1100px] h-[1100px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(203, 252, 1, 0.40) 0%, rgba(203, 252, 1, 0.15) 53%, rgba(203, 252, 1, 0.04) 75%, transparent 100%)",
+              "radial-gradient(ellipse at center, rgba(203, 252, 1, 0.42) 0%, rgba(203, 252, 1, 0.20) 28%, rgba(203, 252, 1, 0.06) 55%, transparent 75%)",
           }}
         />
 
-        {/* Top-Right Blue Glow (Ellipse 10: 1137x1137 at x=811, y=-458, 8% opacity) */}
+        {/* Top-Right Blue Smoke Plume */}
         <div
-          className="absolute left-[811px] -top-[458px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          className="absolute left-[780px] -top-[480px] w-[1100px] h-[1100px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(0, 59, 226, 0.08) 0%, rgba(0, 59, 226, 0.03) 53%, transparent 100%)",
+              "radial-gradient(ellipse at center, rgba(0, 59, 226, 0.12) 0%, rgba(0, 59, 226, 0.05) 30%, rgba(0, 59, 226, 0.01) 55%, transparent 75%)",
           }}
         />
 
-        {/* Middle-Left Blue Glow (Ellipse 9: 1137x1137 at x=-508, y=183, 16% opacity) */}
+        {/* Middle-Left Blue Smoke Plume */}
         <div
-          className="absolute -left-[508px] top-[183px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          className="absolute -left-[500px] top-[180px] w-[1100px] h-[1100px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(0, 59, 226, 0.16) 0%, rgba(0, 59, 226, 0.06) 53%, transparent 100%)",
+              "radial-gradient(ellipse at center, rgba(0, 59, 226, 0.18) 0%, rgba(0, 59, 226, 0.08) 30%, rgba(0, 59, 226, 0.02) 55%, transparent 75%)",
           }}
         />
 
-        {/* Right Middle Blue Glow (Ellipse 8: 1137x1137 at x=722, y=788, 24% opacity) */}
+        {/* Right Middle Blue Smoke Plume */}
         <div
-          className="absolute left-[722px] top-[788px] w-[1137px] h-[1137px] rounded-full pointer-events-none"
+          className="absolute left-[700px] top-[740px] w-[1100px] h-[1100px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(0, 59, 226, 0.24) 0%, rgba(0, 59, 226, 0.08) 53%, transparent 100%)",
+              "radial-gradient(ellipse at center, rgba(0, 59, 226, 0.22) 0%, rgba(0, 59, 226, 0.10) 30%, rgba(0, 59, 226, 0.03) 55%, transparent 75%)",
           }}
         />
 
-        {/* Bottom-Left Lime Glow (Ellipse 12: 672x672 at x=-287, y=946, 60% opacity) */}
+        {/* Bottom-Left Lime Smoke Plume */}
         <div
-          className="absolute -left-[287px] top-[946px] w-[672px] h-[672px] rounded-full pointer-events-none"
+          className="absolute -left-[280px] top-[900px] w-[750px] h-[750px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(203, 252, 1, 0.60) 0%, rgba(203, 252, 1, 0.23) 53%, rgba(203, 252, 1, 0.06) 75%, transparent 100%)",
+              "radial-gradient(ellipse at center, rgba(203, 252, 1, 0.50) 0%, rgba(203, 252, 1, 0.22) 30%, rgba(203, 252, 1, 0.06) 55%, transparent 75%)",
           }}
         />
       </div>
 
-      {/* Main Container matching Figma Frame 16 (1258px wide, y=120 padding) */}
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 lg:pl-[121px] lg:pr-[61px] py-12 sm:py-16 md:py-20 lg:py-[120px] flex flex-col gap-14 sm:gap-16 lg:gap-[72px]">
+      {/* Main Container matching Figma Frame 16 (1258px wide) */}
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 lg:pl-[121px] lg:pr-[61px] pt-12 sm:pt-16 md:pt-20 lg:pt-[100px] pb-10 sm:pb-12 md:pb-16 lg:pb-[72px] flex flex-col gap-14 sm:gap-16 lg:gap-[72px]">
         {/* ========================================================================= */}
         {/* Showcase 1: Learner Growth (Figma Frame 13, 1258x552)                     */}
         {/* ========================================================================= */}
@@ -208,7 +208,7 @@ export function FeatureSplitSection() {
                 style={{ filter: FIGMA_IMAGE_DROP_SHADOW }}
               >
                 <Image
-                  src="/assets/figma/29a52a24e51266edcd7d57d73392ee5fc4833220.png"
+                  src="/assets/hero-student.png"
                   alt="Learner with laptop and headphones"
                   fill
                   className="object-contain"
@@ -299,7 +299,7 @@ export function FeatureSplitSection() {
                 style={{ filter: FIGMA_IMAGE_DROP_SHADOW }}
               >
                 <Image
-                  src="/assets/figma/0d6596fb1df66aaf843ee85722f439fada233946.png"
+                  src="/assets/creator-woman.png"
                   alt="Female creator hosting courses"
                   fill
                   className="object-contain"
