@@ -14,10 +14,23 @@ const geistMono = Geist_Mono({
 
 import { Suspense } from "react";
 import { RouteLoadingIndicator } from "@/components/layout/route-loading-indicator";
+import { RouteTitleManager } from "@/components/layout/route-title-manager";
 
 export const metadata: Metadata = {
-  title: "ByteSpace - Unlock Your Potential with Modern Learning",
+  title: {
+    default: "ByteSpace - Unlock Your Potential with Modern Learning",
+    template: "%s | ByteSpace",
+  },
   description: "Explore diverse learning paths, professional courses, and creator communities on ByteSpace.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/assets/logo-mark.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "64x64" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/assets/logo-mark.svg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col">
         <Suspense fallback={null}>
           <RouteLoadingIndicator />
+          <RouteTitleManager />
         </Suspense>
         {children}
       </body>
