@@ -11,7 +11,7 @@ interface CourseSidebarCardProps {
 
 export function CourseSidebarCard({ course }: CourseSidebarCardProps) {
   return (
-    <div className="w-[412px] max-w-full bg-white rounded-[24px] border border-[#CED0D3] shadow-[0_24px_64px_rgba(0,0,0,0.12)] p-8 flex flex-col gap-6">
+    <div className="w-[412px] max-w-full bg-white rounded-[24px] border border-[#CED0D3] shadow-[0_24px_64px_rgba(0,0,0,0.12)] p-5 sm:p-8 flex flex-col gap-6">
       {/* Curriculum Outline Preview (Figma 55:4206) */}
       <div>
         <h4 className="font-heading font-semibold text-lg text-neutral-950 mb-4">

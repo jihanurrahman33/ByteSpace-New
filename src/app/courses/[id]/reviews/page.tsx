@@ -81,52 +81,52 @@ export default function CourseReviewsPage({
 
       {/* 2. Main Content (Left Column 723px) */}
       <main className="relative w-full bg-white flex-1">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-12 md:pt-16 pb-24">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] pt-8 md:pt-16 pb-16 md:pb-24">
           <div className="w-full lg:w-[723px] flex flex-col">
             {/* Pill Tabs (Figma 60:683 - About / Lesson / Reviews) */}
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-8 sm:mb-10">
               <Link
                 href={`/courses/${course.id}`}
-                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 About
               </Link>
               <Link
                 href={`/courses/${course.id}/lessons/${course.modules[0]?.lessons[0]?.id || "intro"}`}
-                className="h-[43px] px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#F5F5F6] text-[#4B4C53] hover:text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 Lesson
               </Link>
               <Link
                 href={`/courses/${course.id}/reviews`}
-                className="h-[43px] px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-base flex items-center justify-center transition-colors"
+                className="h-[40px] sm:h-[43px] px-4 sm:px-6 rounded-full bg-[#D4FB20] text-[#242528] font-sans font-medium text-sm sm:text-base flex items-center justify-center transition-colors"
               >
                 Reviews
               </Link>
             </div>
 
             {/* What Learners Are Saying Section */}
-            <div className="mb-10">
+            <div className="mb-8 sm:mb-10">
               <h2 className="font-heading font-semibold text-[20px] text-[#242528] mb-3">
                 What Learners Are Saying
               </h2>
-              <p className="font-sans text-base text-[#4B4C53] leading-relaxed">
+              <p className="font-sans text-sm sm:text-base text-[#4B4C53] leading-relaxed">
                 Discover what our learners have to say about their experience with &apos;Build Digital Assets: A Comprehensive Guide.&apos; Read reviews and ratings from individuals who have embarked on the transformative journey of mastering digital asset creation.
               </p>
             </div>
 
             {/* Ratings Summary Box (Figma 60:1294: 723x226) */}
-            <div className="w-full rounded-[16px] border border-[#CED0D3] bg-white p-6 md:p-8 flex flex-col sm:flex-row items-center gap-8 mb-10">
+            <div className="w-full rounded-[16px] border border-[#CED0D3] bg-white p-4 sm:p-6 md:p-8 flex flex-col sm:flex-row items-center gap-5 sm:gap-8 mb-8 sm:mb-10">
               {/* Neon Lime Rating Square */}
-              <div className="w-[104px] h-[104px] rounded-[16px] bg-[#D4FB20] text-[#242528] flex flex-col items-center justify-center shrink-0">
+              <div className="w-[96px] h-[96px] sm:w-[104px] sm:h-[104px] rounded-[16px] bg-[#D4FB20] text-[#242528] flex flex-col items-center justify-center shrink-0">
                 <span className="font-sans text-xs font-medium text-[#242528]">Ratings</span>
-                <span className="font-heading font-bold text-4xl text-[#242528]">4.7</span>
+                <span className="font-heading font-bold text-3xl sm:text-4xl text-[#242528]">4.7</span>
               </div>
 
               {/* Breakdown Bars */}
               <div className="flex-1 w-full space-y-3">
                 {ratingBars.map((bar) => (
-                  <div key={bar.stars} className="flex items-center gap-3 text-xs text-[#4B4C53]">
+                  <div key={bar.stars} className="flex items-center gap-2 sm:gap-3 text-xs text-[#4B4C53]">
                     <div className="w-full bg-[#E5E6E8] h-2 rounded-full overflow-hidden">
                       <div
                         className="bg-[#D4FB20] h-full rounded-full"
@@ -137,7 +137,7 @@ export default function CourseReviewsPage({
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-3.5 h-3.5 fill-[#242528] text-[#242528]"
+                          className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-[#242528] text-[#242528]"
                         />
                       ))}
                     </div>
@@ -183,7 +183,7 @@ export default function CourseReviewsPage({
                 {reviews.map((rev, idx) => (
                   <div
                     key={idx}
-                    className="p-8 rounded-[24px] border border-[#CED0D3] bg-white flex flex-col"
+                    className="p-5 sm:p-8 rounded-[24px] border border-[#CED0D3] bg-white flex flex-col"
                   >
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">

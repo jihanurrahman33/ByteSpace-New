@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, Bookmark } from "lucide-react";
+import { Star } from "lucide-react";
 
 interface Course {
   id: string;
@@ -136,29 +136,23 @@ const ROW_3_TABS = [
 
 export function FeaturedCoursesSection() {
   const [activeTab, setActiveTab] = useState("Featured");
-  const [bookmarked, setBookmarked] = useState<Record<string, boolean>>({});
-
-  const toggleBookmark = (id: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    setBookmarked((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
 
   return (
-    <section className="w-full bg-white pb-20 md:pb-28 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px]">
-        {/* Category Tabs (Figma Tab_Categories_21_33, Frame 6_21_56, Frame 7_21_63) */}
-        <div className="flex flex-col items-center gap-3 md:gap-4 mb-14 md:mb-16">
+    <section className="w-full bg-white pb-14 sm:pb-20 md:pb-28 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px]">
+        {/* Category Tabs (Figma Tab_Categories_21_33) */}
+        <div className="flex flex-col items-center gap-2.5 sm:gap-3 md:gap-4 mb-10 sm:mb-14 md:mb-16">
           {/* Row 1 */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 md:gap-3">
             {ROW_1_TABS.map((tab) => {
               const isActive = activeTab === tab;
               return (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`h-11 px-4 sm:px-5 rounded-[24px] text-[16px] font-medium font-sans transition-all cursor-pointer ${
+                  className={`h-9 sm:h-11 px-3 sm:px-5 rounded-[24px] text-xs sm:text-sm md:text-[16px] font-medium font-sans transition-all cursor-pointer ${
                     isActive
-                      ? "bg-[#D4FB20] text-[#242528] font-medium shadow-xs"
+                      ? "bg-[#D4FB20] text-[#242528] font-semibold shadow-xs"
                       : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E8E8EA]"
                   }`}
                 >
@@ -169,16 +163,16 @@ export function FeaturedCoursesSection() {
           </div>
 
           {/* Row 2 */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 md:gap-3">
             {ROW_2_TABS.map((tab) => {
               const isActive = activeTab === tab;
               return (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`h-11 px-4 sm:px-5 rounded-[24px] text-[16px] font-medium font-sans transition-all cursor-pointer ${
+                  className={`h-9 sm:h-11 px-3 sm:px-5 rounded-[24px] text-xs sm:text-sm md:text-[16px] font-medium font-sans transition-all cursor-pointer ${
                     isActive
-                      ? "bg-[#D4FB20] text-[#242528] font-medium shadow-xs"
+                      ? "bg-[#D4FB20] text-[#242528] font-semibold shadow-xs"
                       : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E8E8EA]"
                   }`}
                 >
@@ -189,16 +183,16 @@ export function FeaturedCoursesSection() {
           </div>
 
           {/* Row 3 */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 md:gap-3">
             {ROW_3_TABS.map((tab) => {
               const isActive = activeTab === tab;
               return (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`h-11 px-4 sm:px-5 rounded-[24px] text-[16px] font-medium font-sans transition-all cursor-pointer ${
+                  className={`h-9 sm:h-11 px-3 sm:px-5 rounded-[24px] text-xs sm:text-sm md:text-[16px] font-medium font-sans transition-all cursor-pointer ${
                     isActive
-                      ? "bg-[#D4FB20] text-[#242528] font-medium shadow-xs"
+                      ? "bg-[#D4FB20] text-[#242528] font-semibold shadow-xs"
                       : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E8E8EA]"
                   }`}
                 >
@@ -208,7 +202,7 @@ export function FeaturedCoursesSection() {
             })}
             <Link
               href="/courses"
-              className="h-11 px-4 flex items-center text-[16px] font-medium font-sans text-[#003BE2] hover:underline cursor-pointer"
+              className="h-9 sm:h-11 px-3 sm:px-4 flex items-center text-xs sm:text-sm md:text-[16px] font-medium font-sans text-[#003BE2] hover:underline cursor-pointer"
             >
               + More
             </Link>
@@ -216,14 +210,14 @@ export function FeaturedCoursesSection() {
         </div>
 
         {/* 6 Course Cards Grid (Figma Frame 8_33_683) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {COURSES_DATA.map((course) => (
             <div
               key={course.id}
               className="bg-white rounded-[24px] border border-[#CED0D3] p-4 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all flex flex-col justify-between group"
             >
               {/* Course Thumbnail (Figma 13:250 341x195px corner:12px) */}
-              <div className="relative w-full h-[195px] rounded-[12px] overflow-hidden bg-[#443131]">
+              <div className="relative w-full h-[180px] sm:h-[195px] rounded-[12px] overflow-hidden bg-[#443131]">
                 <Image
                   src={course.image}
                   alt={course.title}
@@ -232,14 +226,14 @@ export function FeaturedCoursesSection() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 373px"
                 />
                 {/* Frosted Badges at bottom of thumbnail (Figma 13:251) */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-1.5 z-10">
-                  <span className="px-2.5 py-1 rounded-[24px] bg-[#F6F6F6]/60 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans">
+                <div className="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between gap-1 z-10">
+                  <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
                     {course.lessons}
                   </span>
-                  <span className="px-2.5 py-1 rounded-[24px] bg-[#F6F6F6]/60 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans">
+                  <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
                     {course.duration}
                   </span>
-                  <span className="px-2.5 py-1 rounded-[24px] bg-[#F6F6F6]/60 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans">
+                  <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
                     {course.comments}
                   </span>
                 </div>
@@ -251,7 +245,7 @@ export function FeaturedCoursesSection() {
                   {/* Title & Rating Row (Figma 13:259 & 13:276) */}
                   <div className="flex items-start justify-between gap-2 mt-4">
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-heading font-semibold text-[20px] text-[#242528] leading-[1.2] group-hover:text-[#003BE2] transition-colors truncate">
+                      <h3 className="font-heading font-semibold text-lg sm:text-[20px] text-[#242528] leading-[1.2] group-hover:text-[#003BE2] transition-colors truncate">
                         {course.title}
                       </h3>
                       <p className="font-sans text-[12px] text-[#82868E] mt-1">
@@ -259,7 +253,7 @@ export function FeaturedCoursesSection() {
                       </p>
                     </div>
                     <div className="flex items-center gap-1 shrink-0 mt-0.5">
-                      <span className="text-[18px] text-[#242528] font-sans font-medium leading-none">
+                      <span className="text-base sm:text-[18px] text-[#242528] font-sans font-medium leading-none">
                         {course.rating}
                       </span>
                       <Star className="w-4 h-4 fill-[#F5A623] text-[#F5A623]" />
@@ -297,7 +291,7 @@ export function FeaturedCoursesSection() {
 
                 {/* Price (Figma 13:273) */}
                 <div className="flex items-baseline gap-1 mt-4 pt-1">
-                  <span className="font-heading font-semibold text-[20px] text-[#003BE2]">
+                  <span className="font-heading font-semibold text-lg sm:text-[20px] text-[#003BE2]">
                     {course.price}
                   </span>
                   <span className="font-sans text-[12px] text-[#82868E]">

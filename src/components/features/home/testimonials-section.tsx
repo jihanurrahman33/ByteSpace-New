@@ -4,34 +4,34 @@ interface Testimonial {
   id: string;
   name: string;
   role: string;
-  quote: string;
   avatar: string;
+  quote: string;
 }
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    id: "sarah",
-    name: "Sarah M.",
-    role: "Enthusiastic Learner",
-    quote:
-      "ByteSpace has transformed my approach to learning. The diverse range of courses and the quality of content provided by creators have exceeded my expectations. The platform truly fosters a sense of community and lifelong learning.",
-    avatar: "/assets/testimonials/sarah-m.png",
-  },
-  {
-    id: "james",
+    id: "1",
     name: "James L.",
-    role: "Lifelong Learner",
-    quote:
-      "I've tried several online learning platforms, and ByteSpace stands out for its vibrant community and the variety of courses available. The easy navigation and engaging content make it a go-to platform for continuous skill development.",
+    role: "UI/UX Designer",
     avatar: "/assets/testimonials/james-l.png",
+    quote:
+      "ByteSpace revolutionized my career! Courses are engaging, practical, and current. Proud to be part of this transformative community.",
   },
   {
-    id: "alex",
-    name: "Alex B.",
-    role: "Inspired Creator",
+    id: "2",
+    name: "Sarah M.",
+    role: "Digital Marketer",
+    avatar: "/assets/testimonials/sarah-m.png",
     quote:
-      "As a creator, ByteSpace has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It's fulfilling to see my courses making a positive impact on learners globally.",
+      "As a creator, ByteSpace provides the ideal space to share knowledge and build a loyal audience. Empowering and supportive, it's a game-changer.",
+  },
+  {
+    id: "3",
+    name: "Alex B.",
+    role: "Aspiring Web Developer",
     avatar: "/assets/testimonials/alex-b.png",
+    quote:
+      "ByteSpace ignited my tech passion! Instructors are industry experts, projects are real-world. Ready to launch my web dev career.",
   },
 ];
 
@@ -59,14 +59,14 @@ export function TestimonialsSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-16 md:pt-20 lg:pt-[84px] pb-16 md:pb-20 lg:pb-[58px]">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] pt-12 sm:pt-16 md:pt-20 lg:pt-[84px] pb-12 sm:pb-16 md:pb-20 lg:pb-[58px]">
         {/* Header & Subtitle (Figma Testimonials_Frame Text) */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 lg:gap-12 mb-12 md:mb-16 lg:mb-[76px]">
-          <h2 className="font-heading font-semibold text-3xl sm:text-4xl lg:text-[44px] text-black leading-[1.2] tracking-[-0.01em] max-w-[480px]">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 lg:gap-12 mb-10 sm:mb-14 lg:mb-[76px]">
+          <h2 className="font-heading font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-[44px] text-black leading-[1.2] tracking-[-0.01em] max-w-[480px]">
             Discover What Our <br className="hidden sm:inline" />
             Community Is Saying
           </h2>
-          <p className="font-sans text-[16px] sm:text-[18px] text-[#4F4F4F] leading-[1.6] max-w-[555px]">
+          <p className="font-sans text-sm sm:text-base md:text-[18px] text-[#4F4F4F] leading-relaxed sm:leading-[1.6] max-w-[555px]">
             At ByteSpace, our vibrant community of learners and creators is at the
             heart of what we do. Hear directly from those who have experienced the
             transformative journey of learning and creating on our platform. Explore
@@ -83,7 +83,7 @@ export function TestimonialsSection() {
               className="bg-white rounded-[24px] p-6 pb-7 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
               {/* Avatar (exact 80x80, circular, no border/shadow) */}
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shrink-0">
                 <Image
                   src={item.avatar}
                   alt={item.name}
@@ -94,17 +94,17 @@ export function TestimonialsSection() {
               </div>
 
               {/* Author Details: Name & Role stacked vertically */}
-              <div className="mt-6 flex flex-col gap-1">
-                <h3 className="font-heading font-semibold text-[20px] text-black leading-[1.2]">
+              <div className="mt-4 sm:mt-6 flex flex-col gap-1">
+                <h3 className="font-heading font-semibold text-lg sm:text-[20px] text-black leading-[1.2]">
                   {item.name}
                 </h3>
-                <p className="font-sans text-[16px] text-[#003BE2] font-normal leading-[1.4]">
+                <p className="font-sans text-sm sm:text-[16px] text-[#003BE2] font-normal leading-[1.4]">
                   {item.role}
                 </p>
               </div>
 
               {/* Quote */}
-              <p className="mt-8 font-sans text-[#4F4F4F] text-[16px] leading-[29px]">
+              <p className="mt-6 sm:mt-8 font-sans text-[#4F4F4F] text-sm sm:text-[16px] leading-relaxed sm:leading-[29px]">
                 &quot;{item.quote}&quot;
               </p>
             </div>
