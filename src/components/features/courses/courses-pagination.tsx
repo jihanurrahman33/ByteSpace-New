@@ -13,7 +13,7 @@ export function CoursesPagination({
   totalPages,
   onPageChange,
 }: CoursesPaginationProps) {
-  const pages = [1, 2, 3, 4, 5];
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <div className="flex items-center justify-center gap-3 sm:gap-6 py-8 sm:py-12">

@@ -63,3 +63,18 @@ body {
   overflow-x: hidden;
 }
 
+@keyframes logoZoom {
+  0%, 100% {
+    transform: scale(0.88);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.16);
+    opacity: 1;
+  }
+}
+
+.animate-logo-zoom {
+  animation: logoZoom 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+

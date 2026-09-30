@@ -1,23 +1,68 @@
 "use client";
 
-import { use, useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CourseCard } from "@/components/features/courses/course-card";
 import { CoursesFilterBar } from "@/components/features/courses/courses-filter-bar";
+import { LogoLoader } from "@/components/ui/logo-loader";
 import { ALL_COURSES } from "@/lib/constants/courses-data";
 
-export default function CreatorProfilePage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const resolvedParams = use(params);
+export default function CreatorProfilePage() {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [selectedLevel, setSelectedLevel] = useState("All Levels");
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const [selectedSort, setSelectedSort] = useState("relevant");
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [isLoadingGrid, setIsLoadingGrid] = useState(false);
 
-  // Take the 6 exact courses shown in Figma frame 78:2503
-  const creatorCourses = ALL_COURSES.slice(0, 6);
+  const triggerLoading = () => {
+    setIsLoadingGrid(true);
+    setTimeout(() => {
+      setIsLoadingGrid(false);
+    }, 280);
+  };
+
+  // 6 courses shown in Figma frame 78:2503
+  const creatorCourses = useMemo(() => {
+    const result = ALL_COURSES.filter((c) => {
+      const matchesLevel =
+        selectedLevel === "All Levels" || c.level === selectedLevel;
+      const matchesCategory =
+        selectedCategory === "All Categories" ||
+        (c.category &&
+          c.category.toLowerCase().includes(selectedCategory.toLowerCase()));
+
+      let matchesFilter = true;
+      if (selectedFilter === "top-rated") {
+        matchesFilter = c.rating >= 4.5;
+      } else if (selectedFilter === "under-30") {
+        const priceNum = parseFloat(c.price.replace(/[^0-9.]/g, "")) || 0;
+        matchesFilter = priceNum <= 30;
+      }
+
+      return matchesLevel && matchesCategory && matchesFilter;
+    });
+
+    if (selectedSort === "rating") {
+      result.sort((a, b) => b.rating - a.rating);
+    } else if (selectedSort === "price-asc") {
+      result.sort((a, b) => {
+        const pA = parseFloat(a.price.replace(/[^0-9.]/g, "")) || 0;
+        const pB = parseFloat(b.price.replace(/[^0-9.]/g, "")) || 0;
+        return pA - pB;
+      });
+    } else if (selectedSort === "price-desc") {
+      result.sort((a, b) => {
+        const pA = parseFloat(a.price.replace(/[^0-9.]/g, "")) || 0;
+        const pB = parseFloat(b.price.replace(/[^0-9.]/g, "")) || 0;
+        return pB - pA;
+      });
+    }
+
+    return result.slice(0, 6);
+  }, [selectedLevel, selectedCategory, selectedSort, selectedFilter]);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -89,7 +134,7 @@ export default function CreatorProfilePage({
             {/* Bio text from Figma node 60:2185 */}
             <div className="font-sans text-[#F5F5F6] text-sm sm:text-base leading-relaxed space-y-2">
               <p>
-                Welcome to the creative world of [Creator&apos;s Name]. Here, you&apos;ll discover the passion, expertise, and inspiration that drive my creative journey. Let&apos;s explore and learn together!
+                Welcome to the creative world of PurePearl Studio. Here, you&apos;ll discover the passion, expertise, and inspiration that drive my creative journey. Let&apos;s explore and learn together!
               </p>
               <p>
                 Dive into my creative portfolio, showcasing a glimpse of my artistic endeavors. From digital designs to multimedia projects, each piece tells a unique story. Explore the world of creativity with me.
@@ -101,7 +146,7 @@ export default function CreatorProfilePage({
               <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                 {/* Products Stat Pill (Figma 60:2188: 140x46, radius 24) */}
                 <div className="h-[40px] sm:h-[46px] px-4 sm:px-6 rounded-full bg-white flex items-center gap-2 shadow-xs">
-                  <span className="font-heading font-semibold text-base sm:text-lg text-[#003BE2]">3</span>
+                  <span className="font-heading font-semibold text-base sm:text-lg text-[#003BE2]">6</span>
                   <span className="font-sans font-medium text-sm sm:text-base text-[#242528]">Products</span>
                 </div>
 
@@ -118,7 +163,11 @@ export default function CreatorProfilePage({
               <button
                 type="button"
                 onClick={() => setIsFollowing(!isFollowing)}
-                className="h-[40px] sm:h-[46px] px-6 sm:px-8 rounded-full bg-[#D4FB20] hover:bg-[#c2ea1b] text-[#242528] font-sans font-medium text-sm sm:text-base transition-colors cursor-pointer shadow-xs shrink-0"
+                className={`h-[40px] sm:h-[46px] px-6 sm:px-8 rounded-full font-sans font-medium text-sm sm:text-base transition-all cursor-pointer shadow-xs shrink-0 ${
+                  isFollowing
+                    ? "bg-white text-[#003BE2] border border-white hover:bg-neutral-100"
+                    : "bg-[#D4FB20] text-[#242528] hover:bg-[#c2ea1b]"
+                }`}
               >
                 {isFollowing ? "Following" : "Follow"}
               </button>
@@ -128,16 +177,52 @@ export default function CreatorProfilePage({
       </section>
 
       {/* 2. Creator Courses Section with Filters Bar (Figma 60:1928) */}
-      <main className="flex-1 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full py-8 sm:py-12 md:py-16">
+      <main className="flex-1 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full py-8 sm:py-12 md:py-16 min-h-[450px]">
         {/* Filters Bar (Figma 60:1930) */}
-        <CoursesFilterBar />
+        <CoursesFilterBar
+          selectedLevel={selectedLevel}
+          onLevelChange={(lvl) => {
+            setSelectedLevel(lvl);
+            triggerLoading();
+          }}
+          selectedCategory={selectedCategory}
+          onCategoryChange={(cat) => {
+            setSelectedCategory(cat);
+            triggerLoading();
+          }}
+          selectedSort={selectedSort}
+          onSortChange={(sort) => {
+            setSelectedSort(sort);
+            triggerLoading();
+          }}
+          selectedFilter={selectedFilter}
+          onFilterChange={(flt) => {
+            setSelectedFilter(flt);
+            triggerLoading();
+          }}
+        />
 
-        {/* 6 Course Cards Grid (Figma Frame 8 78:2503) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-10">
-          {creatorCourses.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
+        {/* 6 Course Cards Grid with Loading State */}
+        {isLoadingGrid ? (
+          <div className="w-full py-24 flex items-center justify-center">
+            <LogoLoader size="md" />
+          </div>
+        ) : creatorCourses.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-10">
+            {creatorCourses.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        ) : (
+          <div className="py-24 text-center">
+            <h3 className="text-xl font-heading font-semibold text-neutral-800 mb-2">
+              No courses found
+            </h3>
+            <p className="text-neutral-500 font-sans text-sm">
+              Try adjusting your filter selection.
+            </p>
+          </div>
+        )}
       </main>
 
       {/* 3. Footer */}
