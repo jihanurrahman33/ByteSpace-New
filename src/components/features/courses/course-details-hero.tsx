@@ -53,16 +53,16 @@ export function CourseDetailsHero({ course }: CourseDetailsHeroProps) {
         <div className="flex flex-wrap items-start justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
           <div className="max-w-3xl">
             <h1 className="font-heading font-semibold text-[26px] sm:text-[36px] md:text-[44px] text-white tracking-tight leading-[1.2] mb-2 sm:mb-3">
-              Build Digital Asset: A Comprehensive Guide
+              {course.title || "Build Digital Asset: A Comprehensive Guide"}
             </h1>
             <p className="font-sans text-neutral-100 text-sm sm:text-base md:text-lg mb-2">
-              Unlock the Power of Digital Creation with Expert Guidance
+              {course.description || "Unlock the Power of Digital Creation with Expert Guidance"}
             </p>
             <Link
-              href="/creators/purepearl-studio"
+              href="/creators/purepearl"
               className="font-sans text-sm text-[#CBFC01] hover:underline mb-3 sm:mb-4 inline-block"
             >
-              by purepearl studio
+              {course.author || "by purepearl studio"}
             </Link>
 
             {/* Badges Row */}
@@ -71,11 +71,11 @@ export function CourseDetailsHero({ course }: CourseDetailsHeroProps) {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-[#4B4C53]">
                   <path d="M2 17h4v4H2v-4zm6-5h4v9H8v-9zm6-5h4v14h-4V7zm6-5h4v19h-4V2z" />
                 </svg>
-                Intermediate
+                {course.level || "Intermediate"}
               </span>
               <span className="h-[34px] sm:h-[36px] px-3 sm:px-4 rounded-full bg-white text-[#242528] text-xs font-medium font-sans flex items-center gap-1.5 shadow-sm">
-                <Star className="w-4 h-4 fill-[#F5A623] text-[#F5A623]" />
-                4.8 (172 reviews)
+                <Star className="w-4 h-4 fill-[#94969C] text-[#94969C]" />
+                {course.rating || 4.5} (172 reviews)
               </span>
               <span className="h-[34px] sm:h-[36px] px-3 sm:px-4 rounded-full bg-white text-[#242528] text-xs font-medium font-sans flex items-center gap-1.5 shadow-sm">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#4B4C53]">

@@ -71,12 +71,12 @@ export function CourseCard({ course }: CourseCardProps) {
               <span className="text-base sm:text-[18px] text-[#242528] font-sans font-medium leading-none">
                 {course.rating}
               </span>
-              <Star className="w-4 h-4 fill-[#F5A623] text-[#F5A623]" />
+              <Star className="w-4 h-4 fill-[#94969C] text-[#94969C]" />
             </div>
           </div>
 
-          {/* Level & Student Count with Mini Avatars */}
-          <div className="flex items-center gap-3 mt-4">
+          {/* Level & Student Count with Mini Avatars and 26+ Circle Badge (Figma 13:262) */}
+          <div className="flex items-center gap-2.5 sm:gap-3 mt-4">
             <span className="px-3 py-1 rounded-[24px] bg-[#F5F5F6] text-[#4B4C53] text-[12px] font-medium font-sans flex items-center gap-1.5">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-[#4B4C53]">
                 <path d="M2 17h4v4H2v-4zm6-5h4v9H8v-9zm6-5h4v14h-4V7zm6-5h4v19h-4V2z" />
@@ -97,10 +97,10 @@ export function CourseCard({ course }: CourseCardProps) {
                   <Image src={avatar} alt="student" fill className="object-cover" sizes="20px" />
                 </div>
               ))}
+              <div className="w-5 h-5 rounded-full border border-white bg-[#D4FB20] text-[#242528] text-[9px] font-bold flex items-center justify-center shrink-0">
+                26+
+              </div>
             </div>
-            <span className="text-[12px] font-medium text-[#242528] font-sans">
-              26+
-            </span>
           </div>
         </div>
 

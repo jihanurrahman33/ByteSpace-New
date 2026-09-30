@@ -49,34 +49,12 @@ export function CoursesSearchBanner({
           Find Your Next Course
         </h1>
 
-        <div className="w-full max-w-[624px] h-[50px] sm:h-[54px] bg-white rounded-full p-1 sm:p-1.5 pl-4 sm:pl-6 flex items-center shadow-lg">
-          <svg
-            className="w-4 h-4 sm:w-5 sm:h-5 text-[#82868E] shrink-0 mr-2 sm:mr-3"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => onSearchChange(e.target.value)}
-            className="flex-1 min-w-0 bg-transparent border-none text-[#242528] placeholder-[#82868E] font-sans text-sm sm:text-base outline-none"
-          />
-          <button
-            type="button"
-            className="h-[38px] sm:h-[42px] px-3.5 sm:px-6 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 transition-colors cursor-pointer shrink-0"
-          >
-            <span>Courses</span>
+        {/* Separate Search Input and Courses Dropdown Button (matching Figma 04_Search_Page) */}
+        <div className="w-full max-w-[624px] flex items-center justify-center gap-2.5 sm:gap-3.5">
+          {/* 1. Search Input Pill */}
+          <div className="flex-1 h-[48px] sm:h-[54px] bg-white rounded-full px-4 sm:px-6 flex items-center shadow-lg">
             <svg
-              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-[#82868E] shrink-0 mr-2 sm:mr-3"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -85,6 +63,34 @@ export function CoursesSearchBanner({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-full bg-transparent border-none text-[#242528] placeholder-[#82868E] font-sans text-sm sm:text-base outline-none"
+            />
+          </div>
+
+          {/* 2. Separate Courses Dropdown Button */}
+          <button
+            type="button"
+            className="h-[48px] sm:h-[54px] px-5 sm:px-7 rounded-full bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-sm sm:text-base flex items-center gap-2 transition-colors cursor-pointer shadow-lg shrink-0"
+          >
+            <span>Courses</span>
+            <svg
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-950"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
                 d="M19 9l-7 7-7-7"
               />
             </svg>
