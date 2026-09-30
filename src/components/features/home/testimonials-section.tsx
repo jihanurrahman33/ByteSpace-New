@@ -38,23 +38,23 @@ const TESTIMONIALS: Testimonial[] = [
 export function TestimonialsSection() {
   return (
     <section className="relative w-full bg-[#FAFAFA] overflow-hidden border-t border-neutral-100">
-      {/* Figma Background Radial Glows */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Upper-Right Lime Glow */}
+      {/* Figma Background Diffuse Smoke / Glow Atmosphere */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden blur-[90px] md:blur-[120px] will-change-transform">
+        {/* Upper-Right Lime Smoke Plume */}
         <div
-          className="absolute left-[650px] -top-[250px] w-[950px] h-[950px] rounded-full pointer-events-none"
+          className="absolute left-[620px] -top-[280px] w-[950px] h-[950px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(203, 252, 1, 0.45) 0%, rgba(203, 252, 1, 0.18) 45%, rgba(203, 252, 1, 0.04) 70%, transparent 100%)",
+              "radial-gradient(ellipse at center, rgba(203, 252, 1, 0.42) 0%, rgba(203, 252, 1, 0.18) 30%, rgba(203, 252, 1, 0.05) 55%, transparent 75%)",
           }}
         />
 
-        {/* Lower-Left Blue Glow */}
+        {/* Lower-Left Blue Smoke Plume */}
         <div
-          className="absolute -left-[250px] top-[330px] w-[800px] h-[800px] rounded-full pointer-events-none"
+          className="absolute -left-[280px] top-[300px] w-[800px] h-[800px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(0, 59, 226, 0.18) 0%, rgba(0, 59, 226, 0.06) 50%, transparent 100%)",
+              "radial-gradient(ellipse at center, rgba(0, 59, 226, 0.18) 0%, rgba(0, 59, 226, 0.07) 30%, rgba(0, 59, 226, 0.02) 55%, transparent 75%)",
           }}
         />
       </div>

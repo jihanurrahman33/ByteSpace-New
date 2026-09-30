@@ -24,7 +24,6 @@
 .DS_Store
 *.pem
 /.figma_previews/
-/public/assets/figma/
 
 # debug
 npm-debug.log*
