@@ -4,7 +4,8 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
-import { ALL_COURSES } from "@/lib/constants/courses-data";
+import { CourseService } from "@/services/course.service";
+import { useCoursesStore } from "@/stores/use-courses-store";
 import { LogoLoader } from "@/components/ui/logo-loader";
 
 interface Course {
@@ -139,7 +140,8 @@ const ROW_3_TABS = [
 const ALL_TABS = [...ROW_1_TABS, ...ROW_2_TABS, ...ROW_3_TABS];
 
 export function FeaturedCoursesSection() {
-  const [activeTab, setActiveTab] = useState("Featured");
+  const { activeCategoryTab: activeTab, setActiveCategoryTab: setActiveTab } =
+    useCoursesStore();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleTabChange = (tab: string) => {
@@ -155,13 +157,15 @@ export function FeaturedCoursesSection() {
       return DEFAULT_COURSES;
     }
 
-    // Try finding courses in ALL_COURSES matching this category
-    const exactMatches = ALL_COURSES.filter(
-      (c) =>
-        c.category &&
-        (c.category.toLowerCase().includes(activeTab.toLowerCase()) ||
-          activeTab.toLowerCase().includes(c.category.toLowerCase()))
-    ).map((c) => ({
+    // Try finding courses through CourseService matching this category
+    const allCourses = CourseService.getAllCourses();
+    const exactMatches = allCourses
+      .filter(
+        (c) =>
+          c.category &&
+          (c.category.toLowerCase().includes(activeTab.toLowerCase()) ||
+            activeTab.toLowerCase().includes(c.category.toLowerCase()))
+      ).map((c) => ({
       id: c.id,
       title: c.title,
       category: c.category || activeTab,

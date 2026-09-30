@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils/cn";
+import { useUIStore } from "@/stores/use-ui-store";
+import { NavItem } from "@/types";
 
 interface HeaderProps {
   variant?: "hero" | "light";
@@ -12,12 +14,12 @@ interface HeaderProps {
 }
 
 export function Header({ variant = "hero", className }: HeaderProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isMobileMenuOpen, setMobileMenuOpen } = useUIStore();
   const pathname = usePathname();
 
   const isLight = variant === "light";
 
-  const navLinks = [
+  const navLinks: NavItem[] = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
     { name: "Creators", href: "/creators" },
@@ -25,7 +27,7 @@ export function Header({ variant = "hero", className }: HeaderProps) {
 
   // Prevent background scrolling when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
+    if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -33,7 +35,7 @@ export function Header({ variant = "hero", className }: HeaderProps) {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileMenuOpen]);
+  }, [isMobileMenuOpen]);
 
   // Close mobile menu on Escape key
   useEffect(() => {
@@ -44,7 +46,7 @@ export function Header({ variant = "hero", className }: HeaderProps) {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [setMobileMenuOpen]);
 
   return (
     <>
@@ -172,7 +174,7 @@ export function Header({ variant = "hero", className }: HeaderProps) {
                   : "text-neutral-50 hover:bg-white/10"
               )}
               aria-label="Open navigation menu"
-              aria-expanded={mobileMenuOpen}
+              aria-expanded={isMobileMenuOpen}
             >
               <svg
                 width="24"
@@ -192,7 +194,7 @@ export function Header({ variant = "hero", className }: HeaderProps) {
       </header>
 
       {/* Full-Viewport Mobile Menu Drawer (Fixed, Portal-Style to escape overflow-hidden containers) */}
-      {mobileMenuOpen && (
+      {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[100] md:hidden flex">
           {/* Backdrop overlay with fade */}
           <div

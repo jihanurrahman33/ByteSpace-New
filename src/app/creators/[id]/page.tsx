@@ -7,10 +7,13 @@ import { Footer } from "@/components/layout/footer";
 import { CourseCard } from "@/components/features/courses/course-card";
 import { CoursesFilterBar } from "@/components/features/courses/courses-filter-bar";
 import { LogoLoader } from "@/components/ui/logo-loader";
-import { ALL_COURSES } from "@/lib/constants/courses-data";
+import { CourseService } from "@/services/course.service";
+import { useUIStore } from "@/stores/use-ui-store";
 
 export default function CreatorProfilePage() {
-  const [isFollowing, setIsFollowing] = useState(false);
+  const { isCreatorFollowed, toggleFollowCreator } = useUIStore();
+  const isFollowing = isCreatorFollowed("purepearl");
+
   const [selectedLevel, setSelectedLevel] = useState("All Levels");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedSort, setSelectedSort] = useState("relevant");
@@ -26,7 +29,7 @@ export default function CreatorProfilePage() {
 
   // 6 courses shown in Figma frame 78:2503
   const creatorCourses = useMemo(() => {
-    const result = ALL_COURSES.filter((c) => {
+    const result = CourseService.getAllCourses().filter((c) => {
       const matchesLevel =
         selectedLevel === "All Levels" || c.level === selectedLevel;
       const matchesCategory =
@@ -162,7 +165,7 @@ export default function CreatorProfilePage() {
               {/* Follow Button (Figma 60:2194: 101x46, radius 24, bg #D4FB20) */}
               <button
                 type="button"
-                onClick={() => setIsFollowing(!isFollowing)}
+                onClick={() => toggleFollowCreator("purepearl")}
                 className={`h-[40px] sm:h-[46px] px-6 sm:px-8 rounded-full font-sans font-medium text-sm sm:text-base transition-all cursor-pointer shadow-xs shrink-0 ${
                   isFollowing
                     ? "bg-white text-[#003BE2] border border-white hover:bg-neutral-100"
