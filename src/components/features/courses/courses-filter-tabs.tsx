@@ -12,8 +12,8 @@ export function CoursesFilterTabs({
   onTabChange,
 }: CoursesFilterTabsProps) {
   return (
-    <div className="w-full overflow-x-auto scrollbar-none py-6">
-      <div className="flex items-center justify-center min-w-max gap-3 px-4">
+    <div className="w-full overflow-x-auto scrollbar-none py-4 sm:py-6">
+      <div className="flex items-center justify-start md:justify-center min-w-max gap-2 sm:gap-3 px-4 sm:px-6">
         {tabs.map((tab) => {
           const isActive = activeTab === tab;
           return (

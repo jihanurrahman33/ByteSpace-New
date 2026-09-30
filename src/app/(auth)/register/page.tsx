@@ -43,8 +43,124 @@ export default function RegisterPage() {
         </svg>
       </div>
 
-      {/* 1440x1024 Canvas Coordinate Container */}
-      <div className="relative w-full max-w-[1440px] h-[1024px] mx-auto overflow-hidden">
+      {/* Mobile & Tablet Layout (< 1024px) */}
+      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center px-4 py-8 sm:px-6 sm:py-12 lg:hidden">
+        {/* Logo */}
+        <div className="mb-6">
+          <Link href="/" className="inline-block" aria-label="ByteSpace Home">
+            <svg
+              width="36"
+              height="40"
+              viewBox="0 0 29 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.5 10.5C10.5 4.70101 5.79899 0 0 0L0 21C0 26.799 4.70101 31.5 10.5 31.5L10.5 10.5Z"
+                fill="#CBFC01"
+              />
+              <path
+                d="M18.375 10.5C24.174 10.5 28.875 15.201 28.875 21L21 21C15.201 21 10.5 16.299 10.5 10.5L18.375 10.5Z"
+                fill="#CBFC01"
+              />
+              <path
+                d="M18.375 31.5C24.174 31.5 28.875 26.799 28.875 21L21 21C15.201 21 10.5 25.701 10.5 31.5L18.375 31.5Z"
+                fill="#CBFC01"
+              />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Mobile Header Text */}
+        <div className="text-center max-w-[440px] mb-6 px-2">
+          <h1 className="font-heading font-semibold text-xl text-[#F5F5F6] tracking-tight mb-2">
+            Sign up and come in
+          </h1>
+          <p className="font-sans text-xs sm:text-sm text-neutral-200 leading-relaxed">
+            The registration process is straightforward, uncomplicated, and efficient, allowing users to sign up quickly, easily, and at no cost.
+          </p>
+        </div>
+
+        {/* Mobile Form Card */}
+        <div className="w-full max-w-[480px] bg-white rounded-[24px] shadow-[0_24px_64px_rgba(0,0,0,0.25)] p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div className="mb-6">
+              <p className="font-sans text-sm font-normal text-brand-blue mb-1">
+                Create an Account
+              </p>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl text-neutral-950">
+                Welcome to ByteSpace
+              </h2>
+            </div>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
+              <div>
+                <label className="block font-sans text-xs sm:text-sm font-medium text-neutral-950 mb-1.5">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Jamie Davis"
+                  className="w-full h-[48px] px-4 rounded-[12px] border border-[#E5E6E8] bg-white font-sans text-sm sm:text-base text-neutral-950 placeholder-[#82868E] outline-none focus:border-brand-blue transition-colors"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block font-sans text-xs sm:text-sm font-medium text-neutral-950 mb-1.5">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="designer@example.com"
+                  className="w-full h-[48px] px-4 rounded-[12px] border border-[#E5E6E8] bg-white font-sans text-sm sm:text-base text-neutral-950 placeholder-[#82868E] outline-none focus:border-brand-blue transition-colors"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block font-sans text-xs sm:text-sm font-medium text-neutral-950 mb-1.5">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="********"
+                  className="w-full h-[48px] px-4 rounded-[12px] border border-[#E5E6E8] bg-white font-sans text-sm sm:text-base text-neutral-950 placeholder-[#82868E] outline-none focus:border-brand-blue transition-colors"
+                  required
+                />
+              </div>
+
+              <div className="flex justify-end pt-1">
+                <button
+                  type="submit"
+                  className="w-full sm:w-[123px] h-[46px] rounded-[24px] bg-[#CBFC01] hover:bg-[#b8e400] text-neutral-950 font-sans font-medium text-sm flex items-center justify-center transition-colors cursor-pointer"
+                >
+                  Continue
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div className="text-center font-sans text-sm sm:text-base text-[#4B4C53] mt-6">
+            Already have an account?{" "}
+            <Link
+              href="/login"
+              className="text-brand-blue font-medium hover:underline ml-1 cursor-pointer"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Figma 1440x1024 Canvas Coordinate Container (>= 1024px) */}
+      <div className="hidden lg:block relative w-full max-w-[1440px] h-[1024px] mx-auto overflow-hidden">
         {/* Top Header Logo (Figma 47:501, only the yellow logo icon at x: 122px, y: 35px) */}
         <div className="absolute left-[120px] top-[35px] z-30">
           <Link href="/" className="inline-block" aria-label="ByteSpace Home">

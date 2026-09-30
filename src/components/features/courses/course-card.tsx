@@ -29,7 +29,7 @@ export function CourseCard({ course }: CourseCardProps) {
       {/* Course Thumbnail (Figma 341x195px corner:12px) */}
       <Link
         href={`/courses/${course.id}`}
-        className="block relative w-full h-[195px] rounded-[12px] overflow-hidden bg-[#443131] cursor-pointer"
+        className="block relative w-full h-[180px] sm:h-[195px] rounded-[12px] overflow-hidden bg-[#443131] cursor-pointer"
       >
         <Image
           src={course.image}
@@ -39,14 +39,14 @@ export function CourseCard({ course }: CourseCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 373px"
         />
         {/* Frosted Badges at bottom of thumbnail (Figma 13:251) */}
-        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-1.5 z-10">
-          <span className="px-2.5 py-1 rounded-[24px] bg-[#F6F6F6]/60 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans">
+        <div className="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-center justify-between gap-1 z-10">
+          <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
             {course.lessons}
           </span>
-          <span className="px-2.5 py-1 rounded-[24px] bg-[#F6F6F6]/60 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans">
+          <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
             {course.duration}
           </span>
-          <span className="px-2.5 py-1 rounded-[24px] bg-[#F6F6F6]/60 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans">
+          <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-[24px] bg-[#F6F6F6]/70 backdrop-blur-[8px] text-[10px] sm:text-[11px] font-medium text-[#242528] font-sans truncate">
             {course.comments}
           </span>
         </div>
@@ -59,7 +59,7 @@ export function CourseCard({ course }: CourseCardProps) {
           <div className="flex items-start justify-between gap-2 mt-4">
             <div className="flex-1 min-w-0">
               <Link href={`/courses/${course.id}`}>
-                <h3 className="font-heading font-semibold text-[20px] text-[#242528] leading-[1.2] group-hover:text-[#003BE2] transition-colors truncate">
+                <h3 className="font-heading font-semibold text-lg sm:text-[20px] text-[#242528] leading-[1.2] group-hover:text-[#003BE2] transition-colors truncate">
                   {course.title}
                 </h3>
               </Link>
@@ -68,7 +68,7 @@ export function CourseCard({ course }: CourseCardProps) {
               </p>
             </div>
             <div className="flex items-center gap-1 shrink-0 mt-0.5">
-              <span className="text-[18px] text-[#242528] font-sans font-medium leading-none">
+              <span className="text-base sm:text-[18px] text-[#242528] font-sans font-medium leading-none">
                 {course.rating}
               </span>
               <Star className="w-4 h-4 fill-[#F5A623] text-[#F5A623]" />
@@ -106,7 +106,7 @@ export function CourseCard({ course }: CourseCardProps) {
 
         {/* Price */}
         <div className="flex items-baseline gap-1 mt-4 pt-1">
-          <span className="font-heading font-semibold text-[20px] text-[#003BE2]">
+          <span className="font-heading font-semibold text-lg sm:text-[20px] text-[#003BE2]">
             {course.price}
           </span>
           <span className="font-sans text-[12px] text-[#82868E]">

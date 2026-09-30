@@ -54,12 +54,12 @@ export default function CreatorProfilePage({
         <Header variant="hero" />
 
         {/* Profile Details Container (Figma 60:2171: 1198x338 at y=1920) */}
-        <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8 flex flex-col justify-between">
-          <div className="flex flex-col gap-6 max-w-[1198px]">
+        <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] pt-4 md:pt-8 flex flex-col justify-between">
+          <div className="flex flex-col gap-5 sm:gap-6 max-w-[1198px]">
             {/* Header info row: Avatar + Name + Creator Tag + Subtitle */}
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
               {/* Avatar: 96x96 with 24px border radius as in Figma node 60:2175 */}
-              <div className="relative w-24 h-24 rounded-[24px] overflow-hidden shrink-0 bg-neutral-100 shadow-md">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-[20px] sm:rounded-[24px] overflow-hidden shrink-0 bg-neutral-100 shadow-md">
                 <Image
                   src="/assets/creators/purepearl-studio.png"
                   alt="PurePearl Studio"
@@ -71,23 +71,23 @@ export default function CreatorProfilePage({
               </div>
 
               {/* Profile Name & Subtitle */}
-              <div className="flex flex-col gap-1.5">
-                <div className="flex items-center gap-3">
-                  <h1 className="font-heading font-semibold text-3xl sm:text-4xl text-[#F5F5F6] tracking-tight">
+              <div className="flex flex-col gap-1 sm:gap-1.5">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <h1 className="font-heading font-semibold text-2xl sm:text-3xl md:text-4xl text-[#F5F5F6] tracking-tight">
                     PurePearl Studio
                   </h1>
-                  <span className="h-[35px] px-4 rounded-full bg-[#D4FB20] text-[#242528] font-sans text-xs font-semibold flex items-center justify-center">
+                  <span className="h-[30px] sm:h-[35px] px-3 sm:px-4 rounded-full bg-[#D4FB20] text-[#242528] font-sans text-xs font-semibold flex items-center justify-center">
                     Creator
                   </span>
                 </div>
-                <p className="font-sans text-[#F5F5F6] text-base sm:text-lg font-normal">
+                <p className="font-sans text-[#F5F5F6] text-sm sm:text-base md:text-lg font-normal">
                   Passionate UI/UX, Web designer
                 </p>
               </div>
             </div>
 
             {/* Bio text from Figma node 60:2185 */}
-            <div className="font-sans text-[#F5F5F6] text-base leading-relaxed space-y-2">
+            <div className="font-sans text-[#F5F5F6] text-sm sm:text-base leading-relaxed space-y-2">
               <p>
                 Welcome to the creative world of [Creator&apos;s Name]. Here, you&apos;ll discover the passion, expertise, and inspiration that drive my creative journey. Let&apos;s explore and learn together!
               </p>
@@ -97,20 +97,20 @@ export default function CreatorProfilePage({
             </div>
 
             {/* Stats pills & Follow Button (Figma 60:2186) */}
-            <div className="flex items-center justify-between pt-2">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                 {/* Products Stat Pill (Figma 60:2188: 140x46, radius 24) */}
-                <div className="h-[46px] px-6 rounded-full bg-white flex items-center gap-2 shadow-xs">
-                  <span className="font-heading font-semibold text-lg text-[#003BE2]">3</span>
-                  <span className="font-sans font-medium text-base text-[#242528]">Products</span>
+                <div className="h-[40px] sm:h-[46px] px-4 sm:px-6 rounded-full bg-white flex items-center gap-2 shadow-xs">
+                  <span className="font-heading font-semibold text-base sm:text-lg text-[#003BE2]">3</span>
+                  <span className="font-sans font-medium text-sm sm:text-base text-[#242528]">Products</span>
                 </div>
 
                 {/* Followers Stat Pill (Figma 60:2191: 150x46, radius 24) */}
-                <div className="h-[46px] px-6 rounded-full bg-white flex items-center gap-2 shadow-xs">
-                  <span className="font-heading font-semibold text-lg text-[#003BE2]">
+                <div className="h-[40px] sm:h-[46px] px-4 sm:px-6 rounded-full bg-white flex items-center gap-2 shadow-xs">
+                  <span className="font-heading font-semibold text-base sm:text-lg text-[#003BE2]">
                     {isFollowing ? "13" : "12"}
                   </span>
-                  <span className="font-sans font-medium text-base text-[#242528]">Followers</span>
+                  <span className="font-sans font-medium text-sm sm:text-base text-[#242528]">Followers</span>
                 </div>
               </div>
 
@@ -118,7 +118,7 @@ export default function CreatorProfilePage({
               <button
                 type="button"
                 onClick={() => setIsFollowing(!isFollowing)}
-                className="h-[46px] px-8 rounded-full bg-[#D4FB20] hover:bg-[#c2ea1b] text-[#242528] font-sans font-medium text-base transition-colors cursor-pointer shadow-xs"
+                className="h-[40px] sm:h-[46px] px-6 sm:px-8 rounded-full bg-[#D4FB20] hover:bg-[#c2ea1b] text-[#242528] font-sans font-medium text-sm sm:text-base transition-colors cursor-pointer shadow-xs shrink-0"
               >
                 {isFollowing ? "Following" : "Follow"}
               </button>
@@ -128,7 +128,7 @@ export default function CreatorProfilePage({
       </section>
 
       {/* 2. Creator Courses Section with Filters Bar (Figma 60:1928) */}
-      <main className="flex-1 max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[120px] w-full py-12 md:py-16">
+      <main className="flex-1 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[120px] w-full py-8 sm:py-12 md:py-16">
         {/* Filters Bar (Figma 60:1930) */}
         <CoursesFilterBar />
 
